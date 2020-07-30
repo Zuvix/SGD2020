@@ -49,12 +49,13 @@ public class PlayerMovement : MonoBehaviour
         {
             if (isGrounded)
             {
-                if (Input.GetButtonDown("Vertical") || Input.GetButtonDown("Horizontal")) { 
-                    print("stlacena sipka");
-                    velocity.y = jumpHeigh * 0.5f;
-                } else { 
+              //  print(Input.GetAxisRaw("Vertical") + " --- " + Input.GetAxisRaw("Horizontal"));
+             //   if (Input.GetAxisRaw("Vertical") != 0 || Input.GetAxisRaw("Horizontal") != 0) { 
+              //      print("stlacena sipka");
+              //      velocity.y = jumpHeigh * 0.5f;
+                //} else { 
                      velocity.y = jumpHeigh;
-            }
+           // }
         }
             else if (doubleJump)
             {

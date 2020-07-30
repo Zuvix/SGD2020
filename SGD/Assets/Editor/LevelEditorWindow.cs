@@ -159,8 +159,13 @@ namespace Editor
                         rect.width = width;
                         //
                         EditorGUI.LabelField(rect, element.displayName.Replace("Element", "Block"));
-                        rect.x += rect.width + gap;
+                        rect.x += rect.width - EditorGUIUtility.singleLineHeight;
 
+                        rect.width = EditorGUIUtility.singleLineHeight;
+                        EditorGUI.DrawPreviewTexture(rect, GenerateThumbnail(index));
+                        rect.width = width;
+                        rect.x += gap;
+                        
                         EditorGUI.PropertyField(rect, element.FindPropertyRelative("poolBlockData"),
                             GUIContent.none);
                         rect.x += rect.width + gap;
@@ -294,6 +299,22 @@ namespace Editor
             EditorGUILayout.EndHorizontal();
             EditorGUILayout.EndScrollView();
         }
+
+        private Texture2D GenerateThumbnail(int index)
+        {
+            var element = ((LevelDataObject) serializedObject.targetObject).levels[buttonIndex].blockPool[index].overridePlacings;
+            var tex = new Texture2D (3, 3, TextureFormat.ARGB32, false);
+            tex.filterMode = FilterMode.Point;
+            tex.wrapMode = TextureWrapMode.Clamp;
+            for (var i = 0; i < 9; i++)
+            {
+                if (element[i % 3 + Mathf.RoundToInt(i / 3) * 3] != null)
+                    tex.SetPixel(i % 3, -(i / 3) + 2, Color.black);
+            }
+            tex.Apply();
+            return tex;
+        }
+        
         private void DrawBlockDescription()
         {
             if (_selectedBlock != new Vector2Int(-1, -1))

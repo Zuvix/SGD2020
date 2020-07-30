@@ -38,7 +38,6 @@ public class SpiderBehaviour : MonoBehaviour
     } 
     IEnumerator MovementLogic()
     {
-        yield return StartCoroutine(MoveForward());
         while (true)
         {
             bool l = left.isOverGround;
@@ -62,14 +61,6 @@ public class SpiderBehaviour : MonoBehaviour
             {
                 yield return StartCoroutine(MoveAndLook());
             }
-            yield return new WaitForFixedUpdate();
-        }
-    }
-    IEnumerator MoveForward()
-    {
-        while (front.isOverGround || front.timeFromGround < frontCheckIntensity)
-        {
-            MoveSpider(1f);
             yield return new WaitForFixedUpdate();
         }
     }
@@ -97,7 +88,6 @@ public class SpiderBehaviour : MonoBehaviour
     }
     IEnumerator MoveAndLook()
     {
-      
         float timeTraveled = 0f;
         float timeROn=0f;
         float timeROff=0f;

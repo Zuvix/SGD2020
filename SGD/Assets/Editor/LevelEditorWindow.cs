@@ -272,6 +272,16 @@ namespace Editor
                                 GUILayout.FlexibleSpace();
                                 EditorGUILayout.EndHorizontal();
                             }
+                            EditorGUILayout.BeginHorizontal();
+                            GUILayout.FlexibleSpace();
+                            if (GUILayout.Button("Reset", GUILayout.Width(130)))
+                            {
+                                var h = ((LevelDataObject) serializedObject.targetObject).levels[buttonIndex].blockPool[_blockPoolList.index];
+                                h.overridePlacings = (GameObject[]) h.poolBlockData.defaultPlacings.Clone();
+                                serializedObject.Update();
+                            }
+                            GUILayout.FlexibleSpace();
+                            EditorGUILayout.EndHorizontal();
                         }
                         else
                         {

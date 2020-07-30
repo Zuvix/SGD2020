@@ -32,7 +32,6 @@ namespace Editor
         private void OnGUI()
         {
             currentProperty = serializedObject.FindProperty("levels");
-
             EditorGUILayout.BeginHorizontal();
             EditorGUILayout.BeginVertical("box", GUILayout.MaxWidth(150), GUILayout.MinWidth(90), GUILayout.ExpandHeight(true));
             _scrollPosDrawer = EditorGUILayout.BeginScrollView(_scrollPosDrawer);
@@ -96,6 +95,7 @@ namespace Editor
                 i.Item2.DeleteArrayElementAtIndex(i.Item1);
             }
             _deleteList.Clear();
+            
             Apply();
             serializedObject.Update();
         }
@@ -327,10 +327,9 @@ namespace Editor
                             }
                             break;
                     }
-                    
-                    if (selected != -1) GUI.enabled = false;
+                    Apply();
+
                     _blockData = EditorGUILayout.ObjectField("Source block:", blockType, typeof(BlockData), false) as BlockData;
-                    if (selected != -1) GUI.enabled = true;
 
                     if (levelObj != null)
                     {
@@ -448,7 +447,7 @@ namespace Editor
                             }
                         }
                     }
-
+                    
                     EditorGUILayout.EndVertical();
                     GUILayout.FlexibleSpace();
                     EditorGUILayout.EndHorizontal();
@@ -502,12 +501,9 @@ namespace Editor
                         var pos = new Vector2Int(x, y);
                         var style = new GUIStyle(GUI.skin.button);
                         var text = " ";
+                        
                         GUI.backgroundColor = Color.white;
-                        if (pos == obj.endPos)
-                            GUI.backgroundColor = Color.red;
-                        else if (pos == obj.startPos)
-                            GUI.backgroundColor = Color.green;
-                        else if (obj.layout.ContainsKey(x))
+                        if (obj.layout.ContainsKey(x))
                         {
                             if (obj.layout[x].ContainsKey(y))
                                 if (obj.layout[x][y] != null)
@@ -516,6 +512,10 @@ namespace Editor
                                     text = _arrows[(int) obj.layout[x][y].facing];
                                 }
                         }
+                        if (pos == obj.endPos)
+                            GUI.backgroundColor = Color.red;
+                        else if (pos == obj.startPos)
+                            GUI.backgroundColor = Color.green;
 
                         if (GUILayout.Toggle(_selectedBlock == pos, text, style, GUILayout.Width(size), GUILayout.Height(size)))
                         {

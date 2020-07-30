@@ -16,11 +16,14 @@ Shader "Grid" {
     SubShader {
  
       Tags { "Queue" = "Transparent" }
- 
+      
+      Cull off   
       Pass {
         ZWrite Off
+        
         Blend SrcAlpha OneMinusSrcAlpha
- 
+        ColorMaterial AmbientAndDiffuse
+        
         CGPROGRAM
         // Define the vertex and fragment shader functions
         #pragma vertex vert

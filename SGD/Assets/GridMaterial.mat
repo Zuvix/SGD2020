@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: New Material
+  m_Name: GridMaterial
   m_Shader: {fileID: 4800000, guid: 5b9d02198646fd64aa23497e5f9d51b4, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
@@ -40,7 +40,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 10307, guid: 0000000000000000f000000000000000, type: 0}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
@@ -55,22 +55,23 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _SpecGlossMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     m_Floats:
     - _BumpScale: 1
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
     - _GlossMapScale: 1
-    - _Glossiness: 0.378
+    - _Glossiness: 0.5
     - _GlossyReflections: 1
-    - _GridOffsetX: 0.1
-    - _GridOffsetY: 0.1
-    - _GridSpacing: 10
+    - _GridOffsetX: 0.025
+    - _GridOffsetY: 0.025
     - _GridSpacingX: 1
     - _GridSpacingY: 1
-    - _GridStep: 11.49
-    - _GridThickness: 0.2
-    - _GridWidth: 160.53
+    - _GridThickness: 0.01
     - _Metallic: 0
     - _Mode: 0
     - _OcclusionStrength: 1
@@ -84,4 +85,5 @@ Material:
     - _BaseColour: {r: 0, g: 0, b: 0, a: 0}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _GridColour: {r: 1, g: 1, b: 1, a: 0.64705884}
+    - _GridColour: {r: 1, g: 1, b: 1, a: 0.8}
+    - _SpecColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}

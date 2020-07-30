@@ -3073,6 +3073,12 @@ Transform:
   m_Father: {fileID: 722737798}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &1769558137 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 5866666021909216657, guid: 3017de4179555004cb7d70a3837adaa0,
+    type: 3}
+  m_PrefabInstance: {fileID: 875473910}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1776615479
 GameObject:
   m_ObjectHideFlags: 0
@@ -3273,6 +3279,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cam: {fileID: 1776615482}
   controller: {fileID: 2021052041}
+  animator: {fileID: 1769558137}
   speed: 2.3
   gravity: 6
   turnSmoothTime: 0.1

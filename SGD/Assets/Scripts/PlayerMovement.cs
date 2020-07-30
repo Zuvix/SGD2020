@@ -4,6 +4,7 @@ public class PlayerMovement : MonoBehaviour
 {
     public Transform cam;
     public CharacterController controller;
+    public Animator animator;
 
     public float speed = 4f;
     public float gravity = 6f;
@@ -40,11 +41,30 @@ public class PlayerMovement : MonoBehaviour
             float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
             transform.rotation = Quaternion.Euler(0f, angle, 0f);
             Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
-                     controller.Move(moveDir.normalized * speed * Time.deltaTime);
+            controller.Move(moveDir.normalized * speed * Time.deltaTime);
         }
         if (isGrounded)
+        {
             doubleJump = true;
-        
+            animator.SetInteger("jump", 0);
+            animator.SetInteger("condition", 0);
+            print("NOjump");
+        }
+
+            if ((isGrounded && (Input.GetAxisRaw("Vertical") != 0 || Input.GetAxisRaw("Horizontal") != 0)))
+        {
+            doubleJump = true; 
+            animator.SetInteger("jump", 0);
+            animator.SetInteger("condition", 1);
+            print("walking");
+        }
+        else if ((isGrounded && (Input.GetAxisRaw("Vertical") == 0 && Input.GetAxisRaw("Horizontal") == 0)))
+        {
+            animator.SetInteger("jump", 0);
+            animator.SetInteger("condition", 0);
+            print("standing");
+        }
+
         if (Input.GetButtonDown("Jump") )
         {
             if (isGrounded)
@@ -54,9 +74,13 @@ public class PlayerMovement : MonoBehaviour
               //      print("stlacena sipka");
               //      velocity.y = jumpHeigh * 0.5f;
                 //} else { 
-                     velocity.y = jumpHeigh;
-           // }
-        }
+                velocity.y = jumpHeigh;
+                animator.SetInteger("jump", 1);
+                animator.SetInteger("condition", 3);
+                print("jump");
+                // }
+
+            }
             else if (doubleJump)
             {
                 velocity.y = jumpHeigh;

@@ -48,7 +48,6 @@ public class PlayerMovement : MonoBehaviour
             doubleJump = true;
             animator.SetInteger("jump", 0);
             animator.SetInteger("condition", 0);
-            print("NOjump");
         }
 
             if ((isGrounded && (Input.GetAxisRaw("Vertical") != 0 || Input.GetAxisRaw("Horizontal") != 0)))
@@ -56,13 +55,11 @@ public class PlayerMovement : MonoBehaviour
             doubleJump = true; 
             animator.SetInteger("jump", 0);
             animator.SetInteger("condition", 1);
-            print("walking");
         }
         else if ((isGrounded && (Input.GetAxisRaw("Vertical") == 0 && Input.GetAxisRaw("Horizontal") == 0)))
         {
             animator.SetInteger("jump", 0);
             animator.SetInteger("condition", 0);
-            print("standing");
         }
 
         if (Input.GetButtonDown("Jump") )

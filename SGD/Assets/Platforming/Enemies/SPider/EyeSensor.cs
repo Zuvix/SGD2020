@@ -23,7 +23,6 @@ public class EyeSensor : MonoBehaviour
         RaycastHit hit;
 
         if (Physics.Raycast(ray, out hit, maxRayDistance)) {
-            Debug.Log("You sense the ground");
             isOverGround = true;
             timeFromGround = 0f;
             timeOnGround += Time.deltaTime;

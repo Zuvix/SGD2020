@@ -19,7 +19,7 @@ public class SpiderBehaviour : Enemy
     private EyeSensor right;
     private EyeSensor left;
     private Vector3 lastPosition;
-    void Awake()
+    public override void Awake()
     {
         front = farFrontEye.GetComponent<EyeSensor>();
         left = leftEye.GetComponent<EyeSensor>();

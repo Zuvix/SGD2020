@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpiderBehaviour : MonoBehaviour
+public class SpiderBehaviour : Enemy
 {
     // Start is called before the first frame update
     public GameObject farFrontEye;
@@ -27,7 +27,21 @@ public class SpiderBehaviour : MonoBehaviour
     }
     private void Start()
     {
+        Activate();
+    }
+    public override void Activate()
+    {
         StartCoroutine("BrainScope");
+        Debug.Log("Enemy Activated");
+    }
+    public override void Die()
+    {
+        Destroy(this.gameObject);
+        Debug.Log("Spider killed, rip");
+    }
+    public override void Kill()
+    {
+        
     }
 
     // Update is called once per frame
@@ -38,7 +52,6 @@ public class SpiderBehaviour : MonoBehaviour
     } 
     IEnumerator MovementLogic()
     {
-        yield return StartCoroutine(MoveForward());
         while (true)
         {
             bool l = left.isOverGround;
@@ -62,14 +75,6 @@ public class SpiderBehaviour : MonoBehaviour
             {
                 yield return StartCoroutine(MoveAndLook());
             }
-            yield return new WaitForFixedUpdate();
-        }
-    }
-    IEnumerator MoveForward()
-    {
-        while (front.isOverGround || front.timeFromGround < frontCheckIntensity)
-        {
-            MoveSpider(1f);
             yield return new WaitForFixedUpdate();
         }
     }
@@ -97,7 +102,6 @@ public class SpiderBehaviour : MonoBehaviour
     }
     IEnumerator MoveAndLook()
     {
-      
         float timeTraveled = 0f;
         float timeROn=0f;
         float timeROff=0f;

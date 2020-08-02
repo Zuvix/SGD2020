@@ -9,15 +9,15 @@ public class EyeSensor : MonoBehaviour
     private float maxRayDistance = 2;
     [HideInInspector]
     public bool isOverGround=false;
-    public bool isOverTrap = false;
+    public bool isEnemyAhead = false;
     [HideInInspector]
     public float timeFromGround = 0f;
     public float timeOnGround = 0f;
-    public float timeOverTrap = 0f;
+    public float timeCloseToEnemy = 0f;
     public LayerMask mask;
     void Start()
     {
-         mask = LayerMask.GetMask("Trap","Ground");
+         mask = LayerMask.GetMask("Trap","Ground","Enemy");
     }
 
     void FixedUpdate()
@@ -39,23 +39,23 @@ public class EyeSensor : MonoBehaviour
                 timeFromGround += Time.deltaTime;
                 timeOnGround = 0;
             }
-            if (hit.transform.gameObject.layer==9)
+            if (hit.transform.gameObject.layer==9|| hit.transform.gameObject.layer == 10)
             {
-                isOverTrap = true;
-                timeOverTrap +=Time.deltaTime;
+                isEnemyAhead= true;
+                timeCloseToEnemy += Time.deltaTime;
                 Debug.DrawRay(transform.position, Vector3.down*maxRayDistance, Color.black);
             }
             else{
-                isOverTrap = false;
-                timeOverTrap =0;
+                isEnemyAhead = false;
+                timeCloseToEnemy = 0;
             }
         }
     else
         {
             isOverGround = false;
-            isOverTrap = false;
+            isEnemyAhead = false;
             timeFromGround += Time.deltaTime;
-            timeOverTrap =0;
+            timeCloseToEnemy = 0;
             timeOnGround = 0;
             Debug.DrawRay(transform.position, Vector3.down* maxRayDistance, Color.red);
         }

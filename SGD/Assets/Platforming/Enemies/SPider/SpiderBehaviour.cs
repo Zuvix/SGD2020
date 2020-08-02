@@ -55,11 +55,12 @@ public class SpiderBehaviour : Enemy
     {
         while (true)
         {
-            if (front.isOverTrap && front.timeOverTrap > 0.15f)
+            if (front.isEnemyAhead && front.timeCloseToEnemy > 0.15f)
             {
                 Debug.Log("TRAP, WATCHOUT SPIDER");
                 StopCoroutine("MovementLogic");
-                yield return new WaitUntil(() => front.isOverTrap == false);
+                yield return new WaitUntil(() => front.isEnemyAhead == false);
+                yield return new WaitForSeconds(0.2f);
                 StartCoroutine("MovementLogic");
             }
             yield return new WaitForFixedUpdate();
@@ -128,12 +129,12 @@ public class SpiderBehaviour : Enemy
             timeTraveled += Time.deltaTime;
             yield return new WaitForFixedUpdate();
             
-            if (left.isOverGround && left.timeOnGround > steerIntensity && timeLOff > timeLOn && !front.isOverTrap)
+            if (left.isOverGround && left.timeOnGround > steerIntensity && timeLOff > timeLOn && !front.isEnemyAhead)
             {
                 yield return StartCoroutine(Steer(false));
                 break;
             }
-            if (right.isOverGround && right.timeFromGround > steerIntensity && timeROff>timeROn && !front.isOverTrap)
+            if (right.isOverGround && right.timeFromGround > steerIntensity && timeROff>timeROn && !front.isEnemyAhead)
             {
                 yield return StartCoroutine(Steer(true));
                 break;

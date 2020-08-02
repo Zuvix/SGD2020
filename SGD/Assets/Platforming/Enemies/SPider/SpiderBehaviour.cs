@@ -111,7 +111,7 @@ public class SpiderBehaviour : Enemy
         {
             transform.Rotate(Vector3.up, rotateSpeed*rotateDirection);
             diff += rotateSpeed;
-            MoveSpider(0.75f);
+            MoveSpider(0.65f);
             yield return new WaitForFixedUpdate();
         }
     }

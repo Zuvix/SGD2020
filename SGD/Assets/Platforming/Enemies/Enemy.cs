@@ -50,7 +50,6 @@ public abstract class Enemy : MonoBehaviour
         
         if (other.gameObject.CompareTag("Spike"))
         {
-            Debug.Log("Die Spiderrr from spike");
             this.gameObject.GetComponent<Enemy>().Die();
         }
     }

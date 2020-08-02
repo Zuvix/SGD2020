@@ -50,6 +50,20 @@ public class SpiderBehaviour : Enemy
         StartCoroutine("MovementLogic");
         yield return new WaitForFixedUpdate();
     } 
+    IEnumerator TrapChecker()
+    {
+        while (true)
+        {
+            if (front.isOverTrap && front.timeOverTrap > 0.15f)
+            {
+                Debug.Log("TRAP, WATCHOUT SPIDER");
+                StopCoroutine("MovementLogic");
+                yield return new WaitUntil(() => front.isOverTrap == false);
+                StartCoroutine("MovementLogic");
+            }
+            yield return new WaitForFixedUpdate();
+        }
+    }
     IEnumerator MovementLogic()
     {
         while (true)

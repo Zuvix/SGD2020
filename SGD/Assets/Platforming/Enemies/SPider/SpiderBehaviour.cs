@@ -47,6 +47,7 @@ public class SpiderBehaviour : Enemy
     // Update is called once per frame
     IEnumerator BrainScope()
     {
+        StartCoroutine("TrapChecker");
         StartCoroutine("MovementLogic");
         yield return new WaitForFixedUpdate();
     } 
@@ -127,12 +128,12 @@ public class SpiderBehaviour : Enemy
             timeTraveled += Time.deltaTime;
             yield return new WaitForFixedUpdate();
             
-            if (left.isOverGround && left.timeOnGround > steerIntensity && timeLOff > timeLOn)
+            if (left.isOverGround && left.timeOnGround > steerIntensity && timeLOff > timeLOn && !front.isOverTrap)
             {
                 yield return StartCoroutine(Steer(false));
                 break;
             }
-            if (right.isOverGround && right.timeFromGround > steerIntensity && timeROff>timeROn)
+            if (right.isOverGround && right.timeFromGround > steerIntensity && timeROff>timeROn && !front.isOverTrap)
             {
                 yield return StartCoroutine(Steer(true));
                 break;

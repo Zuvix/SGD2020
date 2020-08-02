@@ -22,7 +22,7 @@ public class EyeSensor : MonoBehaviour
 
     void FixedUpdate()
     {
-        Ray ray = new Ray(transform.position, Vector3.down);
+        Ray ray = new Ray(transform.position, Vector3.down*2);
         RaycastHit hit;
 
         if (Physics.Raycast(ray, out hit, maxRayDistance,mask)) {
@@ -31,7 +31,7 @@ public class EyeSensor : MonoBehaviour
                 isOverGround = true;
                 timeFromGround = 0f;
                 timeOnGround += Time.deltaTime;
-                Debug.DrawRay(transform.position, Vector3.down, Color.green);
+                Debug.DrawRay(transform.position, Vector3.down*2, Color.green);
             }
             else
             {
@@ -43,7 +43,7 @@ public class EyeSensor : MonoBehaviour
             {
                 isOverTrap = true;
                 timeOverTrap +=Time.deltaTime;
-                Debug.DrawRay(transform.position, Vector3.down, Color.black);
+                Debug.DrawRay(transform.position, Vector3.down*2, Color.black);
             }
             else{
                 isOverTrap = false;
@@ -57,7 +57,7 @@ public class EyeSensor : MonoBehaviour
             timeFromGround += Time.deltaTime;
             timeOverTrap =0;
             timeOnGround = 0;
-            Debug.DrawRay(transform.position, Vector3.down, Color.red);
+            Debug.DrawRay(transform.position, Vector3.down*2, Color.red);
         }
     }
 }

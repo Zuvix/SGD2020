@@ -7,6 +7,7 @@ public abstract class Enemy : MonoBehaviour
     public bool customGravity = false;
     public bool isOnGround = false;
     public float gravityForce = 9.81f;
+    protected Animator anim;
     protected Rigidbody rb;
     //Nejaka animacia ked zabija hraca
     public abstract void Kill();
@@ -25,7 +26,15 @@ public abstract class Enemy : MonoBehaviour
     }
     public virtual void Awake()
     {
-        rb = GetComponent<Rigidbody>();
+        if((rb= GetComponent<Rigidbody>())== null)
+        {
+            Debug.Log("Rigidbody not found");
+        }
+        anim = GetComponent<Animator>();
+        if ((anim = GetComponent<Animator>()) == null)
+        {
+            Debug.Log("Animator not found");
+        }
     }
     private void OnCollisionStay(Collision collision)
     {

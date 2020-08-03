@@ -21,6 +21,7 @@ public class SpiderBehaviour : Enemy
     private Vector3 lastPosition;
     public override void Awake()
     {
+        base.Awake();
         front = farFrontEye.GetComponent<EyeSensor>();
         left = leftEye.GetComponent<EyeSensor>();
         right = rightEye.GetComponent<EyeSensor>();
@@ -59,8 +60,10 @@ public class SpiderBehaviour : Enemy
             {
                 Debug.Log("TRAP, WATCHOUT SPIDER");
                 StopCoroutine("MovementLogic");
+                anim.SetBool("isWalking", false);
                 yield return new WaitUntil(() => front.isEnemyAhead == false);
                 yield return new WaitForSeconds(0.2f);
+                anim.SetBool("isWalking", true);
                 StartCoroutine("MovementLogic");
             }
             yield return new WaitForFixedUpdate();

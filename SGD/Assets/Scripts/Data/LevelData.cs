@@ -22,19 +22,19 @@ namespace Data
     [Serializable]
     public class PoolBlock
     {
-        public BlockData poolBlockData;
+        public BlockDataObject poolBlockData;
         public int count = 1;
         [Range(0f, 1f)]
         public float chance = 1f;
-        public GameObject[] overridePlacings = new GameObject[9];
+        public PlaceableDataObject[] overridePlacings = new PlaceableDataObject[9];
     }
 
     [Serializable]
     public class LayoutBlock
     {
-        public BlockData layoutBlockData;
+        public BlockDataObject layoutBlockData;
         public Rotation facing;
-        public GameObject[] overridePlacings;
+        public PlaceableDataObject[] overridePlacings;
     }
     
     [Serializable]

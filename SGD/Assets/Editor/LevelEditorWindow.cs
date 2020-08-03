@@ -14,7 +14,7 @@ namespace Editor
         private List<Tuple<int, SerializedProperty>> _deleteList = new List<Tuple<int, SerializedProperty>>();
         private Vector2 _scrollPosDrawer;
         private Vector2 _scrollPosPool;
-        private BlockData _blockData;
+        private BlockDataObject _blockData;
         private ReorderableList _blockPoolList;
         private SerializedProperty _selectedPoolBlock;
         private bool _overriden;
@@ -28,76 +28,93 @@ namespace Editor
             window.minSize = new Vector2(350, 270);
             window.titleContent.image = (Texture)AssetDatabase.LoadAssetAtPath("Assets/Gizmos/LevelEditorIcon.png", typeof(Texture2D));
         }
-
+        
         private void OnGUI()
         {
-            currentProperty = serializedObject.FindProperty("levels");
-            EditorGUILayout.BeginHorizontal();
-            EditorGUILayout.BeginVertical("box", GUILayout.MaxWidth(150), GUILayout.MinWidth(90), GUILayout.ExpandHeight(true));
-            _scrollPosDrawer = EditorGUILayout.BeginScrollView(_scrollPosDrawer);
-            DrawerSidebar(currentProperty);
-            GUILayout.FlexibleSpace();
-            EditorGUILayout.EndScrollView();
-            EditorGUILayout.BeginHorizontal();
-            if (GUILayout.Button("+"))
+            if (serializedObject == null || serializedObject.Equals(null))
+                Close();
+
+            try
             {
-                if (currentProperty != null)
+                currentProperty = serializedObject.FindProperty("levels");
+                EditorGUILayout.BeginHorizontal();
+                EditorGUILayout.BeginVertical("box", GUILayout.MaxWidth(150), GUILayout.MinWidth(90),
+                    GUILayout.ExpandHeight(true));
+                _scrollPosDrawer = EditorGUILayout.BeginScrollView(_scrollPosDrawer);
+                DrawerSidebar(currentProperty);
+                GUILayout.FlexibleSpace();
+                EditorGUILayout.EndScrollView();
+                EditorGUILayout.BeginHorizontal();
+                if (GUILayout.Button("+"))
                 {
-                    ++currentProperty.arraySize;
-                    var element = currentProperty.GetArrayElementAtIndex(currentProperty.arraySize - 1);
-                    element.FindPropertyRelative("dimensions").vector2IntValue = Vector2Int.zero;
-                    element.FindPropertyRelative("startPos").vector2IntValue = new Vector2Int(-1, -1);
-                    element.FindPropertyRelative("endPos").vector2IntValue = new Vector2Int(-1, -1);
-                    element.FindPropertyRelative("ordered").boolValue = false;
-                    element.FindPropertyRelative("blockPool").ClearArray();
-                    Apply();
-                    if (currentProperty.arraySize > 0)
+                    if (currentProperty != null)
                     {
-                        var direct =
-                            (serializedObject.targetObject as LevelDataObject)?.levels[currentProperty.arraySize - 1];
-                        if (direct != null)
+                        ++currentProperty.arraySize;
+                        var element = currentProperty.GetArrayElementAtIndex(currentProperty.arraySize - 1);
+                        element.FindPropertyRelative("dimensions").vector2IntValue = Vector2Int.zero;
+                        element.FindPropertyRelative("startPos").vector2IntValue = new Vector2Int(-1, -1);
+                        element.FindPropertyRelative("endPos").vector2IntValue = new Vector2Int(-1, -1);
+                        element.FindPropertyRelative("ordered").boolValue = false;
+                        element.FindPropertyRelative("blockPool").ClearArray();
+                        Apply();
+                        if (currentProperty.arraySize > 0)
                         {
-                            direct.layout.Clear();
-                            serializedObject.Update();
+                            var direct =
+                                (serializedObject.targetObject as LevelDataObject)?.levels[
+                                    currentProperty.arraySize - 1];
+                            if (direct != null)
+                            {
+                                direct.layout.Clear();
+                                serializedObject.Update();
+                            }
                         }
                     }
                 }
-            }
-            if (GUILayout.Button("-"))
-            {
-                _deleteList.Add(new Tuple<int, SerializedProperty>(buttonIndex, currentProperty));
-                buttonIndex = -1;
-            }
-            EditorGUILayout.EndHorizontal();
-            EditorGUILayout.EndVertical();
-            EditorGUILayout.BeginVertical(GUILayout.ExpandHeight(true));
-            if (selectedProperty != null)
-            {
-                DrawSelectedLevelPanel();
-            }
-            else
-            {
-                EditorGUILayout.LabelField($"Select an item from the list", new GUIStyle(GUI.skin.label) {alignment = TextAnchor.MiddleCenter});
-            }
-            EditorGUILayout.EndVertical();
-            EditorGUILayout.EndHorizontal();
-            
-            // Garbage collector
-            
-            currentProperty = serializedObject.FindProperty("levels");
-            foreach (var i in _deleteList)
-            {
-                if (i.Item2 == currentProperty)
+
+                if (GUILayout.Button("-"))
                 {
-                    Select(i.Item2.GetArrayElementAtIndex(Mathf.Clamp(i.Item1 - 1, 0, int.MaxValue)), i.Item1 - 1);
+                    _deleteList.Add(new Tuple<int, SerializedProperty>(buttonIndex, currentProperty));
+                    buttonIndex = -1;
                 }
 
-                i.Item2.DeleteArrayElementAtIndex(i.Item1);
+                EditorGUILayout.EndHorizontal();
+                EditorGUILayout.EndVertical();
+                EditorGUILayout.BeginVertical(GUILayout.ExpandHeight(true));
+                if (selectedProperty != null)
+                {
+                    DrawSelectedLevelPanel();
+                }
+                else
+                {
+                    EditorGUILayout.LabelField($"Select an item from the list",
+                        new GUIStyle(GUI.skin.label) {alignment = TextAnchor.MiddleCenter});
+                }
+
+                EditorGUILayout.EndVertical();
+                EditorGUILayout.EndHorizontal();
+
+                // Garbage collector
+
+                currentProperty = serializedObject.FindProperty("levels");
+                foreach (var i in _deleteList)
+                {
+                    if (i.Item2 == currentProperty)
+                    {
+                        Select(i.Item2.GetArrayElementAtIndex(Mathf.Clamp(i.Item1 - 1, 0, int.MaxValue)), i.Item1 - 1);
+                    }
+
+                    i.Item2.DeleteArrayElementAtIndex(i.Item1);
+                }
+
+                _deleteList.Clear();
+
+                Apply();
+                serializedObject.Update();
             }
-            _deleteList.Clear();
-            
-            Apply();
-            serializedObject.Update();
+            catch (Exception e)
+            {
+                Debug.LogWarning($"Entered play mode while editing levels. \n Details: {e}");
+            }
         }
         private void DrawSelectedLevelPanel()
         {
@@ -277,7 +294,7 @@ namespace Editor
                             if (GUILayout.Button("Reset", GUILayout.Width(130)))
                             {
                                 var h = ((LevelDataObject) serializedObject.targetObject).levels[buttonIndex].blockPool[_blockPoolList.index];
-                                h.overridePlacings = (GameObject[]) h.poolBlockData.defaultPlacings.Clone();
+                                h.overridePlacings = (PlaceableDataObject[]) h.poolBlockData.defaultPlacings.Clone();
                                 serializedObject.Update();
                             }
                             GUILayout.FlexibleSpace();
@@ -329,7 +346,7 @@ namespace Editor
         {
             if (_selectedBlock != new Vector2Int(-1, -1))
             {
-                void DrawData(LevelData levelObj, BlockData blockType, int selected)
+                void DrawData(LevelData levelObj, BlockDataObject blockType, int selected)
                 {
                     EditorGUILayout.BeginHorizontal();
                     GUILayout.FlexibleSpace();
@@ -360,7 +377,7 @@ namespace Editor
                     }
                     Apply();
 
-                    _blockData = EditorGUILayout.ObjectField("Source block:", blockType, typeof(BlockData), false) as BlockData;
+                    _blockData = EditorGUILayout.ObjectField("Source block:", blockType, typeof(BlockDataObject), false) as BlockDataObject;
 
                     if (levelObj != null)
                     {
@@ -374,7 +391,7 @@ namespace Editor
                             {
                                 levelObj.layout[_selectedBlock.x][_selectedBlock.y].layoutBlockData = _blockData;
                                 levelObj.layout[_selectedBlock.x][_selectedBlock.y].overridePlacings =
-                                    new GameObject[9];
+                                    new PlaceableDataObject[9];
                                 levelObj.layout[_selectedBlock.x][_selectedBlock.y].facing =
                                     Rotation.NORTH;
                             }
@@ -412,7 +429,7 @@ namespace Editor
                                     if (!levelObj.layout.ContainsKey(_selectedBlock.x))
                                         levelObj.layout[_selectedBlock.x] = new LayoutBlockDict();
                                     levelObj.layout[_selectedBlock.x][_selectedBlock.y].overridePlacings =
-                                        (GameObject[]) _blockData.defaultPlacings.Clone();
+                                        (PlaceableDataObject[]) _blockData.defaultPlacings.Clone();
                                     _overriden = true;
                                     serializedObject.Update();
                                 }
@@ -425,7 +442,7 @@ namespace Editor
                             void Clear()
                             {
                                 levelObj.layout[_selectedBlock.x][_selectedBlock.y].overridePlacings =
-                                    (GameObject[]) _blockData.defaultPlacings.Clone();
+                                    (PlaceableDataObject[]) _blockData.defaultPlacings.Clone();
                                 _overriden = false;
                                 serializedObject.Update();
                             }
@@ -443,9 +460,9 @@ namespace Editor
                                         GUILayout.FlexibleSpace();
                                         for (var x = 0; x < 3; x++)
                                         {
-                                            placingData[y * 3 + x] = (GameObject) EditorGUILayout.ObjectField(
+                                            placingData[y * 3 + x] = (PlaceableDataObject) EditorGUILayout.ObjectField(
                                                 GUIContent.none,
-                                                placingData[y * 3 + x], typeof(GameObject), false, GUILayout.Width(40),
+                                                placingData[y * 3 + x], typeof(PlaceableDataObject), false, GUILayout.Width(40),
                                                 GUILayout.Height(40));
                                         }
 

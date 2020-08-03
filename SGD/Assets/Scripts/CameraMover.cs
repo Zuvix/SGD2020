@@ -43,10 +43,15 @@ public class CameraMover : MonoBehaviour
             var rotation = toRotation;
             
             transform.rotation = rotation;
-            target.transform.localPosition += Vector3.back * _velocityZoom;
+            var localPosition = target.transform.localPosition;
+            localPosition += Vector3.back * _velocityZoom;
             _velocityX = Mathf.Lerp(_velocityX, 0, Time.smoothDeltaTime * smoothTime);
             _velocityY = Mathf.Lerp(_velocityY, 0, Time.smoothDeltaTime * smoothTime);
             _velocityZoom = Mathf.Lerp(_velocityZoom, 0, Time.smoothDeltaTime * smoothTime);
+            
+            // Clamp
+            localPosition = new Vector3(0, 0, Mathf.Clamp(localPosition.z, -30, -2));
+            target.transform.localPosition = localPosition;
         }
         
     }

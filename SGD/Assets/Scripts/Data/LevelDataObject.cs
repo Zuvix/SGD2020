@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Data
 {
-    [CreateAssetMenu(menuName = "LDO")]
+    [CreateAssetMenu(menuName = "Level Data Object")]
     [Serializable]
     public class LevelDataObject : ScriptableObject
     {

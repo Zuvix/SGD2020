@@ -167,8 +167,9 @@ public class SpiderBehaviour : Enemy
         transform.Translate(direction * speed*modif);
 
     }
-    void FixedUpdate()
+    public override void FixedUpdate()
     {
+        base.FixedUpdate();
         Debug.DrawRay(transform.position, transform.forward, Color.blue);
 
     }

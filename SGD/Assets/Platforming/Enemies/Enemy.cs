@@ -4,9 +4,7 @@ using UnityEngine;
 
 public abstract class Enemy : MonoBehaviour
 {
-    public bool customGravity = false;
     public bool isOnGround = false;
-    public float gravityForce = 9.81f;
     protected Animator anim;
     protected Rigidbody rb;
     //Nejaka animacia ked zabija hraca
@@ -16,14 +14,6 @@ public abstract class Enemy : MonoBehaviour
     //Aktivovanie nepriatela, aby sa zacal spravat ako je definovane v GDD
     public abstract void Activate();
 
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.CompareTag("Ground"))
-        {
-            isOnGround = true;
-        }
-
-    }
     public virtual void Awake()
     {
         if((rb= GetComponent<Rigidbody>())== null)
@@ -36,30 +26,41 @@ public abstract class Enemy : MonoBehaviour
             Debug.Log("Animator not found");
         }
     }
-    private void OnCollisionStay(Collision collision)
+    protected virtual void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Ground"))
+        {
+            isOnGround = true;
+        }
+        if (collision.gameObject.CompareTag("Void"))
+        {
+            Die();
+        }
+    }
+    protected virtual void OnCollisionStay(Collision collision)
     {
         if (collision.gameObject.CompareTag("Ground"))
         {
             isOnGround = true;
         }
     }
-    private void OnCollisionExit(Collision collision)
+    protected virtual void OnCollisionExit(Collision collision)
     {
-        isOnGround = false;
-    }
-    private void FixedUpdate()
-    {
-        if (customGravity && isOnGround)
+        if (collision.gameObject.CompareTag("Ground"))
         {
-            rb.AddForce(Vector3.down * gravityForce);
+            isOnGround = false;
         }
+    }
+    public virtual void FixedUpdate()
+    {
+
     }
     private void OnTriggerEnter(Collider other)
     {
         
         if (other.gameObject.CompareTag("Spike"))
         {
-            this.gameObject.GetComponent<Enemy>().Die();
+            Die();
         }
     }
 }

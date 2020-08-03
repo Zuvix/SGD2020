@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class CameraMover : MonoBehaviour
 {
-    private Camera target;
+    public Camera target;
     public float xSpeed = 100.0f;
     public float ySpeed = 100.0f;
     public float smoothTime = 20f;
@@ -49,5 +49,13 @@ public class CameraMover : MonoBehaviour
             _velocityZoom = Mathf.Lerp(_velocityZoom, 0, Time.smoothDeltaTime * smoothTime);
         }
         
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.green;
+        Gizmos.DrawWireSphere(transform.position, -target.transform.localPosition.z);
+        Gizmos.color = Color.blue;
+        Gizmos.DrawLine(transform.position, target.transform.position);
     }
 }

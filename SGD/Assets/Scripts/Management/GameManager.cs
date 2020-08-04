@@ -48,7 +48,7 @@ namespace Management
                             {
                                 // Generate block primitive
                                 var block = level.layout[x][y];
-                                var obj = Instantiate(blockObject, new Vector3(0.5f + x, 0, -0.5f - y), Quaternion.identity, blockStash);
+                                var obj = Instantiate(blockObject, new Vector3(0.5f + x, 0, -0.5f - y), Quaternion.Euler((int)block.facing*90, 0, 0), blockStash);
                                 obj.GetComponent<MeshFilter>().mesh = block.layoutBlockData.mesh;
                                 obj.GetComponent<MeshRenderer>().material = block.layoutBlockData.material;
                             }

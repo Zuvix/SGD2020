@@ -19,8 +19,9 @@ public class SpiderBehaviour : Enemy
     private EyeSensor right;
     private EyeSensor left;
     private Vector3 lastPosition;
-    void Awake()
+    public override void Awake()
     {
+        base.Awake();
         front = farFrontEye.GetComponent<EyeSensor>();
         left = leftEye.GetComponent<EyeSensor>();
         right = rightEye.GetComponent<EyeSensor>();
@@ -47,9 +48,27 @@ public class SpiderBehaviour : Enemy
     // Update is called once per frame
     IEnumerator BrainScope()
     {
+        StartCoroutine("TrapChecker");
         StartCoroutine("MovementLogic");
         yield return new WaitForFixedUpdate();
     } 
+    IEnumerator TrapChecker()
+    {
+        while (true)
+        {
+            if (front.isEnemyAhead && front.timeCloseToEnemy > 0.15f)
+            {
+                Debug.Log("TRAP, WATCHOUT SPIDER");
+                StopCoroutine("MovementLogic");
+                anim.SetBool("isWalking", false);
+                yield return new WaitUntil(() => front.isEnemyAhead == false);
+                yield return new WaitForSeconds(0.2f);
+                anim.SetBool("isWalking", true);
+                StartCoroutine("MovementLogic");
+            }
+            yield return new WaitForFixedUpdate();
+        }
+    }
     IEnumerator MovementLogic()
     {
         while (true)
@@ -96,7 +115,7 @@ public class SpiderBehaviour : Enemy
         {
             transform.Rotate(Vector3.up, rotateSpeed*rotateDirection);
             diff += rotateSpeed;
-            MoveSpider(0.75f);
+            MoveSpider(0.65f);
             yield return new WaitForFixedUpdate();
         }
     }
@@ -113,12 +132,12 @@ public class SpiderBehaviour : Enemy
             timeTraveled += Time.deltaTime;
             yield return new WaitForFixedUpdate();
             
-            if (left.isOverGround && left.timeOnGround > steerIntensity && timeLOff > timeLOn)
+            if (left.isOverGround && left.timeOnGround > steerIntensity && timeLOff > timeLOn && !front.isEnemyAhead)
             {
                 yield return StartCoroutine(Steer(false));
                 break;
             }
-            if (right.isOverGround && right.timeFromGround > steerIntensity && timeROff>timeROn)
+            if (right.isOverGround && right.timeFromGround > steerIntensity && timeROff>timeROn && !front.isEnemyAhead)
             {
                 yield return StartCoroutine(Steer(true));
                 break;

@@ -6,7 +6,11 @@ TagManager:
   tags:
   - Ground
   - Enemy
+<<<<<<< HEAD
   - Coin
+=======
+  - Spike
+>>>>>>> master
   layers:
   - Default
   - TransparentFX
@@ -17,8 +21,13 @@ TagManager:
   - 
   - 
   - Ground
+<<<<<<< HEAD
   - Gem
   - 
+=======
+  - Trap
+  - Enemy
+>>>>>>> master
   - 
   - 
   - 

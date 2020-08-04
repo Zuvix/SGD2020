@@ -103,30 +103,172 @@ MonoBehaviour:
     ordered: 0
     blockPool: []
   - dimensions: {x: 10, y: 10}
-    startPos: {x: -1, y: -1}
-    endPos: {x: -1, y: -1}
+    startPos: {x: 9, y: 3}
+    endPos: {x: 1, y: 5}
     layout:
-      _Buckets: ffffffffffffffffffffffff
-      _HashCodes: 000000000000000000000000
-      _Next: 000000000000000000000000
-      _Count: 0
-      _Version: 3
+      _Buckets: 010000000200000003000000ffffffffffffffffffffffff04000000
+      _HashCodes: 02000000070000000100000009000000060000000000000000000000
+      _Next: ffffffffffffffffffffffff00000000ffffffff0000000000000000
+      _Count: 5
+      _Version: 12
       _FreeList: -1
       _FreeCount: 0
-      _Keys: 000000000000000000000000
+      _Keys: 02000000070000000100000009000000060000000000000000000000
       _Values:
-      - _Buckets: ffffffffffffffffffffffff
-        _HashCodes: 000000000000000000000000
-        _Next: 000000000000000000000000
-        _Count: 0
-        _Version: 0
+      - _Buckets: ffffffff00000000ffffffff
+        _HashCodes: 070000000000000000000000
+        _Next: ffffffff0000000000000000
+        _Count: 1
+        _Version: 1
         _FreeList: -1
         _FreeCount: 0
-        _Keys: 000000000000000000000000
+        _Keys: 070000000000000000000000
         _Values:
+        - layoutBlockData: {fileID: 11400000, guid: c5248ea1bff31354c8130387a9d71c8e,
+            type: 2}
+          facing: 0
+          overridePlacings:
+          - {fileID: 0}
+          - {fileID: 0}
+          - {fileID: 0}
+          - {fileID: 0}
+          - {fileID: 0}
+          - {fileID: 0}
+          - {fileID: 0}
+          - {fileID: 0}
+          - {fileID: 0}
         - layoutBlockData: {fileID: 0}
           facing: 0
           overridePlacings: []
+        - layoutBlockData: {fileID: 0}
+          facing: 0
+          overridePlacings: []
+      - _Buckets: ffffffff0000000001000000
+        _HashCodes: 040000000800000000000000
+        _Next: ffffffffffffffff00000000
+        _Count: 2
+        _Version: 2
+        _FreeList: -1
+        _FreeCount: 0
+        _Keys: 040000000800000000000000
+        _Values:
+        - layoutBlockData: {fileID: 11400000, guid: c5248ea1bff31354c8130387a9d71c8e,
+            type: 2}
+          facing: 0
+          overridePlacings:
+          - {fileID: 0}
+          - {fileID: 0}
+          - {fileID: 0}
+          - {fileID: 0}
+          - {fileID: 0}
+          - {fileID: 0}
+          - {fileID: 0}
+          - {fileID: 0}
+          - {fileID: 0}
+        - layoutBlockData: {fileID: 11400000, guid: c5248ea1bff31354c8130387a9d71c8e,
+            type: 2}
+          facing: 0
+          overridePlacings:
+          - {fileID: 0}
+          - {fileID: 0}
+          - {fileID: 0}
+          - {fileID: 0}
+          - {fileID: 0}
+          - {fileID: 0}
+          - {fileID: 0}
+          - {fileID: 0}
+          - {fileID: 0}
+        - layoutBlockData: {fileID: 0}
+          facing: 0
+          overridePlacings: []
+      - _Buckets: ffffffffffffffff01000000
+        _HashCodes: 020000000500000000000000
+        _Next: ffffffff0000000000000000
+        _Count: 2
+        _Version: 2
+        _FreeList: -1
+        _FreeCount: 0
+        _Keys: 020000000500000000000000
+        _Values:
+        - layoutBlockData: {fileID: 11400000, guid: c5248ea1bff31354c8130387a9d71c8e,
+            type: 2}
+          facing: 0
+          overridePlacings:
+          - {fileID: 0}
+          - {fileID: 0}
+          - {fileID: 0}
+          - {fileID: 0}
+          - {fileID: 0}
+          - {fileID: 0}
+          - {fileID: 0}
+          - {fileID: 0}
+          - {fileID: 0}
+        - layoutBlockData: {fileID: 11400000, guid: c5248ea1bff31354c8130387a9d71c8e,
+            type: 2}
+          facing: 0
+          overridePlacings:
+          - {fileID: 0}
+          - {fileID: 0}
+          - {fileID: 0}
+          - {fileID: 0}
+          - {fileID: 0}
+          - {fileID: 0}
+          - {fileID: 0}
+          - {fileID: 0}
+          - {fileID: 0}
+        - layoutBlockData: {fileID: 0}
+          facing: 0
+          overridePlacings: []
+      - _Buckets: 00000000ffffffffffffffff
+        _HashCodes: 030000000000000000000000
+        _Next: ffffffff0000000000000000
+        _Count: 1
+        _Version: 1
+        _FreeList: -1
+        _FreeCount: 0
+        _Keys: 030000000000000000000000
+        _Values:
+        - layoutBlockData: {fileID: 11400000, guid: c5248ea1bff31354c8130387a9d71c8e,
+            type: 2}
+          facing: 0
+          overridePlacings:
+          - {fileID: 0}
+          - {fileID: 0}
+          - {fileID: 0}
+          - {fileID: 0}
+          - {fileID: 0}
+          - {fileID: 0}
+          - {fileID: 0}
+          - {fileID: 0}
+          - {fileID: 0}
+        - layoutBlockData: {fileID: 0}
+          facing: 0
+          overridePlacings: []
+        - layoutBlockData: {fileID: 0}
+          facing: 0
+          overridePlacings: []
+      - _Buckets: ffffffff00000000ffffffff
+        _HashCodes: 010000000000000000000000
+        _Next: ffffffff0000000000000000
+        _Count: 1
+        _Version: 1
+        _FreeList: -1
+        _FreeCount: 0
+        _Keys: 010000000000000000000000
+        _Values:
+        - layoutBlockData: {fileID: 11400000, guid: c5248ea1bff31354c8130387a9d71c8e,
+            type: 2}
+          facing: 0
+          overridePlacings:
+          - {fileID: 0}
+          - {fileID: 0}
+          - {fileID: 0}
+          - {fileID: 0}
+          - {fileID: 0}
+          - {fileID: 0}
+          - {fileID: 0}
+          - {fileID: 0}
+          - {fileID: 0}
         - layoutBlockData: {fileID: 0}
           facing: 0
           overridePlacings: []

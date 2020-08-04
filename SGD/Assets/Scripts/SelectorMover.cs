@@ -23,8 +23,8 @@ public class SelectorMover : MonoBehaviour
     private void Update()
     {
         transform.localScale = Scale();
-        transform.position = Scale() / 0.2f;
-        rig.position = Scale() / 0.2f;
+        transform.position = Vector3.Scale(Scale() / 0.2f,  new Vector3(1, 1, -1));
+        rig.position = Vector3.Scale(Scale() / 0.2f,  new Vector3(1, 1, -1));
         
         // Raycast begin
         var ray = target.ScreenPointToRay(Input.mousePosition);
@@ -52,7 +52,7 @@ public class SelectorMover : MonoBehaviour
         {
             for (var z = -gridDimensions.y / 2; z <= gridDimensions.y / 2; z++)
             {
-                Gizmos.DrawSphere(Scale() / 0.2f + new Vector3(x, 0f, z).ToLevelCords(), 0.03f);
+                Gizmos.DrawSphere(Scale() / 0.2f + new Vector3(x, 0f, -z).ToLevelCords(), 0.03f);
             }
 
         }

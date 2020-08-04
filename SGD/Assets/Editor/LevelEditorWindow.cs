@@ -111,7 +111,7 @@ namespace Editor
                 Apply();
                 serializedObject.Update();
             }
-            catch (Exception e)
+            catch (NullReferenceException e)
             {
                 Debug.LogWarning($"Entered play mode while editing levels. \n Details: {e}");
             }

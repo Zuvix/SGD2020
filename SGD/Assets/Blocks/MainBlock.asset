@@ -10,11 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 02cedc5e0c83475c820eed72a6bbd8bc, type: 3}
-  m_Name: aaa
+  m_Name: MainBlock
   m_EditorClassIdentifier: 
   id: 0
-  mesh: {fileID: 0}
-  material: {fileID: 0}
+  mesh: {fileID: -5495902117074765545, guid: 8af24372ab754ff46af0488c54c8307b, type: 3}
+  material: {fileID: 2100000, guid: ea4d48972f7c01946a80c642b69f7d1c, type: 2}
+  targetPrefab: {fileID: 0}
   defaultPlacings:
   - {fileID: 0}
   - {fileID: 0}

@@ -171,12 +171,12 @@ MonoBehaviour:
     showAlpha: 0
     showEyeDropper: 1
   hueShift:
-    m_OverrideState: 1
-    m_Value: 10
+    m_OverrideState: 0
+    m_Value: 178.81
     min: -180
     max: 180
   saturation:
     m_OverrideState: 0
-    m_Value: 11
+    m_Value: 41
     min: -100
     max: 100

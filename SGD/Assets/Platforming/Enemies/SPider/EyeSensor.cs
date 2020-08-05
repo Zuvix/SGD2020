@@ -39,7 +39,7 @@ public class EyeSensor : MonoBehaviour
                 timeFromGround += Time.deltaTime;
                 timeOnGround = 0;
             }
-            if (hit.transform.gameObject.layer==9|| hit.transform.gameObject.layer == 10)
+            if (hit.transform.gameObject.layer==10|| hit.transform.gameObject.layer == 11)
             {
                 isEnemyAhead= true;
                 timeCloseToEnemy += Time.deltaTime;

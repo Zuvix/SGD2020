@@ -604,10 +604,10 @@ BoxCollider:
   m_GameObject: {fileID: 9019351860944489709}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 4.6, y: 1.4, z: 5.5}
-  m_Center: {x: 0, y: 0, z: -1}
+  m_Size: {x: 5.102547, y: 0.67882824, z: 5.5}
+  m_Center: {x: 0.0065831468, y: 1.6286576, z: -1.0000001}
 --- !u!95 &9019351860944489711
 Animator:
   serializedVersion: 3

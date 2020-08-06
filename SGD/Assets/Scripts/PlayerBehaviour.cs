@@ -83,6 +83,10 @@ public class PlayerBehaviour : MonoBehaviour
         {
             print("Zabila ta trapka.");
             //Destroy(gameObject);
+        } else if (other.gameObject.layer == LayerMask.NameToLayer("Enemy"))
+        {
+            print("Zabil ta enemy.");
+            DissolveEffect.dissolve = true;
         }
     }
 

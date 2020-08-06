@@ -105,6 +105,10 @@ public class PlayerController : MonoBehaviour
         {
             print("Zabila ta trapka.");
             //Destroy(gameObject);
+        } else if (other.gameObject.layer == LayerMask.NameToLayer("Enemy"))
+        {
+            print("Zabil ta enemy.");
+            DissolveEffect.dissolve = true;
         }
     }
     private void OnCollisionEnter(Collision collision)

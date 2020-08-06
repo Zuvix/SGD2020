@@ -14,6 +14,7 @@ public class PlayerBehaviour : MonoBehaviour
     Vector2 input;
     bool isJumping = false;
     public bool isOnGround;
+    Animator anim;
 
     float jumpdelay=0f;
 
@@ -22,6 +23,7 @@ public class PlayerBehaviour : MonoBehaviour
         //animator = GetComponent<Animator>();
         cameraT = Camera.main.transform;
         rb = GetComponent<Rigidbody>();
+        anim = GetComponent<Animator>();
     }
 
     void Update()
@@ -35,7 +37,14 @@ public class PlayerBehaviour : MonoBehaviour
             isJumping = true;
         }
         jumpdelay += Time.deltaTime;
-
+        if (input!=Vector2.zero)
+        {
+            anim.SetBool("isRunning", true);
+        }
+        else
+        {
+            anim.SetBool("isRunning", false);
+        }
     }
 
     // Update is called once per frame

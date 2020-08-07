@@ -48,7 +48,10 @@ public class PlayerBehaviour : MonoBehaviour
             anim.SetBool("isRunning", false);
         }
     }
-
+    public void Die()
+    {
+        Destroy(this.gameObject);
+    }
     // Update is called once per frame
     void FixedUpdate()
     {
@@ -90,11 +93,6 @@ public class PlayerBehaviour : MonoBehaviour
             print("Padol si do lavy.");
             Destroy(gameObject);
         }
-        else if (other.gameObject.layer == LayerMask.NameToLayer("Trap"))
-        {
-            print("Zabila ta trapka.");
-            //Destroy(gameObject);
-        }
         if (other.gameObject.CompareTag("Enemy"))
         {
             if (rb.velocity.y < -0.1f)
@@ -103,6 +101,14 @@ public class PlayerBehaviour : MonoBehaviour
                 rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
                 rb.AddForce(Vector3.up * jumpPower);
             }
+            else
+            {
+                Die();
+            }
+        }
+        if (other.gameObject.CompareTag("Spike"))
+        {
+            Die();
         }
     }
 

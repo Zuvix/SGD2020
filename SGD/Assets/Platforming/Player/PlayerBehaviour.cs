@@ -95,7 +95,7 @@ public class PlayerBehaviour : MonoBehaviour
         }
         if (other.gameObject.CompareTag("Enemy"))
         {
-            if (rb.velocity.y < -0.1f)
+            if (rb.velocity.y < -0.05f)
             {
                 other.gameObject.GetComponent<Enemy>().Die();
                 rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);

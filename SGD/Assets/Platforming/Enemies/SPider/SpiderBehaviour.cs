@@ -19,6 +19,7 @@ public class SpiderBehaviour : Enemy
     private EyeSensor right;
     private EyeSensor left;
     private Vector3 lastPosition;
+    //public GameObject dissolve;
     public override void Awake()
     {
         base.Awake();
@@ -37,7 +38,9 @@ public class SpiderBehaviour : Enemy
     }
     public override void Die()
     {
+        StopAllCoroutines();
         Destroy(this.gameObject);
+        //dissolve.GetComponent<DissolveEffect>().StartDissolve();
         Debug.Log("Spider killed, rip");
     }
     public override void Kill()

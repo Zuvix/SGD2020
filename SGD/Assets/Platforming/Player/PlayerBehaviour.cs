@@ -8,7 +8,11 @@ public class PlayerBehaviour : MonoBehaviour
     public float jumpPower = 6f;
     public float turnSmoothTime = 0.1f;
     public bool doubleJump = true;
+    public float accel = 50f;
     public float downForce = 10f;
+
+    public float leftGroundTime=0f;
+
     float turnSmoothVelocity;
     Transform cameraT;
     Rigidbody rb;
@@ -16,12 +20,14 @@ public class PlayerBehaviour : MonoBehaviour
     bool isJumping = false;
     public bool isOnGround;
     Animator anim;
-
+    public LayerMask mask;
+    public float maxRayDistance=1f;
     float jumpdelay=0f;
 
     void Awake()
     {
         //animator = GetComponent<Animator>();
+        mask = LayerMask.GetMask("Ground","Enemy");
         cameraT = Camera.main.transform;
         rb = GetComponent<Rigidbody>();
         anim = GetComponent<Animator>();
@@ -29,23 +35,53 @@ public class PlayerBehaviour : MonoBehaviour
 
     void Update()
     {
-        // input
+        // RAycasting for landing
+        Ray ray = new Ray(transform.position, Vector3.down);
+        RaycastHit hit;
+
+        if (Physics.Raycast(ray, out hit, maxRayDistance, mask))
+        {
+                Debug.DrawRay(transform.position, Vector3.down * maxRayDistance, Color.green);
+            if (rb.velocity.y < -0.2f)
+            {
+                anim.SetBool("isFalling", false);
+                anim.SetBool("isLanding", true);
+            }
+
+        }
+        else
+        {
+            Debug.DrawRay(transform.position, Vector3.down * maxRayDistance, Color.red);
+        }
+        if (isOnGround)
+        {
+            anim.SetBool("isFalling", false);
+            anim.SetBool("isLanding", false);
+        }
+            // input
         input = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
         input = input.normalized;
 
         if (Input.GetKeyDown(KeyCode.Space) && jumpdelay>0.1f &&(isOnGround||doubleJump))
         {
             isJumping = true;
-            anim.SetBool("isJumping", true);
         }
         jumpdelay += Time.deltaTime;
-        if (input!=Vector2.zero &&isOnGround)
+        if (input!=Vector2.zero)
         {
             anim.SetBool("isRunning", true);
         }
         else
         {
             anim.SetBool("isRunning", false);
+        }
+        if (isOnGround)
+        {
+            leftGroundTime = 0f;
+        }
+        else
+        {
+            leftGroundTime += Time.deltaTime;
         }
     }
     public void Die()
@@ -59,13 +95,17 @@ public class PlayerBehaviour : MonoBehaviour
         {
             float targetRotation = Mathf.Atan2(input.x, input.y) * Mathf.Rad2Deg + cameraT.eulerAngles.y;
             transform.eulerAngles = Vector3.up * Mathf.SmoothDampAngle(transform.eulerAngles.y, targetRotation, ref turnSmoothVelocity, turnSmoothTime);
-            transform.Translate(Vector3.forward*moveSpeed);
+            //rb.velocity+=transform.forward*accel;
+            transform.Translate(Vector3.forward * moveSpeed);
+            //rb.velocity = new Vector3(Mathf.Clamp(rb.velocity.x, -moveSpeed, moveSpeed), rb.velocity.y, Mathf.Clamp(rb.velocity.z, -moveSpeed, moveSpeed));
         }
         if (isJumping && isOnGround)
         {
             rb.AddForce(Vector3.up * jumpPower);
             isJumping = false;
             jumpdelay = 0;
+            anim.SetBool("isJumping", true);
+            anim.SetBool("isFalling", false);
         }
         else if(isJumping && doubleJump)
         {
@@ -74,17 +114,16 @@ public class PlayerBehaviour : MonoBehaviour
             doubleJump = false;
             isJumping = false;
             jumpdelay = 0;
+            anim.SetBool("isJumping", true);
         }
-        if(rb.velocity.y<-0.1f && !isOnGround)
+        if(rb.velocity.y<-0.15f && !isOnGround)
         {
             rb.AddForce(Vector3.down * downForce, ForceMode.Force);
-            anim.SetBool("isFalling", true);
+            if (rb.velocity.y < -0.25f &&leftGroundTime>0.2f)
+                anim.SetBool("isFalling", true);
             anim.SetBool("isJumping", false);
         }
-        else
-        {
-            anim.SetBool("isFalling", false);
-        }
+
     }
     void OnTriggerEnter(Collider other)
     {
@@ -100,6 +139,8 @@ public class PlayerBehaviour : MonoBehaviour
                 other.gameObject.GetComponent<Enemy>().Die();
                 rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
                 rb.AddForce(Vector3.up * jumpPower);
+                anim.SetBool("isJumping", true);
+                doubleJump = true;
             }
             else
             {

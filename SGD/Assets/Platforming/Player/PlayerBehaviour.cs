@@ -115,6 +115,7 @@ public class PlayerBehaviour : MonoBehaviour
             isJumping = false;
             jumpdelay = 0;
             anim.SetBool("isJumping", true);
+            anim.Play("jump",0,0);
         }
         if(rb.velocity.y<-0.15f && !isOnGround)
         {

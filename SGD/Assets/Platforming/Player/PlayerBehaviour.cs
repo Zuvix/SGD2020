@@ -115,6 +115,7 @@ public class PlayerBehaviour : MonoBehaviour
             isJumping = false;
             jumpdelay = 0;
             anim.SetBool("isJumping", true);
+            anim.SetBool("isLanding", false);
             anim.Play("jump",0,0);
         }
         if(rb.velocity.y<-0.15f && !isOnGround)
@@ -141,6 +142,7 @@ public class PlayerBehaviour : MonoBehaviour
                 rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
                 rb.AddForce(Vector3.up * jumpPower);
                 anim.SetBool("isJumping", true);
+                anim.SetBool("isLanding", false);
                 doubleJump = true;
             }
             else

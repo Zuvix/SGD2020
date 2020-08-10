@@ -8,10 +8,8 @@ public class MovingBlock : MonoBehaviour
     public GameObject Back;
     public float WaitTime=2f;
     public float flyspeed=1f;
-    public float maxX=30;
-    public float minX=-30;
-    public float maxZ = 30;
-    public float minZ = -30;
+    public float maxDistance;
+    float currentDistance=0f;
     bool frontBound = false;
     bool backBound = false;
 
@@ -36,17 +34,16 @@ public class MovingBlock : MonoBehaviour
         float y = transform.rotation.y;
         y = Mathf.Abs(y);
         y %= 360;
-
-        //transform.rotation = new Quaternion(transform.rotation.x, y, transform.rotation.z, transform.rotation.w);
+        transform.rotation = new Quaternion(transform.rotation.x, y, transform.rotation.z, transform.rotation.w);
         
         
     }
     public void SetEmmision(bool toEmit)
     {
         if(toEmit)
-            meshRenderer.material.SetColor("_EmissionColor", Color.white*2.5f);
-        else
             meshRenderer.material.SetColor("_EmissionColor", Color.white);
+        else
+            meshRenderer.material.SetColor("_EmissionColor", Color.black);
     }
     IEnumerator FlyBaby()
     {
@@ -54,15 +51,15 @@ public class MovingBlock : MonoBehaviour
         {
             bool fg = fs.isNextToGround;
             bool bg = bs.isNextToGround;
-            if (!fg && !bg)
+            if (!fg && !bg && currentDistance<=maxDistance && currentDistance>=-maxDistance)
             {
                 yield return StartCoroutine(Flying("back"));
             }
-            if (!fg && bg)
+            if (!fg && (bg || currentDistance <= -maxDistance))
             {
                 yield return StartCoroutine(Flying("front"));
             }
-            if(fg && !bg)
+            if((fg || currentDistance>=maxDistance) && !bg)
             {
                 yield return StartCoroutine(Flying("back"));
             }
@@ -80,17 +77,19 @@ public class MovingBlock : MonoBehaviour
         SetEmmision(true);
         if (direction.Equals("front"))
         {
-            while (!fs.isNextToGround)
+            while (!fs.isNextToGround && currentDistance<=maxDistance)
             {
-                transform.Translate(Vector3.forward * flyspeed);
+                transform.Translate(Vector3.left * flyspeed);
+                currentDistance += flyspeed;
                 yield return new WaitForFixedUpdate();
             }
         }
         else
         {
-            while (!bs.isNextToGround)
+            while (!bs.isNextToGround && currentDistance>= -maxDistance)
             {
-                transform.Translate(Vector3.forward*-1 * flyspeed);
+                transform.Translate(Vector3.left*-1 * flyspeed);
+                currentDistance -= flyspeed;
                 yield return new WaitForFixedUpdate();
             }
         }

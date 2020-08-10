@@ -20,7 +20,7 @@ public class FallingBlock : MonoBehaviour
         float lower=0;
         while (lower <= maxLower && rb.isKinematic)
         {
-            transform.Translate(Vector3.down * 0.0015f);
+            transform.Translate(Vector3.down * 0.0018f);
             yield return new WaitForFixedUpdate();
         }
     }

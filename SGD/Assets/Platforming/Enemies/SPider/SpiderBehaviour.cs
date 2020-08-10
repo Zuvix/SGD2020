@@ -39,8 +39,8 @@ public class SpiderBehaviour : Enemy
     public override void Die()
     {
         StopAllCoroutines();
-        Destroy(this.gameObject);
-        //dissolve.GetComponent<DissolveEffect>().StartDissolve();
+        //Destroy(this.gameObject);  //riesene pomocou Destroy(transform.parent.gameObject); v DissolveEffect.cs
+        this.GetComponentInChildren<DissolveEffect>().startDissolve();
         Debug.Log("Spider killed, rip");
     }
     public override void Kill()

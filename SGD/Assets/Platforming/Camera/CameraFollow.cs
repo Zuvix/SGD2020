@@ -37,7 +37,7 @@ public class CameraFollow : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-
+/*
 		// We setup the rotation of the sticks here
 		//float inputX = Input.GetAxis ("RightStickHorizontal");
 		//float inputZ = Input.GetAxis ("RightStickVertical");
@@ -46,8 +46,21 @@ public class CameraFollow : MonoBehaviour {
         //finalInputX = inputX + mouseX;
         //finalInputZ = inputZ + mouseY;
         finalInputX = mouseX;
-        finalInputZ = mouseY;
-        rotY += finalInputX * inputSensitivity * Time.deltaTime;
+        finalInputZ = mouseY;*/
+
+
+		// We setup the rotation of the sticks here
+		float inputX = Input.GetAxis("Horizontal");
+		float inputZ = Input.GetAxis("Vertical");
+		//float inputX = Input.GetAxis("RightStickHorizontal");
+		//float inputZ = Input.GetAxis("RightStickVertical");
+		mouseX = Input.GetAxis("Mouse X");
+		mouseY = Input.GetAxis("Mouse Y");
+		finalInputX = mouseX;
+		finalInputZ = mouseY;
+		//finalInputX = Input.GetAxis("Horizontal"); // mouseX;
+		//finalInputZ = Input.GetAxis("Vertical"); // mouseY;
+		rotY += finalInputX * inputSensitivity * Time.deltaTime;
 		rotX += finalInputZ * inputSensitivity * Time.deltaTime;
 
 		rotX = Mathf.Clamp (rotX, -clampAngle, clampAngle);

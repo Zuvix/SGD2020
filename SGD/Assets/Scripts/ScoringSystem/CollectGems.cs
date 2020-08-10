@@ -9,6 +9,6 @@ public class CollectGems : MonoBehaviour
     void OnTriggerEnter(Collider other)
     {
         ScoringGemsSystem.gemsScore += 1;
-        Destroy(gameObject);        
+        Destroy(transform.parent.gameObject);        
     }
 }

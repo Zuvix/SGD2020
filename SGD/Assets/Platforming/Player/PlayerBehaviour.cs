@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerBehaviour : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class PlayerBehaviour : MonoBehaviour
     public bool doubleJump = true;
     public float accel = 50f;
     public float downForce = 10f;
+    public float shadowDistanceFromGroud = 0.08f;
 
     public float leftGroundTime=0f;
 
@@ -23,6 +25,7 @@ public class PlayerBehaviour : MonoBehaviour
     public LayerMask mask;
     public float maxRayDistance=1f;
     float jumpdelay=0f;
+    public GameObject shadow;
 
     void Awake()
     {
@@ -39,7 +42,10 @@ public class PlayerBehaviour : MonoBehaviour
         Ray ray = new Ray(transform.position, Vector3.down);
         RaycastHit hit;
 
-        if (Physics.Raycast(ray, out hit, maxRayDistance, mask))
+        Physics.Raycast(ray, out hit, Mathf.Infinity, mask);
+        shadow.transform.position = hit.point + Vector3.up * shadowDistanceFromGroud;
+        //hit.distance;
+        if (hit.distance <= maxRayDistance)
         {
                 Debug.DrawRay(transform.position, Vector3.down * maxRayDistance, Color.green);
             if (rb.velocity.y < -0.2f)
@@ -61,8 +67,8 @@ public class PlayerBehaviour : MonoBehaviour
             // input
         input = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
         input = input.normalized;
-
-        if (Input.GetKeyDown(KeyCode.Space) && jumpdelay>0.1f &&(isOnGround||doubleJump))
+        //Input.GetKeyDown(KeyCode.Jump) --> Input.GetButton("Jump")
+        if (Input.GetButtonDown("Jump") && jumpdelay>0.1f &&(isOnGround||doubleJump))
         {
             isJumping = true;
         }

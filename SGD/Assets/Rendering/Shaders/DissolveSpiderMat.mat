@@ -8,7 +8,8 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: DissolveSpiderMat
-  m_Shader: {fileID: 4800000, guid: f61cbb004922f5f44a5f2be1cd4eb384, type: 3}
+  m_Shader: {fileID: -6465566751694194690, guid: f61cbb004922f5f44a5f2be1cd4eb384,
+    type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0

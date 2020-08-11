@@ -22008,7 +22008,7 @@ GameObject:
   - component: {fileID: 933922107}
   - component: {fileID: 933922106}
   - component: {fileID: 933922105}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28283,9 +28283,9 @@ GameObject:
   - component: {fileID: 1305154711}
   - component: {fileID: 1305154710}
   - component: {fileID: 1305154714}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: RangedUnit
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -28298,12 +28298,12 @@ CapsuleCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1305154709}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 0.5000001
-  m_Height: 2
+  m_Radius: 0.4
+  m_Height: 0
   m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
+  m_Center: {x: 0.000000059604645, y: 0.12, z: -0.00000008940697}
 --- !u!23 &1305154711
 MeshRenderer:
   m_ObjectHideFlags: 0

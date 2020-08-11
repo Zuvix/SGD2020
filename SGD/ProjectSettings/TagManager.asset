@@ -9,6 +9,7 @@ TagManager:
   - Coin
   - Spike
   - Void
+  - Projectile
   layers:
   - Default
   - TransparentFX

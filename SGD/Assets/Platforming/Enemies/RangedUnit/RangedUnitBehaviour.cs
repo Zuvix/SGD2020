@@ -30,7 +30,9 @@ public class RangedUnitBehaviour : Enemy
 
     public override void Die()
     {
-        throw new System.NotImplementedException();
+        StopAllCoroutines();
+        Destroy(this.gameObject);  
+        Debug.Log("Ranged Unit killed, rip");
     }
     IEnumerator BrainScope()
     {
@@ -41,7 +43,6 @@ public class RangedUnitBehaviour : Enemy
     {
         while (true)
         {
-            print("RangedUnit striela.");
             GameObject bullet = Instantiate(projectile);//Instantiate(projectile, transform.position, Quaternion.identity);
             bullet.transform.position = new Vector3(bullet.transform.position.x, bullet.transform.position.y - 0.2f, bullet.transform.position.z);
             bullet.transform.forward = transform.forward;

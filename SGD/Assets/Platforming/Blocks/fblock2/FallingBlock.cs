@@ -5,10 +5,12 @@ using UnityEngine;
 public class FallingBlock : MonoBehaviour
 {
     Rigidbody rb;
+    Material m;
     private float maxLower = 0.02f;
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
+        m = GetComponent<Renderer>().material;
     }
     IEnumerator StartFalling()
     {
@@ -30,7 +32,15 @@ public class FallingBlock : MonoBehaviour
         if (collision.gameObject.CompareTag("Enemy")|| collision.gameObject.CompareTag("Player"))
         {
             StartCoroutine("MoveLower");
+            SetEmmision(false);
             StartCoroutine(StartFalling());
         }
+    }
+    public void SetEmmision(bool toEmit)
+    {
+        if (toEmit)
+            m.SetColor("_EmissionColor", Color.white);
+        else
+            m.SetColor("_EmissionColor", Color.black);
     }
 }

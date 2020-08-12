@@ -5,6 +5,7 @@ using UnityEngine;
 public class CollectGems : MonoBehaviour
 {
     public PortalOpen portal;
+
     // Update is called once per frame
     void OnTriggerEnter(Collider other)
     {

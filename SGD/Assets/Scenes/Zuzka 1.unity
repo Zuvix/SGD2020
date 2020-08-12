@@ -34676,6 +34676,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1728589961}
   - component: {fileID: 1728589962}
+  - component: {fileID: 1728589963}
   m_Layer: 13
   m_Name: character
   m_TagString: Untagged
@@ -34715,7 +34716,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 97a23a0cb76dec34fa00c994126a7d48, type: 2}
+  - {fileID: 2100000, guid: e02fde2321be566468719b2070104d5a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -34807,6 +34808,21 @@ SkinnedMeshRenderer:
     m_Center: {x: -0.10773048, y: 0.01787895, z: -0.012654856}
     m_Extent: {x: 0.5297612, y: 0.8746763, z: 0.4517203}
   m_DirtyAABB: 0
+--- !u!114 &1728589963
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1728589960}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbb6126ff37cd144d81973d718fbab86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dissolveValue: 0
+  material: {fileID: 2100000, guid: e02fde2321be566468719b2070104d5a, type: 2}
+  gm: {fileID: 0}
 --- !u!1001 &1742984765
 PrefabInstance:
   m_ObjectHideFlags: 0

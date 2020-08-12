@@ -121,7 +121,8 @@ public class PlayerBehaviour : MonoBehaviour
     }
     public void Die()
     {
-        Destroy(this.gameObject);
+        //Destroy(this.gameObject);
+        gameObject.GetComponentInChildren<PlayerDissolveEffect>().startDissolve();
     }
     // Update is called once per frame
     void FixedUpdate()

@@ -9,12 +9,14 @@ public class PlayerBehaviour : MonoBehaviour
     public float jumpPower = 6f;
     public float turnSmoothTime = 0.1f;
     public bool doubleJump = true;
-    public float accel = 50f;
+    //public float accel = 50f;
     public float downForce = 10f;
     public float shadowDistanceFromGroud = 0.08f;
-
     public float leftGroundTime=0f;
+    public float attackCd=2f;
+    private float currentAttackCd=20f;
 
+    public bool isAttacking = false;
     float turnSmoothVelocity;
     Transform cameraT;
     Rigidbody rb;
@@ -26,10 +28,10 @@ public class PlayerBehaviour : MonoBehaviour
     public float maxRayDistance=1f;
     float jumpdelay=0f;
     public GameObject shadow;
+    public GameObject fistTrail;
 
     void Awake()
     {
-        //animator = GetComponent<Animator>();
         mask = LayerMask.GetMask("Ground","Enemy");
         cameraT = Camera.main.transform;
         rb = GetComponent<Rigidbody>();
@@ -64,7 +66,9 @@ public class PlayerBehaviour : MonoBehaviour
             anim.SetBool("isFalling", false);
             anim.SetBool("isLanding", false);
         }
-            // input
+
+
+        // input
         input = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
         input = input.normalized;
         //Input.GetKeyDown(KeyCode.Jump) --> Input.GetButton("Jump")
@@ -81,6 +85,9 @@ public class PlayerBehaviour : MonoBehaviour
         {
             anim.SetBool("isRunning", false);
         }
+
+
+        //TIMERS
         if (isOnGround)
         {
             leftGroundTime = 0f;
@@ -89,6 +96,28 @@ public class PlayerBehaviour : MonoBehaviour
         {
             leftGroundTime += Time.deltaTime;
         }
+
+        //Attacking
+        if (isAttacking)
+        {
+            currentAttackCd = 0;
+        }
+        else
+        {
+            currentAttackCd += Time.deltaTime;
+        }
+        if (Input.GetMouseButtonDown(0) && currentAttackCd >= attackCd)
+        {
+            isAttacking = true;
+            anim.SetBool("isAttacking", true);
+            fistTrail.SetActive(true);
+        }
+    }
+    public void StopAttack()
+    {
+        isAttacking = false;
+        anim.SetBool("isAttacking", false);
+        fistTrail.SetActive(false);
     }
     public void Die()
     {
@@ -142,7 +171,11 @@ public class PlayerBehaviour : MonoBehaviour
         }
         if (other.gameObject.CompareTag("Enemy"))
         {
-            if (rb.velocity.y < -0.05f)
+            if (isAttacking)
+            {
+                other.gameObject.GetComponent<Enemy>().Die();
+            }
+            else if (rb.velocity.y < -0.05f)
             {
                 other.gameObject.GetComponent<Enemy>().Die();
                 rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);

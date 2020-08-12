@@ -10,7 +10,19 @@ public abstract class Enemy : MonoBehaviour
     //Nejaka animacia ked zabija hraca
     public abstract void Kill();
     // Ked umiera enemak
-    public abstract void Die();
+    public Collider[] colliders;
+    public virtual void Die()
+    {
+        if (colliders != null)
+        {
+            foreach(Collider c in colliders)
+            {
+                c.enabled = false;
+            }
+        }
+        rb.useGravity = false;
+        rb.velocity = Vector3.zero;
+    }
     //Aktivovanie nepriatela, aby sa zacal spravat ako je definovane v GDD
     public abstract void Activate();
 

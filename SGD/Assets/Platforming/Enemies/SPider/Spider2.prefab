@@ -640,6 +640,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isOnGround: 0
+  solidCollider: {fileID: 0}
+  triggerCollider: {fileID: 0}
+  colliders:
+  - {fileID: 7518221707359591841}
+  - {fileID: 9019351860944489696}
   farFrontEye: {fileID: 9019351860414330815}
   leftEye: {fileID: 9019351861973148006}
   rightEye: {fileID: 9019351861790450907}
@@ -1660,7 +1665,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: be492c03150261c4e865622b8abe01de, type: 2}
+  - {fileID: 2100000, guid: a224a3c22958d6e439e3691d4619040e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1751,12 +1756,14 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9019351862037457803}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1f4d591bcf395e24e9dab2ab85c0482a, type: 3}
+  m_Script: {fileID: 11500000, guid: dcf26d7b1cccb014db20f8344b0e24dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dissolveValue: 0
   material: {fileID: 0}
+  gm: {fileID: 9019351860944489709}
 --- !u!1 &9019351862061526800
 GameObject:
   m_ObjectHideFlags: 0

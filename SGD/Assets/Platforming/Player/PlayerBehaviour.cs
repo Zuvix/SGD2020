@@ -193,6 +193,10 @@ public class PlayerBehaviour : MonoBehaviour
         {
             Die();
         }
+        if (other.gameObject.CompareTag("Projectile"))
+        {
+            Die();
+        }
     }
 
 }

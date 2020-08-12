@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: PortalMaterial
-  m_Shader: {fileID: -6465566751694194690, guid: cba4242f80034e346b2db423af41a45b,
+  m_Shader: {fileID: -6465566751694194690, guid: 608ac4c7fef333d4ab66bc0172a350f8,
     type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4

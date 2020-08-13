@@ -49038,9 +49038,6 @@ MonoBehaviour:
   gem: {fileID: 1765899137}
   isAttacking: 0
   isOnGround: 0
-  mask:
-    serializedVersion: 2
-    m_Bits: 0
   maxRayDistance: 1.25
   shadow: {fileID: 1828171190}
   fistTrail: {fileID: 1903625320}

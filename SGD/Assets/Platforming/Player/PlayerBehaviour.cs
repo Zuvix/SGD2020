@@ -31,7 +31,7 @@ public class PlayerBehaviour : MonoBehaviour
     bool isJumping = false;
     public bool isOnGround;
     Animator anim;
-    public LayerMask mask;
+    private LayerMask mask;
     public float maxRayDistance = 1f;
     float jumpdelay = 0f;
     public GameObject shadow;
@@ -51,10 +51,9 @@ public class PlayerBehaviour : MonoBehaviour
         Ray ray = new Ray(transform.position, Vector3.down);
         RaycastHit hit;
 
-        Physics.Raycast(ray, out hit, Mathf.Infinity, mask);
-        shadow.transform.position = hit.point + Vector3.up * shadowDistanceFromGroud;
+        Physics.Raycast(ray, out hit, maxRayDistance, mask);
         //hit.distance;
-        if (hit.distance <= maxRayDistance)
+        if (Physics.Raycast(ray, out hit, maxRayDistance, mask))
         {
             Debug.DrawRay(transform.position, Vector3.down * maxRayDistance, Color.green);
             if (rb.velocity.y < -0.2f)
@@ -73,7 +72,8 @@ public class PlayerBehaviour : MonoBehaviour
             anim.SetBool("isFalling", false);
             anim.SetBool("isLanding", false);
         }
-
+        Physics.Raycast(ray, out hit, maxRayDistance*5, mask);
+        shadow.transform.position = hit.point + Vector3.up * shadowDistanceFromGroud;
 
         // input
         input = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
@@ -165,9 +165,9 @@ public class PlayerBehaviour : MonoBehaviour
         }
         if (rb.velocity.y < -0.15f && !isOnGround)
         {
+            Debug.Log(anim.GetBool("isFalling"));
             rb.AddForce(Vector3.down * downForce, ForceMode.Force);
-            if (rb.velocity.y < -0.25f && leftGroundTime > 0.2f)
-                anim.SetBool("isFalling", true);
+            anim.SetBool("isFalling", true);
             anim.SetBool("isJumping", false);
         }
 

@@ -8,6 +8,7 @@ public class TrapBehaviour : MonoBehaviour
     public float activeTime=2.5f;
     public float passiveTime=5f;
     public float offset=0f;
+    public AudioSource attackSound;
     Animator anim;
     private void Awake()
     {
@@ -23,11 +24,13 @@ public class TrapBehaviour : MonoBehaviour
         if (passiveTime > offset)
         {
             yield return new WaitForSeconds(passiveTime - offset);
+            attackSound.Play();
             anim.SetBool("isActive", true);
             yield return new WaitForSeconds(activeTime);
         }
         else
         {
+            attackSound.Play();
             anim.SetBool("isActive", true);
             yield return new WaitForSeconds(passiveTime+activeTime - offset);
         }
@@ -36,6 +39,7 @@ public class TrapBehaviour : MonoBehaviour
             anim.SetBool("isActive", false);
             yield return new WaitForSeconds(passiveTime);
             anim.SetBool("isActive", true);
+            attackSound.Play();
             yield return new WaitForSeconds(activeTime);
         }
 

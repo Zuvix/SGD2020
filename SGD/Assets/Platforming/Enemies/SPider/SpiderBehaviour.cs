@@ -12,6 +12,8 @@ public class SpiderBehaviour : Enemy
     public float rotateSpeed = 20f;
     private Vector3 direction=Vector3.forward;
 
+    public AudioSource impactSound;
+    public AudioSource squiqSound;
     public float steerIntensity = 0.38f;
     public float frontCheckIntensity = 0.15f;
 
@@ -39,7 +41,9 @@ public class SpiderBehaviour : Enemy
     public override void Die()
     {
         base.Die();
+        squiqSound.Stop();
         StopAllCoroutines();
+        impactSound.Play();
         //Destroy(this.gameObject);  //riesene pomocou Destroy(transform.parent.gameObject); v DissolveEffect.cs
         this.GetComponentInChildren<DissolveEffect>().startDissolve();
         //animacia

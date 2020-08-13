@@ -25,7 +25,7 @@ public class DissolveEffect : MonoBehaviour
 
     private void setDissolve()
     {
-        this.dissolveValue += 0.01f;
+        this.dissolveValue += 0.0095f;
         material.SetFloat("Dissolve", dissolveValue);
     }
     public void startDissolve()

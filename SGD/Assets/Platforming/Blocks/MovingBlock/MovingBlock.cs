@@ -12,6 +12,7 @@ public class MovingBlock : MonoBehaviour
     float currentDistance=0f;
     bool frontBound = false;
     bool backBound = false;
+    public AudioSource moveSound;
 
     public Material mat;
     TriggerSensor fs;
@@ -53,18 +54,22 @@ public class MovingBlock : MonoBehaviour
             bool bg = bs.isNextToGround;
             if (!fg && !bg && currentDistance<=maxDistance && currentDistance>=-maxDistance)
             {
+                moveSound.Play();
                 yield return StartCoroutine(Flying("back"));
             }
             if (!fg && (bg || currentDistance <= -maxDistance))
             {
+                moveSound.Play();
                 yield return StartCoroutine(Flying("front"));
             }
             if((fg || currentDistance>=maxDistance) && !bg)
             {
+                moveSound.Play();
                 yield return StartCoroutine(Flying("back"));
             }
             if(bg && fg)
-            {             
+            {
+                moveSound.Stop();
                 yield return new WaitForSeconds(1f);
             }
             //Debug.Log("bg"+bg+" fg"+fg);
@@ -94,6 +99,7 @@ public class MovingBlock : MonoBehaviour
             }
         }
         SetEmmision(false);
+        moveSound.Stop();
         yield return new WaitForSeconds(WaitTime);
     }
     private void OnCollisionEnter(Collision collision)

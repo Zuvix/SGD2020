@@ -7,6 +7,7 @@ public class FallingBlock : MonoBehaviour
     Rigidbody rb;
     Material m;
     private float maxLower = 0.02f;
+    public AudioSource fallingSound;
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
@@ -14,6 +15,7 @@ public class FallingBlock : MonoBehaviour
     }
     IEnumerator StartFalling()
     {
+        fallingSound.Play();
         yield return new WaitForSeconds(2f);
         rb.isKinematic = false;
     }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class PlayerBehaviour : MonoBehaviour
 {
@@ -12,9 +13,15 @@ public class PlayerBehaviour : MonoBehaviour
     //public float accel = 50f;
     public float downForce = 10f;
     public float shadowDistanceFromGroud = 0.08f;
-    public float leftGroundTime=0f;
-    public float attackCd=2f;
-    private float currentAttackCd=20f;
+    public float leftGroundTime = 0f;
+    public float attackCd = 2f;
+    private float currentAttackCd = 20f;
+    public AudioSource punch;
+    public AudioSource walk1;
+    public AudioSource walk2;
+    public AudioSource jump;
+    public AudioSource land;
+    public AudioSource gem;
 
     public bool isAttacking = false;
     float turnSmoothVelocity;
@@ -25,14 +32,14 @@ public class PlayerBehaviour : MonoBehaviour
     public bool isOnGround;
     Animator anim;
     public LayerMask mask;
-    public float maxRayDistance=1f;
-    float jumpdelay=0f;
+    public float maxRayDistance = 1f;
+    float jumpdelay = 0f;
     public GameObject shadow;
     public GameObject fistTrail;
 
     void Awake()
     {
-        mask = LayerMask.GetMask("Ground","Enemy");
+        mask = LayerMask.GetMask("Ground", "Enemy");
         cameraT = Camera.main.transform;
         rb = GetComponent<Rigidbody>();
         anim = GetComponent<Animator>();
@@ -49,7 +56,7 @@ public class PlayerBehaviour : MonoBehaviour
         //hit.distance;
         if (hit.distance <= maxRayDistance)
         {
-                Debug.DrawRay(transform.position, Vector3.down * maxRayDistance, Color.green);
+            Debug.DrawRay(transform.position, Vector3.down * maxRayDistance, Color.green);
             if (rb.velocity.y < -0.2f)
             {
                 anim.SetBool("isFalling", false);
@@ -72,12 +79,12 @@ public class PlayerBehaviour : MonoBehaviour
         input = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
         input = input.normalized;
         //Input.GetKeyDown(KeyCode.Jump) --> Input.GetButton("Jump")
-        if (Input.GetButtonDown("Jump") && jumpdelay>0.1f &&(isOnGround||doubleJump))
+        if (Input.GetButtonDown("Jump") && jumpdelay > 0.1f && (isOnGround || doubleJump))
         {
             isJumping = true;
         }
         jumpdelay += Time.deltaTime;
-        if (input!=Vector2.zero)
+        if (input != Vector2.zero)
         {
             anim.SetBool("isRunning", true);
         }
@@ -108,6 +115,7 @@ public class PlayerBehaviour : MonoBehaviour
         }
         if (Input.GetMouseButtonDown(0) && currentAttackCd >= attackCd)
         {
+            punch.Play();
             isAttacking = true;
             anim.SetBool("isAttacking", true);
             fistTrail.SetActive(true);
@@ -121,7 +129,7 @@ public class PlayerBehaviour : MonoBehaviour
     }
     public void Die()
     {
-        Destroy(this.gameObject);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
     // Update is called once per frame
     void FixedUpdate()
@@ -141,8 +149,9 @@ public class PlayerBehaviour : MonoBehaviour
             jumpdelay = 0;
             anim.SetBool("isJumping", true);
             anim.SetBool("isFalling", false);
+            jump.Play();
         }
-        else if(isJumping && doubleJump)
+        else if (isJumping && doubleJump)
         {
             rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
             rb.AddForce(Vector3.up * jumpPower);
@@ -151,12 +160,13 @@ public class PlayerBehaviour : MonoBehaviour
             jumpdelay = 0;
             anim.SetBool("isJumping", true);
             anim.SetBool("isLanding", false);
-            anim.Play("jump",0,0);
+            anim.Play("jump", 0, 0);
+            jump.Play();
         }
-        if(rb.velocity.y<-0.15f && !isOnGround)
+        if (rb.velocity.y < -0.15f && !isOnGround)
         {
             rb.AddForce(Vector3.down * downForce, ForceMode.Force);
-            if (rb.velocity.y < -0.25f &&leftGroundTime>0.2f)
+            if (rb.velocity.y < -0.25f && leftGroundTime > 0.2f)
                 anim.SetBool("isFalling", true);
             anim.SetBool("isJumping", false);
         }
@@ -167,7 +177,7 @@ public class PlayerBehaviour : MonoBehaviour
         if (other.gameObject.layer == LayerMask.NameToLayer("Lava"))
         {
             print("Padol si do lavy.");
-            Destroy(gameObject);
+            Die();
         }
         if (other.gameObject.CompareTag("Enemy"))
         {
@@ -183,11 +193,16 @@ public class PlayerBehaviour : MonoBehaviour
                 anim.SetBool("isJumping", true);
                 anim.SetBool("isLanding", false);
                 doubleJump = true;
+                jump.Play();
             }
             else
             {
                 Die();
             }
+        }
+        if (other.gameObject.CompareTag("Coin"))
+        {
+            gem.Play();
         }
         if (other.gameObject.CompareTag("Spike"))
         {
@@ -197,6 +212,18 @@ public class PlayerBehaviour : MonoBehaviour
         {
             Die();
         }
+    }
+    public void Walk1()
+    {
+        walk1.Play();
+    }
+    public void Walk2()
+    {
+        walk2.Play();
+    }
+    public void Land()
+    {
+        land.Play();
     }
 
 }

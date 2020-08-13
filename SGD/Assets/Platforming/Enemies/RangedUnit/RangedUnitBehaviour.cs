@@ -5,6 +5,7 @@ public class RangedUnitBehaviour : Enemy
 {
     public Transform target;
     public GameObject projectile;
+    public GameObject shooter;
 
     private void Start()
     {
@@ -19,7 +20,8 @@ public class RangedUnitBehaviour : Enemy
     // Update is called once per frame
     void Update()
     {
-        transform.LookAt(target);
+        shooter.transform.LookAt(target);
+        transform.LookAt(new Vector3(target.position.x,transform.position.y, target.position.z));
     }
 
 
@@ -45,7 +47,7 @@ public class RangedUnitBehaviour : Enemy
         {
             GameObject bullet = Instantiate(projectile);//Instantiate(projectile, transform.position, Quaternion.identity);
             bullet.transform.position = new Vector3(bullet.transform.position.x, bullet.transform.position.y - 0.2f, bullet.transform.position.z);
-            bullet.transform.forward = transform.forward;
+            bullet.transform.forward = shooter.transform.forward;
             yield return new WaitForSeconds(2);
         }
         yield return new WaitForSeconds(3); 

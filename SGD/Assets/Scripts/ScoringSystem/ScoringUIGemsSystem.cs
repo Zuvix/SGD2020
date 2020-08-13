@@ -6,8 +6,10 @@ using UnityEngine.UI;
 public class ScoringUIGemsSystem : MonoBehaviour
 {
     public GameObject scoreText;
+    //public GameObject gemImage;
     private void Update()
     {
-        scoreText.GetComponent<Text>().text = "GEM SCORE: " + ScoringGemsSystem.gemsScore;            
+        scoreText.GetComponent<Text>().text = "GEM SCORE: " + ScoringGemsSystem.gemsScore + "/" + ScoringGemsSystem.totalScore;
+        //gemImage.transform.position = scoreText.transform.position;
     }
 }

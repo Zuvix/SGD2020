@@ -6,4 +6,9 @@ public class ScoringGemsSystem : MonoBehaviour
 {
     public static int gemsScore;
     public static int totalScore = 3;
+
+    private void Update()
+    {
+        print(gemsScore);
+    }
 }

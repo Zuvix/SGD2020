@@ -700,6 +700,7 @@ MonoBehaviour:
   attackSound: {fileID: 3926657715842532862}
   steerIntensity: 0.3
   frontCheckIntensity: 0.14
+  target: {fileID: 0}
 --- !u!136 &7518221707359591841
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -710,10 +711,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 1.4036783
+  m_Radius: 0.9147316
   m_Height: 5.913795
   m_Direction: 2
-  m_Center: {x: 0, y: 0.21845847, z: -0.9637255}
+  m_Center: {x: 0, y: -0.2704881, z: -0.9637255}
 --- !u!82 &3180306164435308169
 AudioSource:
   m_ObjectHideFlags: 0

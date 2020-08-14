@@ -46,6 +46,7 @@ public class SpiderBehaviour : Enemy
         squiqSound.Stop();
         StopAllCoroutines();
         impactSound.Play();
+        speed = 0f;
         //Destroy(this.gameObject);  //riesene pomocou Destroy(transform.parent.gameObject); v DissolveEffect.cs
         this.GetComponentInChildren<DissolveEffect>().startDissolve();
         //animacia
@@ -57,7 +58,7 @@ public class SpiderBehaviour : Enemy
     IEnumerator BrainScope()
     {
         anim.speed = 0f;
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(0.5f);
         transform.rotation = new Quaternion(transform.rotation.x, transform.rotation.y - (transform.rotation.y % 90), transform.rotation.z, transform.rotation.w);
         anim.speed = 1f;
         StartCoroutine("TrapChecker");
@@ -71,10 +72,10 @@ public class SpiderBehaviour : Enemy
             {
                 Debug.Log("TRAP, WATCHOUT SPIDER");
                 StopCoroutine("MovementLogic");
-                anim.SetBool("isWalking", false);
+                anim.speed = 0f;
                 yield return new WaitUntil(() => front.isEnemyAhead == false);
                 yield return new WaitForSeconds(0.2f);
-                anim.SetBool("isWalking", true);
+                anim.speed = 1f;
                 StartCoroutine("MovementLogic");
             }
             yield return new WaitForFixedUpdate();
@@ -177,12 +178,13 @@ public class SpiderBehaviour : Enemy
         while (true)
         {
             Vector3 playerLoc = new Vector3(target.position.x, transform.position.y, target.position.z);
-            transform.rotation = Quaternion.LookRotation(playerLoc - transform.position);
+            if(Vector3.Distance(transform.position,playerLoc)>0.075f)
+                transform.rotation = Quaternion.LookRotation(playerLoc - transform.position);
             if (isOnGround)
                 MoveSpider(1.2f);
             else
                 MoveSpider(0.5f);
-            if (front.timeFromGround > 0.1f)
+            if (front.timeFromGround > 0.225f)
             {
                 AbandonTarget();
             }
@@ -209,6 +211,15 @@ public class SpiderBehaviour : Enemy
         target = null;
         StartCoroutine("BrainScope");
 
+    }
+    public override void OnTriggerEnter(Collider other)
+    {
+        base.OnTriggerEnter(other);
+        if (other.gameObject.CompareTag("Player"))
+        {
+            StopAllCoroutines();
+            anim.speed = 0.2f;
+        }
     }
 
 }

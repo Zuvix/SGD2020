@@ -18,7 +18,7 @@ public class Projectile : MonoBehaviour
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
-        target = new Vector3(player.position.x, player.position.y, player.position.z);
+        target = new Vector3(player.position.x, player.position.y + 0.1f, player.position.z);
         lifeTimer = lifeDuration;
     }
 

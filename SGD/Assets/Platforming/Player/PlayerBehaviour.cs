@@ -129,7 +129,8 @@ public class PlayerBehaviour : MonoBehaviour
     }
     public void Die()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        //        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        gameObject.GetComponentInChildren<PlayerDissolveEffect>().startDissolve();
     }
     // Update is called once per frame
     void FixedUpdate()

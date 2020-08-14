@@ -158,9 +158,9 @@ GameObject:
   - component: {fileID: 6425444161578846330}
   - component: {fileID: 6425444161578846331}
   - component: {fileID: 2149619092772027925}
-  m_Layer: 8
+  m_Layer: 14
   m_Name: Cube.002
-  m_TagString: Ground
+  m_TagString: LivingGround
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

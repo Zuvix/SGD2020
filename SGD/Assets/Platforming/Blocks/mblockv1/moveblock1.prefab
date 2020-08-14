@@ -15,9 +15,9 @@ GameObject:
   - component: {fileID: 8574841643552115043}
   - component: {fileID: 7888582978164018257}
   - component: {fileID: 7888582978164018258}
-  m_Layer: 8
+  m_Layer: 14
   m_Name: moveblock1
-  m_TagString: Ground
+  m_TagString: LivingGround
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

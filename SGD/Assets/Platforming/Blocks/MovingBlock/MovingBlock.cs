@@ -54,21 +54,25 @@ public class MovingBlock : MonoBehaviour
             bool bg = bs.isNextToGround;
             if (!fg && !bg && currentDistance<=maxDistance && currentDistance>=-maxDistance)
             {
+                this.gameObject.layer = 14;
                 moveSound.Play();
                 yield return StartCoroutine(Flying("back"));
             }
             if (!fg && (bg || currentDistance <= -maxDistance))
             {
+                this.gameObject.layer = 14;
                 moveSound.Play();
                 yield return StartCoroutine(Flying("front"));
             }
             if((fg || currentDistance>=maxDistance) && !bg)
             {
+                this.gameObject.layer = 14;
                 moveSound.Play();
                 yield return StartCoroutine(Flying("back"));
             }
             if(bg && fg)
             {
+                this.gameObject.layer = 8;
                 moveSound.Stop();
                 yield return new WaitForSeconds(1f);
             }
@@ -99,6 +103,7 @@ public class MovingBlock : MonoBehaviour
             }
         }
         SetEmmision(false);
+        this.gameObject.layer = 8;
         moveSound.Stop();
         yield return new WaitForSeconds(WaitTime);
     }

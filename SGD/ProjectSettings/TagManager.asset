@@ -11,6 +11,7 @@ TagManager:
   - Void
   - Projectile
   - Gem
+  - LivingGround
   layers:
   - Default
   - TransparentFX
@@ -26,7 +27,7 @@ TagManager:
   - Enemy
   - Lava
   - Player
-  - 
+  - LivingGround
   - 
   - 
   - 

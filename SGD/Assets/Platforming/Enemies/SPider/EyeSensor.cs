@@ -17,7 +17,7 @@ public class EyeSensor : MonoBehaviour
     public LayerMask mask;
     void Start()
     {
-         mask = LayerMask.GetMask("Trap","Ground","Enemy");
+         mask = LayerMask.GetMask("Trap","Ground","Enemy","LivingGround");
     }
 
     void FixedUpdate()
@@ -26,7 +26,7 @@ public class EyeSensor : MonoBehaviour
         RaycastHit hit;
 
         if (Physics.Raycast(ray, out hit, maxRayDistance,mask)) {
-            if (hit.transform.gameObject.layer==8)
+            if (hit.transform.gameObject.layer==8 || hit.transform.gameObject.layer == 14)
             {
                 isOverGround = true;
                 timeFromGround = 0f;

@@ -15,9 +15,9 @@ GameObject:
   - component: {fileID: 5238857632580091074}
   - component: {fileID: 60034006334002226}
   - component: {fileID: 4401248740513258166}
-  m_Layer: 8
+  m_Layer: 14
   m_Name: PM3D_Cube3D_2.001
-  m_TagString: Ground
+  m_TagString: LivingGround
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -263,9 +263,9 @@ GameObject:
   - component: {fileID: 5238857632949955912}
   - component: {fileID: 574136054428589540}
   - component: {fileID: 2360057735352801002}
-  m_Layer: 8
+  m_Layer: 14
   m_Name: PM3D_Cube3D_5
-  m_TagString: Ground
+  m_TagString: LivingGround
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -511,9 +511,9 @@ GameObject:
   - component: {fileID: 5238857633867316503}
   - component: {fileID: 843262012923309793}
   - component: {fileID: 608302396287921080}
-  m_Layer: 8
+  m_Layer: 14
   m_Name: PM3D_Cube3D_2
-  m_TagString: Ground
+  m_TagString: LivingGround
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -798,9 +798,9 @@ GameObject:
   - component: {fileID: 5238857633422925720}
   - component: {fileID: 5115773869121011154}
   - component: {fileID: 2513710468130836181}
-  m_Layer: 8
+  m_Layer: 14
   m_Name: PM3D_Cube3D_4
-  m_TagString: Ground
+  m_TagString: LivingGround
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1046,9 +1046,9 @@ GameObject:
   - component: {fileID: 5238857632550977898}
   - component: {fileID: 6682807879781075118}
   - component: {fileID: 8037300097020483039}
-  m_Layer: 8
+  m_Layer: 14
   m_Name: PM3D_Cube3D_5.003
-  m_TagString: Ground
+  m_TagString: LivingGround
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1294,9 +1294,9 @@ GameObject:
   - component: {fileID: 6940225507054438463}
   - component: {fileID: 6940225507054438432}
   - component: {fileID: 8585303446605438650}
-  m_Layer: 8
+  m_Layer: 14
   m_Name: PM3D_Cube3D_5.001
-  m_TagString: Ground
+  m_TagString: LivingGround
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1541,7 +1541,7 @@ GameObject:
   - component: {fileID: 5238857632394588738}
   m_Layer: 0
   m_Name: PM3D_Cube3D_1
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1635,9 +1635,9 @@ GameObject:
   - component: {fileID: 7355550894745612271}
   - component: {fileID: 7355550894745612240}
   - component: {fileID: 6852149553997619401}
-  m_Layer: 8
+  m_Layer: 14
   m_Name: PM3D_Cube3D_4.001
-  m_TagString: Ground
+  m_TagString: LivingGround
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1883,9 +1883,9 @@ GameObject:
   - component: {fileID: 5238857632934893711}
   - component: {fileID: 9177912719476679372}
   - component: {fileID: 5466850789967200963}
-  m_Layer: 8
+  m_Layer: 14
   m_Name: PM3D_Cube3D_5.002
-  m_TagString: Ground
+  m_TagString: LivingGround
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

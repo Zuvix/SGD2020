@@ -9,11 +9,15 @@ public class CollectGems : MonoBehaviour
     // Update is called once per frame
     void OnTriggerEnter(Collider other)
     {
-        ScoringGemsSystem.gemsScore += 1;
-        Destroy(transform.parent.gameObject);
-        if (ScoringGemsSystem.gemsScore == ScoringGemsSystem.totalScore)
-        {
-            portal.open();
+        if (other.gameObject.CompareTag("Player"))
+        { 
+
+            ScoringGemsSystem.gemsScore += 1;
+            Destroy(transform.parent.gameObject);
+            if (ScoringGemsSystem.gemsScore == ScoringGemsSystem.totalScore)
+            {
+                portal.open();
+            }
         }
     }
 }

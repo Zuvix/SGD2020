@@ -165,7 +165,7 @@ public class PlayerBehaviour : MonoBehaviour
         }
         if (rb.velocity.y < -0.15f && !isOnGround)
         {
-            Debug.Log(anim.GetBool("isFalling"));
+            
             rb.AddForce(Vector3.down * downForce, ForceMode.Force);
             anim.SetBool("isFalling", true);
             anim.SetBool("isJumping", false);

@@ -7,8 +7,6 @@ public abstract class Enemy : MonoBehaviour
     public bool isOnGround = false;
     protected Animator anim;
     protected Rigidbody rb;
-    //Nejaka animacia ked zabija hraca
-    public abstract void Kill();
     // Ked umiera enemak
     public Collider[] colliders;
     public virtual void Die()
@@ -40,7 +38,7 @@ public abstract class Enemy : MonoBehaviour
     }
     protected virtual void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Ground"))
+        if (collision.gameObject.CompareTag("Ground")|| collision.gameObject.CompareTag("LivingGround"))
         {
             isOnGround = true;
         }
@@ -51,14 +49,14 @@ public abstract class Enemy : MonoBehaviour
     }
     protected virtual void OnCollisionStay(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Ground"))
+        if (collision.gameObject.CompareTag("Ground") || collision.gameObject.CompareTag("LivingGround"))
         {
             isOnGround = true;
         }
     }
     protected virtual void OnCollisionExit(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Ground"))
+        if (collision.gameObject.CompareTag("Ground") || collision.gameObject.CompareTag("LivingGround"))
         {
             isOnGround = false;
         }

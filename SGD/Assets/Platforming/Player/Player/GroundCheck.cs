@@ -12,8 +12,7 @@ public class GroundCheck : MonoBehaviour
     }
     private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log("collision");
-        if (collision.gameObject.CompareTag("Ground"))
+        if (collision.gameObject.CompareTag("Ground")|| collision.gameObject.CompareTag("LivingGround"))
         {
             pb.isOnGround = true;
             pb.doubleJump = true;
@@ -22,7 +21,7 @@ public class GroundCheck : MonoBehaviour
     }
     private void OnCollisionExit(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Ground"))
+        if (collision.gameObject.CompareTag("Ground")|| collision.gameObject.CompareTag("LivingGround"))
         {
             pb.isOnGround = false;
         }
@@ -30,7 +29,7 @@ public class GroundCheck : MonoBehaviour
     }
     private void OnCollisionStay(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Ground"))
+        if (collision.gameObject.CompareTag("Ground")|| collision.gameObject.CompareTag("LivingGround"))
         {
             pb.isOnGround = true;
         }

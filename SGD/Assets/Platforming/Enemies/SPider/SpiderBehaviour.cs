@@ -50,10 +50,6 @@ public class SpiderBehaviour : Enemy
         
         Debug.Log("Spider killed, rip");
     }
-    public override void Kill()
-    {
-        
-    }
 
     // Update is called once per frame
     IEnumerator BrainScope()

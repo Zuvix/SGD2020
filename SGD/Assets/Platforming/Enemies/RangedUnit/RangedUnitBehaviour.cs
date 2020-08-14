@@ -23,10 +23,6 @@ public class RangedUnitBehaviour : Enemy
     }
 
 
-    public override void Kill()
-    {
-        throw new System.NotImplementedException();
-    }
 
     public override void Die()
     {

@@ -2214,8 +2214,11 @@ MonoBehaviour:
   Target: {fileID: 0}
   firingAngle: 35
   gravity: 8
-  rotSpeed: 5
+  rotSpeed: 6
   afkTime: 2.4
+  buffedAfk: 1.2
+  buffedGravity: 12
+  buffedRotSpeed: 10
   lm:
     serializedVersion: 2
     m_Bits: 256

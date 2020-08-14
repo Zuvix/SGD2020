@@ -9,6 +9,10 @@ public class FrogBehaviour2 : Enemy
     public float gravity = 9.8f;
     public float rotSpeed=1f;
     public float afkTime = 3f;
+
+    public float buffedAfk;
+    public float buffedGravity;
+    public float buffedRotSpeed;
     private Transform myTransform;
     public LayerMask lm;
 
@@ -64,7 +68,14 @@ public class FrogBehaviour2 : Enemy
     public void FindPlace(float MaxDist)
     {
         List<GameObject> grounds = new List<GameObject>();
-      
+        if (Crown.activeSelf)
+        {
+            lm = LayerMask.GetMask("Gem", "Ground");
+        }
+        else
+        {
+            lm = LayerMask.GetMask("Ground");
+        }
         Collider[] colls=Physics.OverlapBox(frontColl.bounds.center, frontColl.bounds.size / 2, transform.rotation, lm);
         foreach (Collider c in colls)
         {
@@ -170,6 +181,9 @@ public class FrogBehaviour2 : Enemy
         }
         if (other.gameObject.CompareTag("Gem") && !Crown.activeSelf)
         {
+            afkTime = buffedAfk;
+            gravity = buffedGravity;
+            rotSpeed = buffedRotSpeed;
             Crown.SetActive(true);
             nomNomSound.Play();
             Destroy(other.gameObject);

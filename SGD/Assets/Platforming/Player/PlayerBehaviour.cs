@@ -22,6 +22,7 @@ public class PlayerBehaviour : MonoBehaviour
     public AudioSource jump;
     public AudioSource land;
     public AudioSource gem;
+    public AudioSource deathSound;
 
     public bool isAttacking = false;
     float turnSmoothVelocity;
@@ -129,7 +130,8 @@ public class PlayerBehaviour : MonoBehaviour
     }
     public void Die()
     {
-        
+        if(!deathSound.isPlaying)
+            deathSound.Play();
         gameObject.GetComponentInChildren<PlayerDissolveEffect>().startDissolve();
         Invoke("ReloadLevel", 1f);
     }

@@ -14,13 +14,15 @@ public class SpiderBehaviour : Enemy
 
     public AudioSource impactSound;
     public AudioSource squiqSound;
+    public AudioSource attackSound;
     public float steerIntensity = 0.38f;
     public float frontCheckIntensity = 0.15f;
 
     private EyeSensor front;
     private EyeSensor right;
     private EyeSensor left;
-    private Vector3 lastPosition;
+    public Transform target=null;
+
     //public GameObject dissolve;
     public override void Awake()
     {
@@ -54,9 +56,12 @@ public class SpiderBehaviour : Enemy
     // Update is called once per frame
     IEnumerator BrainScope()
     {
+        anim.speed = 0f;
+        yield return new WaitForSeconds(1);
+        transform.rotation = new Quaternion(transform.rotation.x, transform.rotation.y - (transform.rotation.y % 90), transform.rotation.z, transform.rotation.w);
+        anim.speed = 1f;
         StartCoroutine("TrapChecker");
         StartCoroutine("MovementLogic");
-        yield return new WaitForFixedUpdate();
     } 
     IEnumerator TrapChecker()
     {
@@ -167,16 +172,42 @@ public class SpiderBehaviour : Enemy
 
         }
     }
-    void MoveSpider(float modif)
+    IEnumerator KillPlayer()
     {
-        lastPosition = new Vector3 (transform.position.x, transform.position.y, transform.position.z);
-        transform.Translate(direction * speed*modif);
+        while (true)
+        {
+            Vector3 playerLoc = new Vector3(target.position.x, transform.position.y, target.position.z);
+            transform.rotation = Quaternion.LookRotation(playerLoc - transform.position);
+            if (isOnGround)
+                MoveSpider(1.2f);
+            else
+                MoveSpider(0.5f);
+            if (front.timeFromGround > 0.1f)
+            {
+                AbandonTarget();
+            }
+            yield return new WaitForFixedUpdate();
+        }
 
     }
-    public override void FixedUpdate()
+    void MoveSpider(float modif)
     {
-        base.FixedUpdate();
-        Debug.DrawRay(transform.position, transform.forward, Color.blue);
+        transform.Translate(direction * speed*modif);
+    }
+    public void AttackPlayer(Transform player)
+    {
+        StopAllCoroutines();
+        attackSound.Play();
+        target = player;
+        StartCoroutine("KillPlayer");
+        anim.speed = 1.2f;
+    }
+    public void AbandonTarget()
+    {
+        StopCoroutine("KillPlayer");
+        anim.speed = 1f;
+        target = null;
+        StartCoroutine("BrainScope");
 
     }
 

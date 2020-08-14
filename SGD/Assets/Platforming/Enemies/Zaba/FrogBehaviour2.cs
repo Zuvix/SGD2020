@@ -12,8 +12,14 @@ public class FrogBehaviour2 : Enemy
     private Transform myTransform;
     public LayerMask lm;
 
+    public AudioSource deathSound;
+    public AudioSource jumpSound;
+    public AudioSource landSound;
+    public AudioSource nomNomSound;
     public GameObject frontGO;
     public GameObject rightGO;
+    public GameObject Crown;
+    public GameObject Gem;
     Collider frontColl;
     Collider rightColl;
     public override void Activate()
@@ -104,6 +110,7 @@ public class FrogBehaviour2 : Enemy
         // Short delay added before frog jumps
         Vector3 tarPos = new Vector3(Target.position.x, transform.position.y, Target.position.z);
         yield return new WaitForSeconds(0.5f);
+        jumpSound.Play();
         rb.useGravity = false;
 
         // Calculate distance to target
@@ -131,12 +138,41 @@ public class FrogBehaviour2 : Enemy
 
             yield return new WaitForFixedUpdate();
         }
+        landSound.Play();
         rb.useGravity = true;
         Target = null;
     }
     public override void Die()
     {
         base.Die();
-        Destroy(this.gameObject);
+        if (Crown.activeSelf)
+        {
+            GameObject g=Instantiate(Gem);
+            g.transform.position = transform.position;
+        }
+        StopAllCoroutines();
+        deathSound.Play();
+        GetComponentInChildren<FrogDissolveEffect>().startDissolve();
+    }
+    public override void OnTriggerEnter(Collider other)
+    {
+        base.OnTriggerEnter(other);
+        if (other.gameObject.CompareTag("Enemy"))
+        {
+            if (transform.position.y - 0.15f > other.gameObject.transform.position.y)
+            {
+                other.GetComponent<Enemy>().Die();
+            }
+            else
+            {
+                Die();
+            }
+        }
+        if (other.gameObject.CompareTag("Gem") && !Crown.activeSelf)
+        {
+            Crown.SetActive(true);
+            nomNomSound.Play();
+            Destroy(other.gameObject);
+        }
     }
 }

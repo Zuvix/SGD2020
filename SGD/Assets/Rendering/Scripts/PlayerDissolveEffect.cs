@@ -22,8 +22,7 @@ public class PlayerDissolveEffect : MonoBehaviour
             setDissolve();
 
         if (dissolveValue >= 1)
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        //Destroy(transform.parent.gameObject);
+            Destroy(transform.parent.gameObject);
     }
 
     private void setDissolve()

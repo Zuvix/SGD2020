@@ -129,8 +129,14 @@ public class PlayerBehaviour : MonoBehaviour
     }
     public void Die()
     {
-        //        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        
         gameObject.GetComponentInChildren<PlayerDissolveEffect>().startDissolve();
+        Invoke("ReloadLevel", 1f);
+    }
+    //TEMP METHOD
+    public void ReloadLevel()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
     // Update is called once per frame
     void FixedUpdate()
@@ -201,7 +207,7 @@ public class PlayerBehaviour : MonoBehaviour
                 Die();
             }
         }
-        if (other.gameObject.CompareTag("Coin"))
+        if (other.gameObject.CompareTag("Gem"))
         {
             gem.Play();
         }

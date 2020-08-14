@@ -13,7 +13,6 @@ public class FrogDissolveEffect : MonoBehaviour
     private void Start()
     {        
         material = GetComponent<Renderer>().material;
-        gm = GetComponent<GameObject>();
     }
 
     private void Update()
@@ -27,12 +26,14 @@ public class FrogDissolveEffect : MonoBehaviour
 
     private void setDissolve()
     {
-        this.dissolveValue += 0.005f;
+        this.dissolveValue += 0.0075f;
         material.SetFloat("Dissolve", dissolveValue);
     }
     public void startDissolve()
     {
-        gameObject.GetComponent<CoronaFrogDissolveEffect>().startDissolve();
+        Debug.Log("Disovling frog");
+        if(gm.activeSelf)
+            gm.GetComponent<CoronaFrogDissolveEffect>().startDissolve();
         dissolve = true;
     }
 }

@@ -51,11 +51,12 @@ public class SpiderBehaviour : Enemy
     // Update is called once per frame
     IEnumerator BrainScope()
     { 
-        yield return new WaitForSeconds(0.25f);
+        //yield return new WaitForSeconds(0.25f);
         transform.rotation = new Quaternion(transform.rotation.x, transform.rotation.y - (transform.rotation.y % 90), transform.rotation.z, transform.rotation.w);
         anim.speed = 1f;
         StartCoroutine("TrapChecker");
         StartCoroutine("MovementLogic");
+        yield return new WaitForSeconds(0.25f);
     } 
     IEnumerator TrapChecker()
     {

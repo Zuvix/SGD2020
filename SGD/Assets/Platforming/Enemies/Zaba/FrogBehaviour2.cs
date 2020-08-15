@@ -46,7 +46,6 @@ public class FrogBehaviour2 : Enemy
         {
             if (isOnGround)
             {
-                yield return new WaitForSeconds(afkTime);
                 FindPlace(12f);
                 yield return new WaitForFixedUpdate();
                 if (Target != null)
@@ -54,6 +53,7 @@ public class FrogBehaviour2 : Enemy
                     yield return RotateTowardsPosition();
                     yield return JumpToPosition();
                 }
+                yield return new WaitForSeconds(afkTime);
 
             }
             else

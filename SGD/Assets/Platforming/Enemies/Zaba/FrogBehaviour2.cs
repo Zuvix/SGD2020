@@ -33,6 +33,7 @@ public class FrogBehaviour2 : Enemy
     public override void Awake()
     {
         base.Awake();
+        Crown.SetActive(false);
         frontColl = frontGO.GetComponent<Collider>();
         rightColl = rightGO.GetComponent<Collider>();
         myTransform = transform;
@@ -163,7 +164,6 @@ public class FrogBehaviour2 : Enemy
         }
         StopAllCoroutines();
         deathSound.Play();
-        GetComponentInChildren<FrogDissolveEffect>().startDissolve();
     }
     public override void OnTriggerEnter(Collider other)
     {

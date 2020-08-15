@@ -9,6 +9,7 @@ public abstract class Enemy : MonoBehaviour
     protected Rigidbody rb;
     // Ked umiera enemak
     public Collider[] colliders;
+    DissolveEffect[] de;
     public virtual void Die()
     {
         if (colliders != null)
@@ -20,6 +21,10 @@ public abstract class Enemy : MonoBehaviour
         }
         rb.useGravity = false;
         rb.velocity = Vector3.zero;
+        foreach(DissolveEffect d in de)
+        {
+            d.startDissolve();
+        }
     }
     //Aktivovanie nepriatela, aby sa zacal spravat ako je definovane v GDD
     public abstract void Activate();
@@ -35,6 +40,7 @@ public abstract class Enemy : MonoBehaviour
         {
             Debug.Log("Animator not found");
         }
+        de = GetComponentsInChildren<DissolveEffect>();
     }
     protected virtual void OnCollisionEnter(Collision collision)
     {

@@ -1072,15 +1072,15 @@ GameObject:
   - component: {fileID: 7282004370778407977}
   - component: {fileID: 2449181924213651749}
   - component: {fileID: 8156707405231830578}
-  - component: {fileID: 7188702440742295736}
   - component: {fileID: 1436794500217348299}
+  - component: {fileID: 2818613189344097376}
   m_Layer: 0
   m_Name: CROWN
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &7282004370778407977
 Transform:
   m_ObjectHideFlags: 0
@@ -1142,21 +1142,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!114 &7188702440742295736
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4214176860343290464}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1da9d48634780564196625c29c643ace, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dissolveValue: 0
-  material: {fileID: 0}
-  gm: {fileID: 0}
 --- !u!96 &1436794500217348299
 TrailRenderer:
   serializedVersion: 2
@@ -1272,6 +1257,21 @@ TrailRenderer:
   m_MinVertexDistance: 0.1
   m_Autodestruct: 0
   m_Emitting: 1
+--- !u!114 &2818613189344097376
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4214176860343290464}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dcf26d7b1cccb014db20f8344b0e24dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dissolveValue: 0
+  material: {fileID: 0}
+  dissolveSpeed: 0.01
 --- !u!1 &4685994146958995890
 GameObject:
   m_ObjectHideFlags: 0
@@ -1961,7 +1961,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3200228853643602359}
   - component: {fileID: 2362760550822442734}
-  - component: {fileID: 177070193533134266}
+  - component: {fileID: 8798783028396498644}
   m_Layer: 0
   m_Name: Cone2
   m_TagString: Untagged
@@ -2071,7 +2071,7 @@ SkinnedMeshRenderer:
     m_Center: {x: 0.000055789948, y: 0.49392653, z: 1.1768484}
     m_Extent: {x: 2.8151803, y: 2.83973, z: 3.1499572}
   m_DirtyAABB: 0
---- !u!114 &177070193533134266
+--- !u!114 &8798783028396498644
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2080,12 +2080,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 7720668728129938284}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dbb6126ff37cd144d81973d718fbab86, type: 3}
+  m_Script: {fileID: 11500000, guid: dcf26d7b1cccb014db20f8344b0e24dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   dissolveValue: 0
-  material: {fileID: 2100000, guid: 77564eebef587694fae5fcc842920be0, type: 2}
-  gm: {fileID: 4214176860343290464}
+  material: {fileID: 0}
+  dissolveSpeed: 0.0125
 --- !u!1 &7932901876097427448
 GameObject:
   m_ObjectHideFlags: 0

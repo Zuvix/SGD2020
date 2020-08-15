@@ -68,7 +68,7 @@ public class FrogBehaviour2 : Enemy
     public void FindPlace(float MaxDist)
     {
         List<GameObject> grounds = new List<GameObject>();
-        if (Crown.activeSelf)
+        if (!Crown.activeSelf)
         {
             lm = LayerMask.GetMask("Gem", "Ground");
         }

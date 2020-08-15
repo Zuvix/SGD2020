@@ -7,6 +7,7 @@ public class FallingBlock : MonoBehaviour
     Rigidbody rb;
     Material m;
     private float maxLower = 0.02f;
+    bool activated = false;
     public AudioSource fallingSound;
     private void Awake()
     {
@@ -15,7 +16,6 @@ public class FallingBlock : MonoBehaviour
     }
     IEnumerator StartFalling()
     {
-        fallingSound.Play();
         yield return new WaitForSeconds(2f);
         rb.isKinematic = false;
     }
@@ -31,11 +31,14 @@ public class FallingBlock : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Enemy")|| collision.gameObject.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("Enemy")|| collision.gameObject.CompareTag("Player") &&activated==false)
         {
+            activated = true;
             StartCoroutine("MoveLower");
             SetEmmision(false);
+            fallingSound.Play();
             StartCoroutine(StartFalling());
+            Invoke("Destruction", 12f);
         }
     }
     public void SetEmmision(bool toEmit)
@@ -44,5 +47,9 @@ public class FallingBlock : MonoBehaviour
             m.SetColor("_EmissionColor", Color.white);
         else
             m.SetColor("_EmissionColor", Color.black);
+    }
+    void Destruction()
+    {
+        Destroy(this.gameObject);
     }
 }

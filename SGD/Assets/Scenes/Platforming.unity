@@ -299,6 +299,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Gems
       objectReference: {fileID: 0}
+    - target: {fileID: 479673633886517363, guid: 4da3c71e022a60d41aa30e1d3aecaa8c,
+        type: 3}
+      propertyPath: m_TagString
+      value: Gem
+      objectReference: {fileID: 0}
+    - target: {fileID: 479673633886517363, guid: 4da3c71e022a60d41aa30e1d3aecaa8c,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 479673633886517367, guid: 4da3c71e022a60d41aa30e1d3aecaa8c,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1223,7 +1233,7 @@ GameObject:
   - component: {fileID: 287459330}
   - component: {fileID: 287459332}
   - component: {fileID: 287459331}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Particle System (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15712,7 +15722,7 @@ PrefabInstance:
     - target: {fileID: 3541630760830403057, guid: 32cb0d6295e86564a988555da47c1274,
         type: 3}
       propertyPath: passiveTime
-      value: 6
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 3541630760830403057, guid: 32cb0d6295e86564a988555da47c1274,
         type: 3}
@@ -15823,6 +15833,7 @@ GameObject:
   - component: {fileID: 458197366}
   - component: {fileID: 458197365}
   - component: {fileID: 458197364}
+  - component: {fileID: 458197368}
   m_Layer: 12
   m_Name: Ground
   m_TagString: Void
@@ -15841,8 +15852,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1, y: 11.894579, z: 1}
+  m_Center: {x: 0, y: -5.4472895, z: 0}
 --- !u!23 &458197365
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -15904,6 +15915,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!54 &458197368
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 458197363}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
 --- !u!1 &495515274
 GameObject:
   m_ObjectHideFlags: 0
@@ -16054,6 +16081,11 @@ PrefabInstance:
     - target: {fileID: 3541630760830403057, guid: 32cb0d6295e86564a988555da47c1274,
         type: 3}
       propertyPath: offset
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3541630760830403057, guid: 32cb0d6295e86564a988555da47c1274,
+        type: 3}
+      propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6190948353686160789, guid: 32cb0d6295e86564a988555da47c1274,
@@ -16972,7 +17004,7 @@ GameObject:
   - component: {fileID: 877916039}
   - component: {fileID: 877916041}
   - component: {fileID: 877916040}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Particle System (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -21819,6 +21851,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Gems (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 479673633886517363, guid: 4da3c71e022a60d41aa30e1d3aecaa8c,
+        type: 3}
+      propertyPath: m_TagString
+      value: Gem
+      objectReference: {fileID: 0}
+    - target: {fileID: 479673633886517363, guid: 4da3c71e022a60d41aa30e1d3aecaa8c,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 479673633886517367, guid: 4da3c71e022a60d41aa30e1d3aecaa8c,
         type: 3}
@@ -36495,7 +36537,7 @@ PrefabInstance:
     - target: {fileID: 8828531933426519708, guid: 95edb06845085ae49874f107800dc65f,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -8.89
+      value: 19.53
       objectReference: {fileID: 0}
     - target: {fileID: 8828531933426519708, guid: 95edb06845085ae49874f107800dc65f,
         type: 3}
@@ -36505,7 +36547,7 @@ PrefabInstance:
     - target: {fileID: 8828531933426519708, guid: 95edb06845085ae49874f107800dc65f,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -5.49
+      value: -5.66
       objectReference: {fileID: 0}
     - target: {fileID: 8828531933426519708, guid: 95edb06845085ae49874f107800dc65f,
         type: 3}
@@ -37640,7 +37682,7 @@ GameObject:
   - component: {fileID: 1320728566}
   - component: {fileID: 1320728568}
   - component: {fileID: 1320728567}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Particle System
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42904,7 +42946,7 @@ GameObject:
   - component: {fileID: 1450044849}
   - component: {fileID: 1450044851}
   - component: {fileID: 1450044850}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Particle System (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -47659,6 +47701,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Gems (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 479673633886517363, guid: 4da3c71e022a60d41aa30e1d3aecaa8c,
+        type: 3}
+      propertyPath: m_TagString
+      value: Gem
+      objectReference: {fileID: 0}
+    - target: {fileID: 479673633886517363, guid: 4da3c71e022a60d41aa30e1d3aecaa8c,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 479673633886517367, guid: 4da3c71e022a60d41aa30e1d3aecaa8c,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -48147,6 +48199,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Gems (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 479673633886517363, guid: 4da3c71e022a60d41aa30e1d3aecaa8c,
+        type: 3}
+      propertyPath: m_TagString
+      value: Gem
+      objectReference: {fileID: 0}
+    - target: {fileID: 479673633886517363, guid: 4da3c71e022a60d41aa30e1d3aecaa8c,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 479673633886517367, guid: 4da3c71e022a60d41aa30e1d3aecaa8c,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -48433,10 +48495,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aaf7096ee9cb7f347868d80964304554, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CameraMoveSpeed: 120
+  CameraMoveSpeed: 100
   CameraFollowObj: {fileID: 449438408}
   clampAngle: 66
-  inputSensitivity: 150
+  inputSensitivity: 120
   CameraObj: {fileID: 819967289}
   PlayerObj: {fileID: 1765899124}
   camDistanceXToPlayer: 0
@@ -48843,6 +48905,7 @@ MonoBehaviour:
   jumpPower: 315
   turnSmoothTime: 0.1
   doubleJump: 1
+  controlsEnabled: 1
   downForce: 8
   shadowDistanceFromGroud: 0.04
   leftGroundTime: 0

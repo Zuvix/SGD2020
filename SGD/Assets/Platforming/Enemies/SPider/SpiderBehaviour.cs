@@ -178,10 +178,10 @@ public class SpiderBehaviour : Enemy
         while (true)
         {
             Vector3 playerLoc = new Vector3(target.position.x, transform.position.y, target.position.z);
-            if(Vector3.Distance(transform.position,playerLoc)>0.075f)
+            if(Vector3.Distance(transform.position,playerLoc)>0.5f)
                 transform.rotation = Quaternion.LookRotation(playerLoc - transform.position);
             if (isOnGround)
-                MoveSpider(1.2f);
+                MoveSpider(1.25f);
             else
                 MoveSpider(0.5f);
             if (front.timeFromGround > 0.225f)
@@ -202,7 +202,7 @@ public class SpiderBehaviour : Enemy
         attackSound.Play();
         target = player;
         StartCoroutine("KillPlayer");
-        anim.speed = 1.2f;
+        anim.speed = 1.25f;
     }
     public void AbandonTarget()
     {

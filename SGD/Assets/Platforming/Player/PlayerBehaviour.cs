@@ -10,6 +10,7 @@ public class PlayerBehaviour : MonoBehaviour
     public float jumpPower = 6f;
     public float turnSmoothTime = 0.1f;
     public bool doubleJump = true;
+    public bool controlsEnabled = true;
     //public float accel = 50f;
     public float downForce = 10f;
     public float shadowDistanceFromGroud = 0.08f;
@@ -73,14 +74,21 @@ public class PlayerBehaviour : MonoBehaviour
             anim.SetBool("isFalling", false);
             anim.SetBool("isLanding", false);
         }
-        Physics.Raycast(ray, out hit, maxRayDistance*5, mask);
+        Physics.Raycast(ray, out hit, maxRayDistance * 5, mask);
         shadow.transform.position = hit.point + Vector3.up * shadowDistanceFromGroud;
 
         // input
-        input = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
-        input = input.normalized;
+        if (controlsEnabled)
+        {
+            input = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
+            input = input.normalized;
+        }
+        else
+        {
+            input = Vector2.zero;
+        }
         //Input.GetKeyDown(KeyCode.Jump) --> Input.GetButton("Jump")
-        if (Input.GetButtonDown("Jump") && jumpdelay > 0.1f && (isOnGround || doubleJump))
+        if (Input.GetButtonDown("Jump") && jumpdelay > 0.1f && (isOnGround || doubleJump)&&controlsEnabled)
         {
             isJumping = true;
         }
@@ -114,7 +122,7 @@ public class PlayerBehaviour : MonoBehaviour
         {
             currentAttackCd += Time.deltaTime;
         }
-        if (Input.GetMouseButtonDown(0) && currentAttackCd >= attackCd)
+        if (Input.GetMouseButtonDown(0) && currentAttackCd >= attackCd && controlsEnabled)
         {
             punch.Play();
             isAttacking = true;
@@ -132,6 +140,7 @@ public class PlayerBehaviour : MonoBehaviour
     {
         if(!deathSound.isPlaying)
             deathSound.Play();
+        controlsEnabled = false;
         gameObject.GetComponentInChildren<PlayerDissolveEffect>().startDissolve();
         Invoke("ReloadLevel", 1f);
     }

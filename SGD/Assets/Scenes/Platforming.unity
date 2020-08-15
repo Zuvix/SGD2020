@@ -48762,12 +48762,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1728589960}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bdf2dd95cc03d1d4bb12c5dab7e14bc1, type: 3}
+  m_Script: {fileID: 11500000, guid: dcf26d7b1cccb014db20f8344b0e24dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   dissolveValue: 0
   material: {fileID: 0}
-  gm: {fileID: 1765899124}
+  dissolveSpeed: 0.01
 --- !u!1001 &1742984765
 PrefabInstance:
   m_ObjectHideFlags: 0

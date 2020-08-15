@@ -141,7 +141,7 @@ public class PlayerBehaviour : MonoBehaviour
         if(!deathSound.isPlaying)
             deathSound.Play();
         controlsEnabled = false;
-        gameObject.GetComponentInChildren<PlayerDissolveEffect>().startDissolve();
+        gameObject.GetComponentInChildren<DissolveEffect>().startDissolve();
         Invoke("ReloadLevel", 1f);
     }
     //TEMP METHOD

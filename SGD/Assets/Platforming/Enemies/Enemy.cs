@@ -9,7 +9,9 @@ public abstract class Enemy : MonoBehaviour
     protected Rigidbody rb;
     // Ked umiera enemak
     public Collider[] colliders;
-    DissolveEffect[] de;
+    protected DissolveEffect[] de;
+    public GameObject summonerEffect;
+    protected bool summoningComplete = false;
     public virtual void Die()
     {
         if (colliders != null)
@@ -23,12 +25,15 @@ public abstract class Enemy : MonoBehaviour
         rb.velocity = Vector3.zero;
         foreach(DissolveEffect d in de)
         {
-            d.startDissolve();
+            if(d.gameObject.activeSelf)
+                d.startDissolve();
         }
     }
     //Aktivovanie nepriatela, aby sa zacal spravat ako je definovane v GDD
-    public abstract void Activate();
-
+    public virtual void Activate()
+    {
+        StartCoroutine(Summoning());
+    }
     public virtual void Awake()
     {
         if((rb= GetComponent<Rigidbody>())== null)
@@ -78,5 +83,21 @@ public abstract class Enemy : MonoBehaviour
         {
             Die();
         }
+    }
+    IEnumerator Summoning()
+    {
+        anim.speed = 0f;
+        foreach (DissolveEffect d in de)
+        {
+            if (d.gameObject.activeSelf)
+            {
+                summonerEffect.SetActive(true);
+                yield return StartCoroutine(d.Summon());
+            }
+            summonerEffect.SetActive(false);
+            yield return new WaitForFixedUpdate();
+        }
+        StartCoroutine("BrainScope");
+        summoningComplete = true;
     }
 }

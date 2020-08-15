@@ -22,7 +22,6 @@ public class SpiderBehaviour : Enemy
     private EyeSensor right;
     private EyeSensor left;
     public Transform target=null;
-
     //public GameObject dissolve;
     public override void Awake()
     {
@@ -34,11 +33,6 @@ public class SpiderBehaviour : Enemy
     private void Start()
     {
         Activate();
-    }
-    public override void Activate()
-    {
-        StartCoroutine("BrainScope");
-        Debug.Log("Enemy Activated");
     }
     public override void Die()
     {
@@ -56,9 +50,8 @@ public class SpiderBehaviour : Enemy
 
     // Update is called once per frame
     IEnumerator BrainScope()
-    {
-        anim.speed = 0f;
-        yield return new WaitForSeconds(0.5f);
+    { 
+        yield return new WaitForSeconds(0.25f);
         transform.rotation = new Quaternion(transform.rotation.x, transform.rotation.y - (transform.rotation.y % 90), transform.rotation.z, transform.rotation.w);
         anim.speed = 1f;
         StartCoroutine("TrapChecker");
@@ -198,11 +191,14 @@ public class SpiderBehaviour : Enemy
     }
     public void AttackPlayer(Transform player)
     {
-        StopAllCoroutines();
-        attackSound.Play();
-        target = player;
-        StartCoroutine("KillPlayer");
-        anim.speed = 1.25f;
+        if (summoningComplete)
+        {
+            StopAllCoroutines();
+            attackSound.Play();
+            target = player;
+            StartCoroutine("KillPlayer");
+            anim.speed = 1.25f;
+        }
     }
     public void AbandonTarget()
     {

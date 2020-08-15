@@ -26,10 +26,6 @@ public class FrogBehaviour2 : Enemy
     public GameObject Gem;
     Collider frontColl;
     Collider rightColl;
-    public override void Activate()
-    {
-        StartCoroutine(BrainScope());
-    }
     public override void Awake()
     {
         base.Awake();
@@ -45,6 +41,7 @@ public class FrogBehaviour2 : Enemy
     }
     IEnumerator BrainScope()
     {
+        anim.speed = 1f;
         while (true)
         {
             if (isOnGround)
@@ -156,13 +153,13 @@ public class FrogBehaviour2 : Enemy
     }
     public override void Die()
     {
+        StopAllCoroutines();
         base.Die();
         if (Crown.activeSelf)
         {
             GameObject g=Instantiate(Gem);
             g.transform.position = transform.position;
         }
-        StopAllCoroutines();
         deathSound.Play();
     }
     public override void OnTriggerEnter(Collider other)

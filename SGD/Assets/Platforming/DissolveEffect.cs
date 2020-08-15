@@ -4,15 +4,17 @@ using System.Collections.Generic;
 [RequireComponent(typeof(Renderer))]
 public class DissolveEffect : MonoBehaviour
 {
-    public float dissolveValue = 0.00f;
+    public float dissolveValue = 1f;
 
     public Material material;
     private bool dissolve = false;
     public float dissolveSpeed=0.0075f;
+    public GameObject master;
 
-    private void Start()
-    {        
+    private void Awake()
+    {
         material = GetComponent<Renderer>().material;
+        material.SetFloat("Dissolve", dissolveValue);
     }
 
     /*private void Update()
@@ -25,18 +27,20 @@ public class DissolveEffect : MonoBehaviour
     }*/
     public IEnumerator Dissolve()
     {
-        while (dissolveValue <= 1f)
+        while (dissolveValue < 1)
         {
             ChangeDissolve(dissolveSpeed);
             yield return new WaitForFixedUpdate();
+            if(dissolveValue>=1)
+                Destroy(master);
         }
-        Destroy(transform.parent.gameObject);
+        Destroy(master);
     }
     public IEnumerator Summon()
     {
-        while (dissolveValue >= 0f)
+        while (dissolveValue > 0)
         {
-            ChangeDissolve(-dissolveSpeed);
+            ChangeDissolve(-dissolveSpeed*0.6f);
             yield return new WaitForFixedUpdate();
         }
     }

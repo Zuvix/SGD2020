@@ -2173,6 +2173,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dissolveValue: 1
+  spawnModif: 0.85
   material: {fileID: 2100000, guid: ed2e6d50c7b9c7a43b09c4cc15577779, type: 2}
   dissolveSpeed: 0.008
   master: {fileID: 9019351860944489709}
@@ -2518,7 +2519,9 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 11400002, guid: 60bc526f4be1e044ab9e46340b82ffb3, type: 3}
+    - {fileID: 11400000, guid: 60bc526f4be1e044ab9e46340b82ffb3, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 60bc526f4be1e044ab9e46340b82ffb3, type: 3}
 --- !u!1 &8480217338139883585 stripped
 GameObject:

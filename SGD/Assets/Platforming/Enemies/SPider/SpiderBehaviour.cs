@@ -37,6 +37,7 @@ public class SpiderBehaviour : Enemy
     public override void Die()
     {
         base.Die();
+        LevelManager.Instance.StartCoroutine(LevelManager.Instance.SpawnMonster("s", startPos, startRot));
         squiqSound.Stop();
         StopAllCoroutines();
         impactSound.Play();

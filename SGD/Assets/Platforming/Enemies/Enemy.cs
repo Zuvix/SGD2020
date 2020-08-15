@@ -12,6 +12,8 @@ public abstract class Enemy : MonoBehaviour
     protected DissolveEffect[] de;
     public GameObject summonerEffect;
     protected bool summoningComplete = false;
+    protected Quaternion startRot;
+    protected Vector3 startPos;
     public virtual void Die()
     {
         if (colliders != null)
@@ -46,6 +48,8 @@ public abstract class Enemy : MonoBehaviour
             Debug.Log("Animator not found");
         }
         de = GetComponentsInChildren<DissolveEffect>();
+        startPos = transform.position;
+        startRot = transform.rotation;
     }
     protected virtual void OnCollisionEnter(Collision collision)
     {

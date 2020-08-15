@@ -221,6 +221,8 @@ public class PlayerBehaviour : MonoBehaviour
         if (other.gameObject.CompareTag("Gem"))
         {
             gem.Play();
+            LevelManager.Instance.GetGem();
+            Destroy(other.gameObject);
         }
         if (other.gameObject.CompareTag("Spike"))
         {
@@ -229,6 +231,10 @@ public class PlayerBehaviour : MonoBehaviour
         if (other.gameObject.CompareTag("Projectile"))
         {
             Die();
+        }
+        if (other.gameObject.CompareTag("Portal"))
+        {
+            LevelManager.Instance.FinishLevel();
         }
     }
     public void Walk1()

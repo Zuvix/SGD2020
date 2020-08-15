@@ -154,7 +154,9 @@ public class FrogBehaviour2 : Enemy
     public override void Die()
     {
         StopAllCoroutines();
+        LevelManager.Instance.StartCoroutine(LevelManager.Instance.SpawnMonster("f", startPos, startRot));
         base.Die();
+        
         if (Crown.activeSelf)
         {
             GameObject g=Instantiate(Gem);

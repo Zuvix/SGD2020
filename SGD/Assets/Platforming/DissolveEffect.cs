@@ -5,6 +5,7 @@ using System.Collections.Generic;
 public class DissolveEffect : MonoBehaviour
 {
     public float dissolveValue = 1f;
+    public float spawnModif=0.6f;
 
     public Material material;
     private bool dissolve = false;
@@ -40,7 +41,7 @@ public class DissolveEffect : MonoBehaviour
     {
         while (dissolveValue > 0)
         {
-            ChangeDissolve(-dissolveSpeed*0.6f);
+            ChangeDissolve(-dissolveSpeed*spawnModif);
             yield return new WaitForFixedUpdate();
         }
     }

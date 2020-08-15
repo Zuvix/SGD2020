@@ -12,6 +12,8 @@ TagManager:
   - Projectile
   - Gem
   - LivingGround
+  - FxTemporaire
+  - Portal
   layers:
   - Default
   - TransparentFX
@@ -46,6 +48,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Ui
+    uniqueID: 1655849029
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0

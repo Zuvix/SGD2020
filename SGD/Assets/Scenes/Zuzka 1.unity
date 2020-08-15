@@ -34910,6 +34910,7 @@ MonoBehaviour:
   jump: {fileID: 1765899134}
   land: {fileID: 1765899136}
   gem: {fileID: 1765899137}
+  deathSound: {fileID: 0}
   isAttacking: 0
   isOnGround: 0
   maxRayDistance: 1.25
@@ -42703,7 +42704,7 @@ MonoBehaviour:
   isOnGround: 0
   colliders: []
   target: {fileID: 1765899130}
-  projectile: {fileID: 4304627052545957883, guid: ce462d4405e3b454a8dc09dc72a548aa,
+  projectile: {fileID: 9207445692325419194, guid: e72e132957b1d6245a322f7079a6f3ce,
     type: 3}
   shooter: {fileID: 6370277484318475968}
   impactSound: {fileID: 8467147030333813244}

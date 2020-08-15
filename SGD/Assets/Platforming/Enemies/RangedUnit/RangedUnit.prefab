@@ -205,9 +205,10 @@ MonoBehaviour:
   isOnGround: 0
   colliders: []
   target: {fileID: 0}
-  projectile: {fileID: 4304627052545957883, guid: ce462d4405e3b454a8dc09dc72a548aa,
+  projectile: {fileID: 9207445692325419194, guid: e72e132957b1d6245a322f7079a6f3ce,
     type: 3}
   shooter: {fileID: 2331873203931046631}
+  impactSound: {fileID: 0}
 --- !u!1 &2331873203931046631
 GameObject:
   m_ObjectHideFlags: 0

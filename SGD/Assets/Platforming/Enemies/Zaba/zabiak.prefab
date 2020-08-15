@@ -2212,10 +2212,10 @@ MonoBehaviour:
   - {fileID: 4261896421013943331}
   - {fileID: 7772094874794936024}
   Target: {fileID: 0}
-  firingAngle: 35
+  firingAngle: 32
   gravity: 8
   rotSpeed: 6
-  afkTime: 2.4
+  afkTime: 2
   buffedAfk: 1.2
   buffedGravity: 12
   buffedRotSpeed: 10
@@ -2240,10 +2240,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 0.106364384
+  m_Radius: 0.07817796
   m_Height: 0.27188775
   m_Direction: 2
-  m_Center: {x: 0.002897501, y: 0.04258789, z: 0.024604917}
+  m_Center: {x: -0.0006539292, y: 0.08122199, z: 0.024604917}
 --- !u!65 &7772094874794936024
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2255,8 +2255,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.17472227, y: 0.016979668, z: 0.15940505}
-  m_Center: {x: 0.005734351, y: 0.007010182, z: 0.023356345}
+  m_Size: {x: 0.18036224, y: 0.017943675, z: 0.15940505}
+  m_Center: {x: 0.0029143824, y: 0.0063642, z: 0.023356345}
 --- !u!82 &-777220815494281763
 AudioSource:
   m_ObjectHideFlags: 0

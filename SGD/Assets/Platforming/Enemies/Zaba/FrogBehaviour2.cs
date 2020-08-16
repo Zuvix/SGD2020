@@ -93,8 +93,10 @@ public class FrogBehaviour2 : Enemy
                 grounds.Add(c.gameObject);
             }
         }
-        if(grounds.Count>=1)
+        if (grounds.Count >= 1)
+        {
             Target = grounds[Random.Range(0, grounds.Count)].transform;
+        }
 
 
     }
@@ -112,43 +114,53 @@ public class FrogBehaviour2 : Enemy
             yield return new WaitForFixedUpdate();
         }
     }
-
     IEnumerator JumpToPosition()
     {
-        anim.SetBool("isJumping", true);
-        // Short delay added before frog jumps
-        Vector3 tarPos = new Vector3(Target.position.x, transform.position.y, Target.position.z);
-        yield return new WaitForSeconds(0.5f);
-        jumpSound.Play();
-        rb.useGravity = false;
-
-        // Calculate distance to target
-        float target_Distance = Vector3.Distance(transform.position, tarPos);
-
-        // Calculate the velocity needed to move the target at specified angle.
-        float projectile_Velocity = target_Distance / (Mathf.Sin(2 * firingAngle * Mathf.Deg2Rad) / gravity);
-
-        // Extract the X  Y componenent of the velocity
-        float Vx = Mathf.Sqrt(projectile_Velocity) * Mathf.Cos(firingAngle * Mathf.Deg2Rad);
-        float Vy = Mathf.Sqrt(projectile_Velocity) * Mathf.Sin(firingAngle * Mathf.Deg2Rad);
-
-        // Calculate flight time.
-        float flightDuration = target_Distance / Vx;
-
-        float elapse_time = 0;
-
-        while (elapse_time < flightDuration)
+        Ray ray = new Ray(transform.position, transform.forward);
+        lm = LayerMask.GetMask("Wall");
+        float maxRayDistance = 12.5f;
+        if (!Physics.Raycast(ray, maxRayDistance, lm))
         {
-            transform.Translate(0, (Vy - (gravity * elapse_time)) * Time.deltaTime, Vx * Time.deltaTime);
+            anim.SetBool("isJumping", true);
+            // Short delay added before frog jumps
+            Vector3 tarPos = new Vector3(Target.position.x, transform.position.y, Target.position.z);
+            yield return new WaitForSeconds(0.5f);
+            jumpSound.Play();
+            rb.useGravity = false;
 
-            elapse_time += Time.deltaTime;
-            if (elapse_time + 0.35f > flightDuration)
-                anim.SetBool("isJumping", false);
+            // Calculate distance to target
+            float target_Distance = Vector3.Distance(transform.position, tarPos);
 
-            yield return new WaitForFixedUpdate();
+            // Calculate the velocity needed to move the target at specified angle.
+            float projectile_Velocity = target_Distance / (Mathf.Sin(2 * firingAngle * Mathf.Deg2Rad) / gravity);
+
+            // Extract the X  Y componenent of the velocity
+            float Vx = Mathf.Sqrt(projectile_Velocity) * Mathf.Cos(firingAngle * Mathf.Deg2Rad);
+            float Vy = Mathf.Sqrt(projectile_Velocity) * Mathf.Sin(firingAngle * Mathf.Deg2Rad);
+
+            // Calculate flight time.
+            float flightDuration = target_Distance / Vx;
+
+            float elapse_time = 0;
+
+            while (elapse_time < flightDuration)
+            {
+                transform.Translate(0, (Vy - (gravity * elapse_time)) * Time.deltaTime, Vx * Time.deltaTime);
+
+                elapse_time += Time.deltaTime;
+                if (elapse_time + 0.35f > flightDuration)
+                    anim.SetBool("isJumping", false);
+
+                yield return new WaitForFixedUpdate();
+            }
+            landSound.Play();
+            rb.useGravity = true;
         }
-        landSound.Play();
-        rb.useGravity = true;
+        else
+        {
+            Debug.Log("There is a wall i cant jump");
+        }
+        
         Target = null;
     }
     public override void Die()

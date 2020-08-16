@@ -10349,7 +10349,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
+  m_BoundingSphereOverride: {x: 0, y: 2.6356e-41, z: 0, w: -1}
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
@@ -12579,6 +12579,90 @@ Transform:
   m_Father: {fileID: 1393832196}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 7.016709e-15, y: 168.91425, z: 180}
+--- !u!1001 &1943885563
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1252648910474270611, guid: 2e6facbc312b123428f52758fdfec42c,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 20.14
+      objectReference: {fileID: 0}
+    - target: {fileID: 1252648910474270611, guid: 2e6facbc312b123428f52758fdfec42c,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 9.58
+      objectReference: {fileID: 0}
+    - target: {fileID: 1252648910474270611, guid: 2e6facbc312b123428f52758fdfec42c,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.86
+      objectReference: {fileID: 0}
+    - target: {fileID: 1252648910474270611, guid: 2e6facbc312b123428f52758fdfec42c,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1252648910474270611, guid: 2e6facbc312b123428f52758fdfec42c,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 1252648910474270611, guid: 2e6facbc312b123428f52758fdfec42c,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1252648910474270611, guid: 2e6facbc312b123428f52758fdfec42c,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 1252648910474270611, guid: 2e6facbc312b123428f52758fdfec42c,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 1252648910474270611, guid: 2e6facbc312b123428f52758fdfec42c,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1252648910474270611, guid: 2e6facbc312b123428f52758fdfec42c,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 1252648910474270611, guid: 2e6facbc312b123428f52758fdfec42c,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1317821552244979929, guid: 2e6facbc312b123428f52758fdfec42c,
+        type: 3}
+      propertyPath: m_TagString
+      value: Spike
+      objectReference: {fileID: 0}
+    - target: {fileID: 1317821552244979929, guid: 2e6facbc312b123428f52758fdfec42c,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1885210682004671785, guid: 2e6facbc312b123428f52758fdfec42c,
+        type: 3}
+      propertyPath: m_Name
+      value: Strielajucatrapa_LP (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8196620349144357249, guid: 2e6facbc312b123428f52758fdfec42c,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 7.993
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 2e6facbc312b123428f52758fdfec42c, type: 3}
 --- !u!1 &1945496224 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8135301852088202480, guid: dff3a663bff47df4f9dac54c5b4e6cf6,

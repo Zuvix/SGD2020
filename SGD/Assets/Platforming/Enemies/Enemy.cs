@@ -11,7 +11,7 @@ public abstract class Enemy : MonoBehaviour
     public Collider[] colliders;
     protected DissolveEffect[] de;
     public GameObject summonerEffect;
-    protected bool summoningComplete = false;
+    public bool summoningComplete = false;
     protected Quaternion startRot;
     protected Vector3 startPos;
     public virtual void Die()
@@ -48,8 +48,14 @@ public abstract class Enemy : MonoBehaviour
             Debug.Log("Animator not found");
         }
         de = GetComponentsInChildren<DissolveEffect>();
+        foreach (Collider c in colliders)
+        {
+            c.enabled = false;
+        }
+        rb.useGravity = false;
         startPos = transform.position;
         startRot = transform.rotation;
+
     }
     protected virtual void OnCollisionEnter(Collision collision)
     {
@@ -101,6 +107,11 @@ public abstract class Enemy : MonoBehaviour
             summonerEffect.SetActive(false);
             yield return new WaitForFixedUpdate();
         }
+        foreach (Collider c in colliders)
+        {
+            c.enabled = true;
+        }
+        rb.useGravity = true;
         StartCoroutine("BrainScope");
         summoningComplete = true;
     }

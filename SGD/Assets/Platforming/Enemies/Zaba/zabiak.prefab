@@ -1270,6 +1270,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dissolveValue: 0
+  spawnModif: 0.6
   material: {fileID: 0}
   dissolveSpeed: 0.01
   master: {fileID: 4214176860343290464}
@@ -2085,6 +2086,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dissolveValue: 1
+  spawnModif: 0.6
   material: {fileID: 0}
   dissolveSpeed: 0.0125
   master: {fileID: 8200755476567479334}
@@ -2215,6 +2217,7 @@ MonoBehaviour:
   - {fileID: 4261896421013943331}
   - {fileID: 7772094874794936024}
   summonerEffect: {fileID: 3367111800428848645}
+  summoningComplete: 0
   Target: {fileID: 0}
   firingAngle: 32
   gravity: 8
@@ -2233,7 +2236,7 @@ MonoBehaviour:
   frontGO: {fileID: 5357802345909954444}
   rightGO: {fileID: 8604021908580662271}
   Crown: {fileID: 4214176860343290464}
-  Gem: {fileID: 479673633886517363, guid: 4da3c71e022a60d41aa30e1d3aecaa8c, type: 3}
+  Gem: {fileID: 3613128634422848077, guid: 191c31c59dcd2ce4e8e6fd0c45390f09, type: 3}
 --- !u!136 &4261896421013943331
 CapsuleCollider:
   m_ObjectHideFlags: 0

@@ -199,23 +199,26 @@ public class PlayerBehaviour : MonoBehaviour
         }
         if (other.gameObject.CompareTag("Enemy"))
         {
-            if (isAttacking)
+            if (other.gameObject.GetComponent<Enemy>().summoningComplete)
             {
-                other.gameObject.GetComponent<Enemy>().Die();
-            }
-            else if (rb.velocity.y < -0.05f)
-            {
-                other.gameObject.GetComponent<Enemy>().Die();
-                rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
-                rb.AddForce(Vector3.up * jumpPower);
-                anim.SetBool("isJumping", true);
-                anim.SetBool("isLanding", false);
-                doubleJump = true;
-                jump.Play();
-            }
-            else
-            {
-                Die();
+                if (isAttacking)
+                {
+                    other.gameObject.GetComponent<Enemy>().Die();
+                }
+                else if (rb.velocity.y < -0.05f)
+                {
+                    other.gameObject.GetComponent<Enemy>().Die();
+                    rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
+                    rb.AddForce(Vector3.up * jumpPower);
+                    anim.SetBool("isJumping", true);
+                    anim.SetBool("isLanding", false);
+                    doubleJump = true;
+                    jump.Play();
+                }
+                else
+                {
+                    Die();
+                }
             }
         }
         if (other.gameObject.CompareTag("Gem"))

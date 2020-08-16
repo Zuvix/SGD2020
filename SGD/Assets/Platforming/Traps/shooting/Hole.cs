@@ -7,7 +7,9 @@ public class Hole : MonoBehaviour
     public GameObject arrow;
     Vector3 arrowPos;
     Quaternion arrowRot;
-    public float spawningTime=5f;
+    public AudioSource shootSound;
+    public AudioSource loadSound;
+    private float spawningTime=4.5f;
     private void Awake()
     {
         arrowPos = arrow.transform.position;
@@ -23,6 +25,15 @@ public class Hole : MonoBehaviour
     }
     IEnumerator Spawner()
     {
+        if (loadSound != null)
+        {
+            loadSound.Play();
+        }
+        yield return new WaitForSeconds(0.95f);
+        if (shootSound != null)
+        {
+            shootSound.Play();
+        }
         while (true)
         {
             yield return new WaitForSeconds(spawningTime);
@@ -30,6 +41,15 @@ public class Hole : MonoBehaviour
             arrow.transform.position = arrowPos;
             arrow.transform.rotation = arrowRot;
             arrow.SetActive(true);
+            if (loadSound != null)
+            {
+                loadSound.Play();
+            }
+            yield return new WaitForSeconds(0.95f);
+            if (shootSound != null)
+            {
+                shootSound.Play();
+            }
 
         }
     }

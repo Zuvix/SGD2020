@@ -7,10 +7,11 @@ public class Arrow : MonoBehaviour
     public float speed = 0.1f;
     public IEnumerator Fly()
     {
-        yield return new WaitForSeconds(0.75f);
+        yield return new WaitForSeconds(0.95f);
         while (true)
         {
             transform.Translate(Vector3.up * speed*-1);
+            transform.Rotate(Vector3.up * speed*10);
             yield return new WaitForFixedUpdate();
         }
     }

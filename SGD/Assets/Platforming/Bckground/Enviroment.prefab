@@ -25,7 +25,7 @@ Transform:
   m_GameObject: {fileID: 433177818288895405}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 14.0688, y: -0.5, z: -6.6}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 1.2, z: 1}
   m_Children:
   - {fileID: 1357164168286956007}
   - {fileID: 4222677402918326451}
@@ -49,12 +49,13 @@ GameObject:
   - component: {fileID: 6353602851386370310}
   - component: {fileID: 8371980103321705337}
   - component: {fileID: 5092362466840496851}
+  - component: {fileID: 1028559339}
   m_Layer: 0
   m_Name: PM3D_Cube3D1.010
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &6353602851386370310
 Transform:
@@ -117,6 +118,20 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!64 &1028559339
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 499144269281787216}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -1135549439054845127, guid: f0c533137b176794e9142ac643ed5ad3, type: 3}
 --- !u!1 &2858391369495778099
 GameObject:
   m_ObjectHideFlags: 0
@@ -128,12 +143,13 @@ GameObject:
   - component: {fileID: 6536150650973473232}
   - component: {fileID: 1956932208431821111}
   - component: {fileID: 6753668791717947466}
+  - component: {fileID: 1105560402}
   m_Layer: 0
   m_Name: PM3D_Cube3D1.008
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &6536150650973473232
 Transform:
@@ -196,6 +212,20 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!64 &1105560402
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2858391369495778099}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -7686849766584680984, guid: f0c533137b176794e9142ac643ed5ad3, type: 3}
 --- !u!1 &3039929900505189473
 GameObject:
   m_ObjectHideFlags: 0
@@ -207,12 +237,13 @@ GameObject:
   - component: {fileID: 9012921219597782750}
   - component: {fileID: 4760745932711488473}
   - component: {fileID: 527004714202580390}
+  - component: {fileID: 1355651815}
   m_Layer: 0
   m_Name: PM3D_Cube3D1.005
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &9012921219597782750
 Transform:
@@ -275,6 +306,20 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!64 &1355651815
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3039929900505189473}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 5570069142221454406, guid: f0c533137b176794e9142ac643ed5ad3, type: 3}
 --- !u!1 &3357334694984076495
 GameObject:
   m_ObjectHideFlags: 0
@@ -286,12 +331,13 @@ GameObject:
   - component: {fileID: 9022714092729308933}
   - component: {fileID: 3321764323381351817}
   - component: {fileID: 8124033060032651007}
+  - component: {fileID: 1321365332}
   m_Layer: 0
   m_Name: PM3D_Cube3D1.006
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &9022714092729308933
 Transform:
@@ -301,7 +347,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3357334694984076495}
   m_LocalRotation: {x: 0.000000081460335, y: 0, z: -0, w: 1}
-  m_LocalPosition: {x: -9.768256, y: -2.3505063, z: 13.677418}
+  m_LocalPosition: {x: -9.768256, y: -2.3505063, z: 18.6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 957336264447651607}
@@ -354,6 +400,20 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!64 &1321365332
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3357334694984076495}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 5860281223275084773, guid: f0c533137b176794e9142ac643ed5ad3, type: 3}
 --- !u!1 &5460325576294568999
 GameObject:
   m_ObjectHideFlags: 0
@@ -365,12 +425,13 @@ GameObject:
   - component: {fileID: 4222677402918326451}
   - component: {fileID: 2801804348130157411}
   - component: {fileID: 5757662819090765582}
+  - component: {fileID: 761555601}
   m_Layer: 0
   m_Name: PM3D_Cube3D1.004
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &4222677402918326451
 Transform:
@@ -380,7 +441,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5460325576294568999}
   m_LocalRotation: {x: 0.000000081460335, y: 0, z: -0, w: 1}
-  m_LocalPosition: {x: -9.768256, y: -2.3505063, z: 13.677418}
+  m_LocalPosition: {x: -7.1, y: -2.3505063, z: 13.6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 957336264447651607}
@@ -433,6 +494,20 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!64 &761555601
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5460325576294568999}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 251260663224545840, guid: f0c533137b176794e9142ac643ed5ad3, type: 3}
 --- !u!1 &7769492140310604280
 GameObject:
   m_ObjectHideFlags: 0
@@ -444,12 +519,13 @@ GameObject:
   - component: {fileID: 8215702604849768034}
   - component: {fileID: 8354238241564420832}
   - component: {fileID: 7789143771096867704}
+  - component: {fileID: 1149915165}
   m_Layer: 0
   m_Name: PM3D_Cube3D1.007
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &8215702604849768034
 Transform:
@@ -512,6 +588,20 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!64 &1149915165
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7769492140310604280}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -5202436293550043850, guid: f0c533137b176794e9142ac643ed5ad3, type: 3}
 --- !u!1 &8199158244056515525
 GameObject:
   m_ObjectHideFlags: 0
@@ -523,12 +613,13 @@ GameObject:
   - component: {fileID: 1357164168286956007}
   - component: {fileID: 4655422310838622688}
   - component: {fileID: 2235810877186588464}
+  - component: {fileID: 1599668059}
   m_Layer: 0
   m_Name: PM3D_Cube3D1.003
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &1357164168286956007
 Transform:
@@ -538,7 +629,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8199158244056515525}
   m_LocalRotation: {x: 0.000000081460335, y: 0, z: -0, w: 1}
-  m_LocalPosition: {x: -9.768256, y: -2.3505063, z: 13.677418}
+  m_LocalPosition: {x: -5.1, y: -2.3505063, z: 17.6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 957336264447651607}
@@ -591,6 +682,20 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!64 &1599668059
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8199158244056515525}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -4498300424171632132, guid: f0c533137b176794e9142ac643ed5ad3, type: 3}
 --- !u!1 &8770740382054516317
 GameObject:
   m_ObjectHideFlags: 0
@@ -602,12 +707,13 @@ GameObject:
   - component: {fileID: 2241666089742124052}
   - component: {fileID: 4373984570294216060}
   - component: {fileID: 5186768825588616479}
+  - component: {fileID: 168676060}
   m_Layer: 0
   m_Name: PM3D_Cube3D1.009
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &2241666089742124052
 Transform:
@@ -670,3 +776,17 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!64 &168676060
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8770740382054516317}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -2114692890516784239, guid: f0c533137b176794e9142ac643ed5ad3, type: 3}

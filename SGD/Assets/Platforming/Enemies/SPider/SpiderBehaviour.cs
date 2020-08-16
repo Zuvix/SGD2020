@@ -85,7 +85,8 @@ public class SpiderBehaviour : Enemy
             bool f = front.isOverGround;
             if (f && l && r)
             {
-                yield return StartCoroutine(MoveAndLook());
+                yield return StartCoroutine(MoveForward());
+                Debug.Log("Moving forw");
             }
             else if ((!f && l && r) || (!f && !l && r))
             {
@@ -128,7 +129,6 @@ public class SpiderBehaviour : Enemy
     }
     IEnumerator MoveAndLook()
     {
-        float timeTraveled = 0f;
         float timeROn=0f;
         float timeROff=0f;
         float timeLOn=0f;
@@ -136,7 +136,6 @@ public class SpiderBehaviour : Enemy
         while (front.isOverGround || front.timeFromGround < frontCheckIntensity)
         {
             MoveSpider(1f);
-            timeTraveled += Time.deltaTime;
             yield return new WaitForFixedUpdate();
             
             if (left.isOverGround && left.timeOnGround > steerIntensity && timeLOff > timeLOn && !front.isEnemyAhead)
@@ -167,6 +166,15 @@ public class SpiderBehaviour : Enemy
             }
 
         }
+    }
+    IEnumerator MoveForward()
+    {
+        while (front.isOverGround || front.timeFromGround < frontCheckIntensity)
+        {
+            MoveSpider(1f);
+            yield return new WaitForFixedUpdate();
+        } 
+        StartCoroutine(MoveAndLook());
     }
     IEnumerator KillPlayer()
     {

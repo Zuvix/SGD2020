@@ -24,7 +24,7 @@ public class LevelManager : Singleton<LevelManager>
     public void GetGem()
     {
         gemCount++;
-        gemText.text = gemCount+" /" + maxGemCount;
+        gemText.text = " "+gemCount+"/" + maxGemCount;
         if (gemCount >= maxGemCount)
         {
             gemText.text = "Max";
@@ -32,6 +32,10 @@ public class LevelManager : Singleton<LevelManager>
         }
     }
     public void FinishLevel()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }
+    public void RestartLevel()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }

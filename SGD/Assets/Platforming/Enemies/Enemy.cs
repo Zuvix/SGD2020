@@ -93,6 +93,10 @@ public abstract class Enemy : MonoBehaviour
         {
             Die();
         }
+        if (other.gameObject.CompareTag("Void"))
+        {
+            Die();
+        }
     }
     IEnumerator Summoning()
     {

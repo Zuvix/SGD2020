@@ -259,8 +259,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.019741597, y: 0.019710286, z: 0.001817008}
-  m_Center: {x: 0.00008302808, y: -0.000076428056, z: -0.0028927117}
+  m_Size: {x: 0.019741597, y: 0.019710286, z: 0.0015789499}
+  m_Center: {x: 0.00008302808, y: -0.000076428056, z: -0.0030117407}
 --- !u!64 &2149619092772027925
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -334,7 +334,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6190948353686160789}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.52, y: 9.983, z: -0.92}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2454935980237082545}
@@ -374,8 +374,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f62259ce176387b41ae1c4b0b10c9c7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  activeTime: 2.5
-  passiveTime: 3
+  activeTime: 2
+  passiveTime: 3.5
   offset: 0
   attackSound: {fileID: 5146226553735638962}
 --- !u!82 &5146226553735638962

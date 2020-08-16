@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 7662645782640115915}
   - component: {fileID: 989158279414818941}
   - component: {fileID: 7204380307884325136}
+  - component: {fileID: 919132148550732501}
   m_Layer: 9
   m_Name: Gem
   m_TagString: Gem
@@ -28,7 +29,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3613128634422848077}
-  m_LocalRotation: {x: 0.000000081460335, y: 0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1.88, y: 8.03, z: 17.310154}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_Children: []
@@ -94,8 +95,8 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 0.19215688, g: 0.9960785, b: 0.5176471, a: 1}
-  m_Intensity: 2
-  m_Range: 2
+  m_Intensity: 0.2
+  m_Range: 0.8
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
@@ -128,7 +129,7 @@ Light:
   m_Cookie: {fileID: 0}
   m_DrawHalo: 0
   m_Flare: {fileID: 0}
-  m_RenderMode: 0
+  m_RenderMode: 2
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -165,8 +166,24 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3613128634422848077}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 2.9348655, y: 5.555912, z: 3.4366472}
   m_Center: {x: -0.015461683, y: 0.5552391, z: 0.00092566013}
+--- !u!54 &919132148550732501
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3613128634422848077}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0

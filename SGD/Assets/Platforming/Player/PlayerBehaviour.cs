@@ -192,9 +192,9 @@ public class PlayerBehaviour : MonoBehaviour
     }
     void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.layer == LayerMask.NameToLayer("Lava"))
+        if (other.gameObject.CompareTag("Void"))
         {
-            print("Padol si do lavy.");
+            print("Padol si do vody.");
             Die();
         }
         if (other.gameObject.CompareTag("Enemy"))

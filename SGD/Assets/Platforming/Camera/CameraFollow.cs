@@ -77,10 +77,14 @@ public class CameraFollow : MonoBehaviour {
 
 	void CameraUpdater() {
         // set the target object to follow
-        Transform target = CameraFollowObj.transform;
-        target.position+= new Vector3(camDistanceXToPlayer, camDistanceYToPlayer, camDistanceZToPlayer);
-        //move towards the game object that is the target
-        float step = CameraMoveSpeed * Time.deltaTime;
-		transform.position = Vector3.MoveTowards (transform.position, target.position, step);
+        Transform target;
+        if (CameraFollowObj != null)
+        {
+            target = CameraFollowObj.transform;
+            target.position += new Vector3(camDistanceXToPlayer, camDistanceYToPlayer, camDistanceZToPlayer);
+            //move towards the game object that is the target
+            float step = CameraMoveSpeed * Time.deltaTime;
+            transform.position = Vector3.MoveTowards(transform.position, target.position, step);
+        }
 	}
 }

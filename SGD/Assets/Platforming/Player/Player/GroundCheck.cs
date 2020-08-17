@@ -15,7 +15,7 @@ public class GroundCheck : MonoBehaviour
         if (collision.gameObject.CompareTag("Ground")|| collision.gameObject.CompareTag("LivingGround"))
         {
             pb.isOnGround = true;
-            pb.doubleJump = true;
+            pb.doubleJump = false;
         }
 
     }

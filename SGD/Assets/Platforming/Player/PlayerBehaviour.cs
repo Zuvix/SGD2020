@@ -142,12 +142,6 @@ public class PlayerBehaviour : MonoBehaviour
             deathSound.Play();
         controlsEnabled = false;
         gameObject.GetComponentInChildren<DissolveEffect>().startDissolve();
-        Invoke("ReloadLevel", 0.75f);
-    }
-    //TEMP METHOD
-    public void ReloadLevel()
-    {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
     // Update is called once per frame
     void FixedUpdate()
@@ -160,7 +154,7 @@ public class PlayerBehaviour : MonoBehaviour
             transform.Translate(Vector3.forward * moveSpeed);
             //rb.velocity = new Vector3(Mathf.Clamp(rb.velocity.x, -moveSpeed, moveSpeed), rb.velocity.y, Mathf.Clamp(rb.velocity.z, -moveSpeed, moveSpeed));
         }
-        if (isJumping && isOnGround)
+        if (isJumping && leftGroundTime<0.125f)
         {
             rb.AddForce(Vector3.up * jumpPower);
             isJumping = false;
@@ -168,6 +162,7 @@ public class PlayerBehaviour : MonoBehaviour
             anim.SetBool("isJumping", true);
             anim.SetBool("isFalling", false);
             jump.Play();
+            doubleJump = true;
         }
         else if (isJumping && doubleJump)
         {

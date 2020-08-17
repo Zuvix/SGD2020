@@ -14,12 +14,15 @@ public class LevelManager : Singleton<LevelManager>
     public GameObject spiderPrefab;
     public GameObject frogPrefab;
     public GameObject wizzardPrefab;
+    public GameObject Player;
 
     // Start is called before the first frame update
     void Start()
     {
         maxGemCount = GameObject.FindGameObjectsWithTag("Gem").Length;
         gemText.text = " 0/" + maxGemCount;
+        Player = GameObject.FindGameObjectWithTag("Player");
+        StartCoroutine(RestartChecker());
     }
     public void GetGem()
     {
@@ -49,5 +52,18 @@ public class LevelManager : Singleton<LevelManager>
             case "w": Instantiate(wizzardPrefab, position, rotation); break;
         }
         
+    }
+    IEnumerator RestartChecker()
+    {
+        yield return new WaitForSeconds(2f);
+        while (true)
+        {
+            if (Player == null)
+            {
+                RestartLevel();
+            }
+            yield return new WaitForFixedUpdate();
+        }
+
     }
 }

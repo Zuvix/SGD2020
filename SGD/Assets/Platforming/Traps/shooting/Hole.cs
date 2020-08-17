@@ -9,7 +9,7 @@ public class Hole : MonoBehaviour
     Quaternion arrowRot;
     public AudioSource shootSound;
     public AudioSource loadSound;
-    private float spawningTime=4f;
+    private float spawningTime=3.5f;
     private void Awake()
     {
         arrowPos = arrow.transform.position;

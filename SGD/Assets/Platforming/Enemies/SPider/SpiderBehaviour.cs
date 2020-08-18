@@ -53,7 +53,6 @@ public class SpiderBehaviour : Enemy
     IEnumerator BrainScope()
     { 
         //yield return new WaitForSeconds(0.25f);
-        transform.rotation = new Quaternion(transform.rotation.x, transform.rotation.y - (transform.rotation.y % 90), transform.rotation.z, transform.rotation.w);
         anim.speed = 1f;
         StartCoroutine("TrapChecker");
         StartCoroutine("MovementLogic");
@@ -171,7 +170,7 @@ public class SpiderBehaviour : Enemy
     {
         while (front.isOverGround || front.timeFromGround < frontCheckIntensity)
         {
-            MoveSpider(1f);
+            transform.Translate(Vector3.forward * speed);
             yield return new WaitForFixedUpdate();
         } 
         StartCoroutine(MoveAndLook());
@@ -225,6 +224,10 @@ public class SpiderBehaviour : Enemy
         {
             StopAllCoroutines();
             anim.speed = 0.2f;
+        }
+        if (other.gameObject.CompareTag("Void"))
+        {
+            Die();
         }
     }
 

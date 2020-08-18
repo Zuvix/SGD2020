@@ -4,7 +4,7 @@
             "typeInfo": {
                 "fullName": "UnityEditor.ShaderGraph.Internal.ColorShaderProperty"
             },
-            "JSONnodeData": "{\n    \"m_Guid\": {\n        \"m_GuidSerialized\": \"be8ccb72-3c32-469b-9b20-001e90dcfd20\"\n    },\n    \"m_Name\": \"Edge Color\",\n    \"m_DefaultReferenceName\": \"Color_6DF76E71\",\n    \"m_OverrideReferenceName\": \"\",\n    \"m_GeneratePropertyBlock\": true,\n    \"m_Precision\": 0,\n    \"m_GPUInstanced\": false,\n    \"m_Hidden\": false,\n    \"m_Value\": {\n        \"r\": 0.0,\n        \"g\": 5.1450982093811039,\n        \"b\": 16.0,\n        \"a\": 0.0\n    },\n    \"m_ColorMode\": 1\n}"
+            "JSONnodeData": "{\n    \"m_Guid\": {\n        \"m_GuidSerialized\": \"be8ccb72-3c32-469b-9b20-001e90dcfd20\"\n    },\n    \"m_Name\": \"Edge Color\",\n    \"m_DefaultReferenceName\": \"Color_6DF76E71\",\n    \"m_OverrideReferenceName\": \"\",\n    \"m_GeneratePropertyBlock\": true,\n    \"m_Precision\": 0,\n    \"m_GPUInstanced\": false,\n    \"m_Hidden\": false,\n    \"m_Value\": {\n        \"r\": 17.935392379760743,\n        \"g\": 11.99120044708252,\n        \"b\": 1.0998121500015259,\n        \"a\": 0.0\n    },\n    \"m_ColorMode\": 1\n}"
         },
         {
             "typeInfo": {

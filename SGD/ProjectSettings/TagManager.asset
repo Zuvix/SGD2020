@@ -15,6 +15,7 @@ TagManager:
   - FxTemporaire
   - Portal
   - Wall
+  - Bck
   layers:
   - Default
   - TransparentFX

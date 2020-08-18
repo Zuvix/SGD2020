@@ -230,6 +230,10 @@ public class PlayerBehaviour : MonoBehaviour
         {
             Die();
         }
+        if (other.gameObject.CompareTag("Bck"))
+        {
+            Die();
+        }
         if (other.gameObject.CompareTag("Portal"))
         {
             LevelManager.Instance.FinishLevel();

@@ -26,19 +26,22 @@ public class FrogBehaviour2 : Enemy
     public GameObject Gem;
     Collider frontColl;
     Collider rightColl;
+    private bool hasCollide = false;
     public override void Awake()
     {
         base.Awake();
-        Crown.SetActive(false);
         frontColl = frontGO.GetComponent<Collider>();
         rightColl = rightGO.GetComponent<Collider>();
         myTransform = transform;
     }
-
+    private void LateUpdate()
+    {
+        hasCollide = false;
+    }
     void Start()
     {
         Activate();
-    }
+    }  
     IEnumerator BrainScope()
     {
         anim.speed = 1f;
@@ -173,31 +176,55 @@ public class FrogBehaviour2 : Enemy
         {
             GameObject g=Instantiate(Gem);
             g.transform.position = transform.position;
+            Crown.GetComponent<DissolveEffect>().startDissolve();
         }
+        deathSound.Play();
+    }
+    public void DieWithCrown()
+    {
+        LevelManager.Instance.StartCoroutine(LevelManager.Instance.SpawnMonster("ff", startPos, startRot));
+        base.Die();
         deathSound.Play();
     }
     public override void OnTriggerEnter(Collider other)
     {
         base.OnTriggerEnter(other);
-        if (other.gameObject.CompareTag("Enemy"))
+        if (!hasCollide)
         {
-            if (transform.position.y - 0.15f > other.gameObject.transform.position.y)
+            if (other.gameObject.CompareTag("Enemy"))
             {
-                other.GetComponent<Enemy>().Die();
+                if (transform.position.y - 0.15f > other.gameObject.transform.position.y)
+                {
+                    other.GetComponent<Enemy>().Die();
+                }
+                else
+                {
+                    Die();
+                }
+                hasCollide = true;
             }
-            else
+            if (other.gameObject.CompareTag("Gem") && !Crown.activeSelf)
             {
-                Die();
+                afkTime = buffedAfk;
+                gravity = buffedGravity;
+                rotSpeed = buffedRotSpeed;
+                Crown.SetActive(true);
+                nomNomSound.Play();
+                Destroy(other.gameObject);
+                hasCollide = true;
             }
-        }
-        if (other.gameObject.CompareTag("Gem") && !Crown.activeSelf)
-        {
-            afkTime = buffedAfk;
-            gravity = buffedGravity;
-            rotSpeed = buffedRotSpeed;
-            Crown.SetActive(true);
-            nomNomSound.Play();
-            Destroy(other.gameObject);
+            if (other.gameObject.CompareTag("Void"))
+            {
+                if (Crown.activeSelf)
+                {
+                    DieWithCrown();
+                }
+                else
+                {
+                    Die();
+                }
+                hasCollide = true;
+            }
         }
     }
 }

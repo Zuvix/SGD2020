@@ -14,7 +14,9 @@ public class LevelManager : Singleton<LevelManager>
     public GameObject spiderPrefab;
     public GameObject frogPrefab;
     public GameObject wizzardPrefab;
+    [HideInInspector]
     public GameObject Player;
+    List<Vector3> occupiedSpaces;
 
     // Start is called before the first frame update
     void Start()
@@ -23,6 +25,7 @@ public class LevelManager : Singleton<LevelManager>
         gemText.text = " 0/" + maxGemCount;
         Player = GameObject.FindGameObjectWithTag("Player");
         StartCoroutine(RestartChecker());
+        occupiedSpaces = new List<Vector3>();
     }
     public void GetGem()
     {
@@ -44,13 +47,33 @@ public class LevelManager : Singleton<LevelManager>
     }
     public IEnumerator SpawnMonster(string type, Vector3 position, Quaternion rotation)
     {
-        yield return new WaitForSeconds(respawnTime);
-        switch (type)
+        bool correct = true;
+        foreach (Vector3 space in occupiedSpaces)
         {
-            case "s": Instantiate(spiderPrefab, position, rotation); break;
-            case "f": Instantiate(frogPrefab, position, rotation); break;
-            case "w": Instantiate(wizzardPrefab, position, rotation); break;
+            if (position.Equals(space))
+            {
+                correct = false;
+            }
         }
+        if (correct)
+        {
+            occupiedSpaces.Add(position);
+            yield return new WaitForSeconds(respawnTime);
+            switch (type)
+            {
+                case "s": Instantiate(spiderPrefab, position, rotation); break;
+                case "f": Instantiate(frogPrefab, position, rotation); break;
+                case "w": Instantiate(wizzardPrefab, position, rotation); break;
+
+                case "ff":
+
+                    GameObject g = Instantiate(frogPrefab, position, rotation);
+                    g.GetComponent<FrogBehaviour2>().Crown.SetActive(true);
+                    break;
+            }
+        }
+        yield return new WaitForFixedUpdate();
+        occupiedSpaces.Remove(position);
         
     }
     IEnumerator RestartChecker()

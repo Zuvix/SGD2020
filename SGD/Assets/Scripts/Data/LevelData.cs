@@ -15,8 +15,8 @@ namespace Data
     {
         NORTH = 0,
         EAST= 1,
-        WEST= 2,
-        SOUTH = 3
+        SOUTH = 2,
+        WEST= 3
     }
     
     [Serializable]

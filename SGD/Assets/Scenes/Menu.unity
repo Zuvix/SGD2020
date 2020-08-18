@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -1004,7 +1004,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e8d34609d7dbf949beef7f9a3b63e1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dataSource: {fileID: 11400000, guid: 778c3e3186101d44cbf9e1e6b58bf4bb, type: 2}
+  dataSource: {fileID: 11400000, guid: 24b775777e9f5f5428f839356958044f, type: 2}
   buttonPrefab: {fileID: 5922357749478578229, guid: 4fe45bcafa39d5a4b98a17f0ebcb9238,
     type: 3}
   levelButton: {fileID: 326247023}

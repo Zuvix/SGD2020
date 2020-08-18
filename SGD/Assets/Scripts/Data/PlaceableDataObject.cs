@@ -3,6 +3,13 @@ using UnityEngine;
 
 namespace Data
 {
+    public enum PlaceableType
+    {
+        Enemy,
+        Trap,
+        Gem
+    }
+    
     [Serializable]
     [CreateAssetMenu(fileName = "New Placeable Object", menuName = "Level/PlaceableObject")]
     public class PlaceableDataObject : ScriptableObject
@@ -11,5 +18,9 @@ namespace Data
         public Mesh mesh;
         public Material material;
         public GameObject targetPrefab;
+        
+        [Header("ICON")]
+        public Sprite icon;
+        public Color iconColor;
     }
 }

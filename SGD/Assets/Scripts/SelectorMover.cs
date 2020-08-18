@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Management;
 using UnityEngine;
 using Utils;
 
@@ -26,6 +27,9 @@ public class SelectorMover : MonoBehaviour
         transform.position = Vector3.Scale(Scale() / 0.2f,  new Vector3(1, 1, -1));
         rig.position = Vector3.Scale(Scale() / 0.2f,  new Vector3(1, 1, -1));
         
+        if (GameManager.instance.selectedGameObject == null) 
+            return;
+        
         // Raycast begin
         var ray = target.ScreenPointToRay(Input.mousePosition);
         if (Physics.Raycast(ray, out var hit))
@@ -33,10 +37,6 @@ public class SelectorMover : MonoBehaviour
             selector.gameObject.SetActive(true);
             _hit = hit.point;
             selector.position = _hit.ToLevelCords();
-            if (Input.GetMouseButtonDown(0))
-            {
-                Debug.Log("Place block");
-            }
         }
         else
         {

@@ -101,7 +101,59 @@ MonoBehaviour:
           facing: 0
           overridePlacings: []
     ordered: 0
-    blockPool: []
+    blockPool:
+    - poolBlockData: {fileID: 11400000, guid: c5248ea1bff31354c8130387a9d71c8e, type: 2}
+      count: 1
+      chance: 1
+      overridePlacings:
+      - {fileID: 0}
+      - {fileID: 0}
+      - {fileID: 0}
+      - {fileID: 0}
+      - {fileID: 0}
+      - {fileID: 0}
+      - {fileID: 0}
+      - {fileID: 0}
+      - {fileID: 0}
+    - poolBlockData: {fileID: 11400000, guid: c5248ea1bff31354c8130387a9d71c8e, type: 2}
+      count: 1
+      chance: 1
+      overridePlacings:
+      - {fileID: 0}
+      - {fileID: 0}
+      - {fileID: 0}
+      - {fileID: 0}
+      - {fileID: 0}
+      - {fileID: 0}
+      - {fileID: 0}
+      - {fileID: 0}
+      - {fileID: 0}
+    - poolBlockData: {fileID: 11400000, guid: c5248ea1bff31354c8130387a9d71c8e, type: 2}
+      count: 1
+      chance: 1
+      overridePlacings:
+      - {fileID: 0}
+      - {fileID: 0}
+      - {fileID: 0}
+      - {fileID: 0}
+      - {fileID: 0}
+      - {fileID: 0}
+      - {fileID: 0}
+      - {fileID: 0}
+      - {fileID: 0}
+    - poolBlockData: {fileID: 11400000, guid: c5248ea1bff31354c8130387a9d71c8e, type: 2}
+      count: 1
+      chance: 1
+      overridePlacings:
+      - {fileID: 0}
+      - {fileID: 0}
+      - {fileID: 0}
+      - {fileID: 0}
+      - {fileID: 0}
+      - {fileID: 0}
+      - {fileID: 0}
+      - {fileID: 0}
+      - {fileID: 0}
   - dimensions: {x: 10, y: 10}
     startPos: {x: 9, y: 3}
     endPos: {x: 1, y: 5}

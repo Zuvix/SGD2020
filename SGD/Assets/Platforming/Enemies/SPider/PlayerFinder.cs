@@ -14,7 +14,7 @@ public class PlayerFinder : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Player") &&sb.target==null &&sen.isOverGround)
+        if (other.gameObject.CompareTag("Player") &&sb.target==null &&sen.timeFromGround<0.15f)
         {
             sb.AttackPlayer(other.gameObject.transform);
             found = true;

@@ -28,7 +28,7 @@ public abstract class Enemy : MonoBehaviour
         foreach(DissolveEffect d in de)
         {
             if(d.gameObject.activeSelf)
-                d.startDissolve();
+                d.StartDissolve();
         }
     }
     //Aktivovanie nepriatela, aby sa zacal spravat ako je definovane v GDD

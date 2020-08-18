@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 9019351860414330801}
   - component: {fileID: 9019351860414330800}
-  - component: {fileID: 6386109166744289758}
   - component: {fileID: 8421112988786619865}
   - component: {fileID: 1359362092216480319}
+  - component: {fileID: 2323669265588803600}
   m_Layer: 0
   m_Name: FarFrontEye
   m_TagString: Untagged
@@ -55,19 +55,6 @@ MonoBehaviour:
   mask:
     serializedVersion: 2
     m_Bits: 0
---- !u!65 &6386109166744289758
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9019351860414330815}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 19.88192, y: 4.045545, z: 25.55415}
-  m_Center: {x: -0.323119, y: -1.0365089, z: 5.0291896}
 --- !u!54 &8421112988786619865
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -96,6 +83,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07147b11b38255e46bc01336f0f02be9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!65 &2323669265588803600
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9019351860414330815}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 25.983883, y: 4.045545, z: 28.550472}
+  m_Center: {x: 0.14025271, y: -1.0365089, z: 3.5310283}
 --- !u!1 &9019351860437257288
 GameObject:
   m_ObjectHideFlags: 0
@@ -593,13 +593,13 @@ GameObject:
   m_Component:
   - component: {fileID: 9019351862079502542}
   - component: {fileID: 9019351860944489697}
-  - component: {fileID: 9019351860944489696}
   - component: {fileID: 9019351860944489711}
   - component: {fileID: 9019351860944489710}
   - component: {fileID: 7518221707359591841}
   - component: {fileID: 3180306164435308169}
   - component: {fileID: 1085743518864782333}
   - component: {fileID: 3926657715842532862}
+  - component: {fileID: 6925109871157179161}
   m_Layer: 11
   m_Name: Spider2
   m_TagString: Enemy
@@ -643,19 +643,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
---- !u!65 &9019351860944489696
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9019351860944489709}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 5.1025467, y: 0.67882824, z: 6.6213803}
-  m_Center: {x: 0.0065831468, y: 1.6286576, z: -0.29493123}
 --- !u!95 &9019351860944489711
 Animator:
   serializedVersion: 3
@@ -690,7 +677,7 @@ MonoBehaviour:
   isOnGround: 0
   colliders:
   - {fileID: 7518221707359591841}
-  - {fileID: 9019351860944489696}
+  - {fileID: 6925109871157179161}
   summonerEffect: {fileID: 8480217338139883585}
   summoningComplete: 0
   farFrontEye: {fileID: 9019351860414330815}
@@ -1078,6 +1065,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!65 &6925109871157179161
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9019351860944489709}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 5.1025467, y: 0.67882824, z: 6.6213803}
+  m_Center: {x: 0.0065831468, y: 1.6286576, z: -0.29493123}
 --- !u!1 &9019351860976911352
 GameObject:
   m_ObjectHideFlags: 0

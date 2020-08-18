@@ -26,6 +26,7 @@ public class FrogBehaviour2 : Enemy
     public GameObject Gem;
     Collider frontColl;
     Collider rightColl;
+    bool isDead = false;
     private bool hasCollide = false;
     public override void Awake()
     {
@@ -56,7 +57,7 @@ public class FrogBehaviour2 : Enemy
                     yield return RotateTowardsPosition();
                     yield return JumpToPosition();
                 }
-                yield return new WaitForSeconds(afkTime);
+                yield return new WaitForSeconds(afkTime-Random.Range(-afkTime/4,afkTime/3));
 
             }
             else
@@ -71,7 +72,7 @@ public class FrogBehaviour2 : Enemy
         List<GameObject> grounds = new List<GameObject>();
         if (!Crown.activeSelf)
         {
-            lm = LayerMask.GetMask("Gem", "Ground");
+            lm = LayerMask.GetMask("Gem", "Ground", "Player");
         }
         else
         {
@@ -168,63 +169,68 @@ public class FrogBehaviour2 : Enemy
     }
     public override void Die()
     {
-        StopAllCoroutines();
-        LevelManager.Instance.StartCoroutine(LevelManager.Instance.SpawnMonster("f", startPos, startRot));
-        base.Die();
-        
-        if (Crown.activeSelf)
+        if (!isDead)
         {
-            GameObject g=Instantiate(Gem);
-            g.transform.position = transform.position;
-            Crown.GetComponent<DissolveEffect>().startDissolve();
+            StopAllCoroutines();
+            LevelManager.Instance.StartCoroutine(LevelManager.Instance.SpawnMonster("f", startPos, startRot));
+            base.Die();
+
+            if (Crown.activeSelf)
+            {
+                GameObject g = Instantiate(Gem);
+                g.transform.position = transform.position;
+                Crown.GetComponent<DissolveEffect>().StartDissolve();
+            }
+            deathSound.Play();
+            isDead = true;
         }
-        deathSound.Play();
     }
     public void DieWithCrown()
     {
-        LevelManager.Instance.StartCoroutine(LevelManager.Instance.SpawnMonster("ff", startPos, startRot));
-        base.Die();
-        deathSound.Play();
+        if (!isDead)
+        {
+            LevelManager.Instance.StartCoroutine(LevelManager.Instance.SpawnMonster("ff", startPos, startRot));
+            base.Die();
+            deathSound.Play();
+            isDead = true;
+        }
     }
     public override void OnTriggerEnter(Collider other)
     {
         base.OnTriggerEnter(other);
-        if (!hasCollide)
+        if (other.gameObject.CompareTag("Enemy")&&!hasCollide)
         {
-            if (other.gameObject.CompareTag("Enemy"))
+            if (transform.position.y - 0.15f > other.gameObject.transform.position.y)
             {
-                if (transform.position.y - 0.15f > other.gameObject.transform.position.y)
-                {
-                    other.GetComponent<Enemy>().Die();
-                }
-                else
-                {
-                    Die();
-                }
-                hasCollide = true;
+                other.GetComponent<Enemy>().Die();
             }
-            if (other.gameObject.CompareTag("Gem") && !Crown.activeSelf)
+            else
             {
-                afkTime = buffedAfk;
-                gravity = buffedGravity;
-                rotSpeed = buffedRotSpeed;
-                Crown.SetActive(true);
-                nomNomSound.Play();
-                Destroy(other.gameObject);
-                hasCollide = true;
+                Die();
             }
-            if (other.gameObject.CompareTag("Void"))
+            hasCollide = true;
+        }
+        if (other.gameObject.CompareTag("Gem") && !Crown.activeSelf && !hasCollide)
+        {
+            afkTime = buffedAfk;
+            gravity = buffedGravity;
+            rotSpeed = buffedRotSpeed;
+            Crown.SetActive(true);
+            nomNomSound.Play();
+            Destroy(other.gameObject);
+            hasCollide = true;
+        }
+        if (other.gameObject.CompareTag("Void") && !hasCollide)
+        {
+            if (Crown.activeSelf)
             {
-                if (Crown.activeSelf)
-                {
-                    DieWithCrown();
-                }
-                else
-                {
-                    Die();
-                }
-                hasCollide = true;
+                DieWithCrown();
             }
+            else
+            {
+                Die();
+            }
+            hasCollide = true;
         }
     }
 }

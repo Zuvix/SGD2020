@@ -55,8 +55,13 @@ public class DissolveEffect : MonoBehaviour
             dissolveValue = 1f;
         material.SetFloat("Dissolve", dissolveValue);
     }
-    public void startDissolve()
+    public void StartDissolve()
     {
-        StartCoroutine(Dissolve());
+        StopCoroutine("Summon");
+        StartCoroutine("Dissolve");
+    }
+    public void StartSummon()
+    {
+        StartCoroutine("Summon");
     }
 }

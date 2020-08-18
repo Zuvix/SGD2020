@@ -38,6 +38,7 @@ public class PlayerBehaviour : MonoBehaviour
     float jumpdelay = 0f;
     public GameObject shadow;
     public GameObject fistTrail;
+    private bool isHit=false;
 
     void Awake()
     {
@@ -130,6 +131,10 @@ public class PlayerBehaviour : MonoBehaviour
             fistTrail.SetActive(true);
         }
     }
+    private void LateUpdate()
+    {
+        isHit = false;
+    }
     public void StopAttack()
     {
         isAttacking = false;
@@ -141,7 +146,7 @@ public class PlayerBehaviour : MonoBehaviour
         if(!deathSound.isPlaying)
             deathSound.Play();
         controlsEnabled = false;
-        gameObject.GetComponentInChildren<DissolveEffect>().startDissolve();
+        gameObject.GetComponentInChildren<DissolveEffect>().StartDissolve();
     }
     // Update is called once per frame
     void FixedUpdate()
@@ -187,12 +192,12 @@ public class PlayerBehaviour : MonoBehaviour
     }
     void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Void"))
+        if (other.gameObject.CompareTag("Void") && !isHit)
         {
-            print("Padol si do vody.");
             Die();
+            isHit = true;
         }
-        if (other.gameObject.CompareTag("Enemy"))
+        if (other.gameObject.CompareTag("Enemy") && !isHit)
         {
             if (other.gameObject.GetComponent<Enemy>().summoningComplete)
             {
@@ -213,6 +218,7 @@ public class PlayerBehaviour : MonoBehaviour
                 else
                 {
                     Die();
+                    isHit = true;
                 }
             }
         }
@@ -222,21 +228,15 @@ public class PlayerBehaviour : MonoBehaviour
             LevelManager.Instance.GetGem();
             Destroy(other.gameObject);
         }
-        if (other.gameObject.CompareTag("Spike"))
+        if (other.gameObject.CompareTag("Spike")|| other.gameObject.CompareTag("Projectile") && !isHit)
         {
             Die();
+            isHit = true;
         }
-        if (other.gameObject.CompareTag("Projectile"))
-        {
-            Die();
-        }
-        if (other.gameObject.CompareTag("Bck"))
-        {
-            Die();
-        }
-        if (other.gameObject.CompareTag("Portal"))
+        if (other.gameObject.CompareTag("Portal")&&!isHit)
         {
             LevelManager.Instance.FinishLevel();
+            isHit = true;
         }
     }
     public void Walk1()

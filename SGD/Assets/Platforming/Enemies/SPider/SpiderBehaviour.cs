@@ -43,7 +43,7 @@ public class SpiderBehaviour : Enemy
         impactSound.Play();
         speed = 0f;
         //Destroy(this.gameObject);  //riesene pomocou Destroy(transform.parent.gameObject); v DissolveEffect.cs
-        this.GetComponentInChildren<DissolveEffect>().startDissolve();
+        this.GetComponentInChildren<DissolveEffect>().StartDissolve();
         //animacia
         
         Debug.Log("Spider killed, rip");

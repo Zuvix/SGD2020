@@ -23,7 +23,7 @@ public class TrailSTarter : MonoBehaviour
    IEnumerator W8andGo()
     {
         yield return new WaitForFixedUpdate();
-        StartCoroutine(disolver.Summon());
+        disolver.StartSummon();
         Invoke("ActivateTr", 0.75f);
     }
 }

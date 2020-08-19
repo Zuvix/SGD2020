@@ -67,12 +67,14 @@ Material:
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
+    - _GridOffset: 0.5
     - _GridOffsetX: 0.005
     - _GridOffsetY: 0.005
     - _GridSpacing: 1
     - _GridSpacingX: 1
     - _GridSpacingY: 1
     - _GridThickness: 0.01
+    - _LineThickness: 1
     - _Metallic: 0
     - _Mode: 0
     - _OcclusionStrength: 1

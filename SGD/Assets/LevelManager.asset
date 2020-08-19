@@ -42,9 +42,9 @@ MonoBehaviour:
           - {fileID: 0}
           - {fileID: 0}
           - {fileID: 0}
+          - {fileID: 11400000, guid: 8c4d4d695bc255741a104fe031c7aa50, type: 2}
           - {fileID: 0}
-          - {fileID: 0}
-          - {fileID: 0}
+          - {fileID: 11400000, guid: 8c4d4d695bc255741a104fe031c7aa50, type: 2}
           - {fileID: 0}
           - {fileID: 0}
           - {fileID: 0}
@@ -110,7 +110,7 @@ MonoBehaviour:
       - {fileID: 0}
       - {fileID: 0}
       - {fileID: 0}
-      - {fileID: 0}
+      - {fileID: 11400000, guid: c594b8ee91f8b2a4596fd8b594b0f2d8, type: 2}
       - {fileID: 0}
       - {fileID: 0}
       - {fileID: 0}
@@ -125,9 +125,9 @@ MonoBehaviour:
       - {fileID: 0}
       - {fileID: 0}
       - {fileID: 0}
+      - {fileID: 11400000, guid: c594b8ee91f8b2a4596fd8b594b0f2d8, type: 2}
       - {fileID: 0}
-      - {fileID: 0}
-      - {fileID: 0}
+      - {fileID: 11400000, guid: c594b8ee91f8b2a4596fd8b594b0f2d8, type: 2}
     - poolBlockData: {fileID: 11400000, guid: c5248ea1bff31354c8130387a9d71c8e, type: 2}
       count: 1
       chance: 1

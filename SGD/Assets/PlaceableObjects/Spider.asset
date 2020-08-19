@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 469d53491ae9bc84c917fb8e282bcb0f, type: 3}
   m_Name: Spider
   m_EditorClassIdentifier: 
-  id: 0
+  id: 3
   mesh: {fileID: 0}
   material: {fileID: 0}
   targetPrefab: {fileID: 0}

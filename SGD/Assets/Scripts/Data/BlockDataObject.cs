@@ -3,6 +3,7 @@ using UnityEngine;
 
 namespace Data
 {
+    
     [Serializable]
     [CreateAssetMenu(fileName = "New Block",menuName = "Level/Block")]
     public class BlockDataObject : ScriptableObject

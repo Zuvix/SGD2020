@@ -3,6 +3,7 @@ using UnityEngine;
 
 namespace Data
 {
+    [Serializable]
     public enum PlaceableType
     {
         Enemy,

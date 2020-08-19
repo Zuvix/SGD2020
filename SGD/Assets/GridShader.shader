@@ -1,74 +1,76 @@
-﻿// Upgrade NOTE: replaced '_Object2World' with 'unity_ObjectToWorld'
-// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
-
-Shader "Grid" {
-
-    Properties {
-      _GridThickness ("Grid Thickness", Float) = 0.01
-      _GridSpacingX ("Grid Spacing X", Float) = 1.0
-      _GridSpacingY ("Grid Spacing Y", Float) = 1.0
-      _GridOffsetX ("Grid Offset X", Float) = 0.025
-      _GridOffsetY ("Grid Offset Y", Float) = 0.025
-      _GridColour ("Grid Colour", Color) = (1.0, 1.0, 1.0, 0.8)
-      _BaseColour ("Base Colour", Color) = (0.0, 0.0, 0.0, 0.0) 
+﻿Shader "Unlit/Grid"
+{
+    Properties
+    {
+        _GridColour ("Grid Colour", color) = (1, 1, 1, 1)
+        _BaseColour ("Base Colour", color) = (1, 1, 1, 0)
+        _GridSpacing ("Grid Spacing", float) = 0.1
+        _LineThickness ("Line Thickness", float) = 1
+        _GridOffset ("Grid Offset", float) = 0.01
     }
+    SubShader
+    {
+        Tags { "RenderType"="Transparent" "Queue"="Transparent"}
+        LOD 100
 
-    SubShader {
- 
-      Tags { "Queue" = "Transparent" }
-      
-      Cull off   
-      Pass {
-        ZWrite Off
-        
         Blend SrcAlpha OneMinusSrcAlpha
-        ColorMaterial AmbientAndDiffuse
-        
-        CGPROGRAM
-        // Define the vertex and fragment shader functions
-        #pragma vertex vert
-        #pragma fragment frag
- 
-        // Access Shaderlab properties
-        uniform float _GridThickness;
-        uniform float _GridSpacingX;
-        uniform float _GridSpacingY;
-        uniform float _GridOffsetX;
-        uniform float _GridOffsetY;
-        uniform float4 _GridColour;
-        uniform float4 _BaseColour;
- 
-        // Input into the vertex shader
-        struct vertexInput {
-            float4 vertex : POSITION;
-        };
- 
-        // Output from vertex shader into fragment shader
-        struct vertexOutput {
-          float4 pos : SV_POSITION;
-          float4 worldPos : TEXCOORD0;
-        };
- 
-        // VERTEX SHADER
-        vertexOutput vert(vertexInput input) {
-          vertexOutput output;
-          output.pos = UnityObjectToClipPos(input.vertex);
-          // Calculate the world position coordinates to pass to the fragment shader
-          output.worldPos = mul(unity_ObjectToWorld, input.vertex);
-          return output;
+        ZWrite Off
+
+        Pass
+        {
+            CGPROGRAM
+            #pragma vertex vert
+            #pragma fragment frag
+
+            #include "UnityCG.cginc"
+
+            struct appdata
+            {
+                float4 vertex : POSITION;
+            };
+
+            struct v2f
+            {
+                float2 uv : TEXCOORD0;
+                float4 vertex : SV_POSITION;
+            };
+
+            fixed4 _GridColour;
+            fixed4 _BaseColour;
+            float _GridSpacing;
+            float _LineThickness;
+            float _GridOffset;
+
+            v2f vert (appdata v)
+            {
+                v2f o;
+                o.vertex = UnityObjectToClipPos(v.vertex);
+                o.uv = mul(unity_ObjectToWorld, v.vertex).xz / _GridSpacing - _GridOffset;
+
+                return o;
+            }
+
+            fixed4 frag (v2f i) : SV_Target
+            {               
+                float2 wrapped = frac(i.uv) - 0.5f;
+                float2 range = abs(wrapped);
+
+                float2 speeds;
+                /* // Euclidean norm gives slightly more even thickness on diagonals
+                float4 deltas = float4(ddx(i.uv), ddy(i.uv));
+                speeds = sqrt(float2(
+                            dot(deltas.xz, deltas.xz),
+                            dot(deltas.yw, deltas.yw)
+                         ));
+                */  // Cheaper Manhattan norm in fwidth slightly exaggerates thickness of diagonals
+                speeds = fwidth(i.uv);
+
+                float2 pixelRange = range/speeds;
+                float lineWeight = saturate(min(pixelRange.x, pixelRange.y) - _LineThickness);
+
+                return lerp(_GridColour, _BaseColour, lineWeight);
+            }
+            ENDCG
         }
- 
-        // FRAGMENT SHADER
-        float4 frag(vertexOutput input) : COLOR {
-          if (frac((input.worldPos.x + _GridOffsetX)/_GridSpacingX) < (_GridThickness / _GridSpacingX) ||
-              frac((input.worldPos.z + _GridOffsetY)/_GridSpacingY) < (_GridThickness / _GridSpacingY)) {
-            return _GridColour;
-          } else {
-            return _BaseColour;
-          }
-          
-        }
-    ENDCG
     }
-  }
 }

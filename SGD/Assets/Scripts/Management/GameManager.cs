@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Globalization;
 using Data;
+using IngameEditor;
 using TMPro;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -21,17 +22,31 @@ namespace Management
         public float rotateTime = 1f;
         public KeyCode rotateLeft = KeyCode.X;
         public KeyCode rotateRight = KeyCode.C;
+        public KeyCode submit = KeyCode.Mouse0;
+        public Material lineMat;
 
         [Header("UI")] 
         public Transform grid;
         public Transform selector;
         public Transform camera;
-        public TMP_Text countdown;
+        public GameObject panel;
+        public TMP_Text mainCountdown;
+        public TMP_Text blockCountdown;
+        public TMP_Text blockCount;
+        public RectTransform blockList; 
         
         [Header("Generation")] 
         public Transform blockStash;
         public GameObject blockObject;
 
+        [Header("Editor")] 
+        public float blockPlaceTime = 0.5f;
+        public AnimationCurve blockPlaceCurve;
+        public float blockArriveTime = 0.3f;
+        public AnimationCurve blockArriveCurve;
+        public float blockFallTime = 2f; 
+        public AnimationCurve blockFallCurve;
+        
         public Queue<GameObject> pool = new Queue<GameObject>();
 
         public GameObject selectedGameObject;
@@ -43,6 +58,9 @@ namespace Management
         private int _poolIndex = 0;
         private PoolBlock _placing;
         private bool[,] _blocks;
+        private bool _panelRevealed;
+        private bool _roundEnded;
+        private List<Tuple<Vector2Int, PoolBlock>> _locations = new List<Tuple<Vector2Int, PoolBlock>>(); 
         
         
         private void Awake()
@@ -56,17 +74,28 @@ namespace Management
         private void Start()
         {
             _timeSnapshot = Time.time;
+            mainCountdown.text = "";
+            blockCountdown.text = "";
+            blockCount.text = "";
         }
 
         private void Update()
         {
             if (Time.time > initialWaitTime + _timeSnapshot)
             {
-                SetText("");
+                mainCountdown.text = "";
+                blockCountdown.text = "";
+                
                 //Start
                 if (_placing != null)
                 {
-                    selectedGameObject.transform.position = selector.GetChild(0).position;
+                    if (!_panelRevealed)
+                    {
+                        panel.LeanMoveX(60, 0.5f);
+                        _panelRevealed = true;
+                    }
+                    
+                    selectedGameObject.transform.position = new Vector3(selector.GetChild(0).position.x, selectedGameObject.transform.position.y, selector.GetChild(0).position.z);
                     
                     if (Time.time > placeTime + +_placingSnapshot)
                     {
@@ -80,18 +109,21 @@ namespace Management
                                 Random.Range(0, sourceData.levels[levelNum].dimensions.y-1));
                             
                         } while (_blocks[pos.x, pos.y]);
-                        Place(new Vector3(pos.x+0.5f, 0, pos.y+0.5f));
+                        Place(new Vector3(pos.x+0.5f, 0, pos.y-0.5f));
                     }
 
+                    // controls
                     if (selector.gameObject.activeSelf)
                     {
-                        if (!_blocks[(int) (selector.position.x - 0.5f), (int) -(selector.position.z + 0.5f)])
+                        if (!_blocks[(int)selector.position.x, (int) -selector.position.z])
                         {
                             selector.GetComponent<MeshRenderer>().material.color = Color.green;
                             if (Input.GetMouseButtonDown(0))
                             {
                                 Debug.Log("Place block");
-                                Place(selector.position);
+                                
+                                var position = selector.position;
+                                Place(new Vector3(position.x, 0, position.z));
                             }
                         }
                         else
@@ -102,54 +134,110 @@ namespace Management
 
                     if (Input.GetKeyDown(rotateLeft))
                     {
-                        selectedGameObject.transform.rotation = Quaternion.Euler(0,selectedGameObject.transform.rotation.y+90,0);    
+                        selectedGameObject.transform.rotation = Quaternion.Euler(0,selectedGameObject.transform.rotation.eulerAngles.y+90,0);    
                     } else if (Input.GetKeyDown(rotateRight))
                     {
-                        selectedGameObject.transform.rotation = Quaternion.Euler(0,selectedGameObject.transform.rotation.y-90,0);    
+                        selectedGameObject.transform.rotation = Quaternion.Euler(0,selectedGameObject.transform.rotation.eulerAngles.y-90,0);    
                     }
 
-                    // controls
-                    SetText(Math.Ceiling(placeTime -(Time.time - _placingSnapshot)).ToString(CultureInfo.InvariantCulture));
+                    
+                    blockCountdown.text = Math.Ceiling(placeTime -(Time.time - _placingSnapshot)).ToString(CultureInfo.InvariantCulture);
                 }
                 else
                 {
                     if (sourceData.levels[levelNum].blockPool.Count > 0 && sourceData.levels[levelNum].blockPool.Count > _poolIndex)
                     {
                         _placing = sourceData.levels[levelNum].blockPool[_poolIndex];
+                        blockCount.text = $"{_poolIndex + 1}/{sourceData.levels[levelNum].blockPool.Count}";
                         selectedGameObject = pool.Dequeue();
                         selectedGameObject.GetComponent<MeshFilter>().mesh = _placing.poolBlockData.mesh;
                         selectedGameObject.GetComponent<MeshRenderer>().material = _placing.poolBlockData.material;
+                        selectedGameObject.transform.position = selector.GetChild(0).position + Vector3.up;
+                        for (var i = 0; i < 9; i++)
+                        {
+                            if (_placing.overridePlacings[i] != null)
+                            {
+                                // Check mesh
+                                        
+                                        
+                                // Use icon
+                                var icon = selectedGameObject.transform.GetChild(i);
+                                icon.gameObject.SetActive(true);
+                                var sr = icon.GetComponent<SpriteRenderer>();
+                                sr.sprite = _placing.overridePlacings[i].icon;
+                                sr.color = _placing.overridePlacings[i].iconColor;
+                                icon.GetComponent<Icon>().cam = camera;
+                            }
+                        }
                         selectedGameObject.SetActive(true);
+                        selectedGameObject.LeanMoveY(selector.GetChild(0).position.y, blockArriveTime).setEase(blockArriveCurve);
                         _placingSnapshot = Time.time;
                     }
                     else
                     {
                         // End placing turn
                         selector.gameObject.SetActive(false);
+                        if (_panelRevealed)
+                        {
+                            panel.LeanMoveX(-60, 0.5f);
+                            _panelRevealed = false;
+                        }
+
+                        if (!_roundEnded)
+                        {
+                            if (Input.GetKeyDown(submit))
+                            {
+                                for (var i = 0; i < blockStash.childCount; i++)
+                                {
+                                    var obj = blockStash.GetChild(i);
+                                    obj.gameObject.LeanMoveY(-10, blockFallTime).setDelay(i / 5f).setEase(blockFallCurve);
+                                }
+                                //TODO: Build level
+                                _roundEnded = true;
+                            }
+                        }
+
+                       
+                        selectedGameObject = null;
+                        _placing = null;
                     }
                 }
             }
             else
             {
-                SetText(Math.Ceiling(initialWaitTime -(Time.time - _timeSnapshot)).ToString(CultureInfo.InvariantCulture));
+                mainCountdown.text = Math.Ceiling(initialWaitTime -(Time.time - _timeSnapshot)).ToString(CultureInfo.InvariantCulture);
             }
         }
 
-        private void SetText(string text)
-        {
-            countdown.text = text;
-        }
-        
         public void Place(Vector3 position)
         {
-            selectedGameObject.transform.position = new Vector3(position.x, 0, position.z);
-            _blocks[(int) position.x, (int) position.z] = true;
+            selectedGameObject.LeanMove(new Vector3(position.x, 0, position.z), blockPlaceTime).setEase(blockPlaceCurve);
+            _blocks[(int) position.x, (int) -position.z] = true;
+            _locations.Add(new Tuple<Vector2Int, PoolBlock>(new Vector2Int((int) position.x, (int) -position.z), _placing));
             
             // place on grid 
             _poolIndex++;
             _placing = null;
             selectedGameObject = null;
         }
+
+        /*private void OnPostRender()
+        {
+            GL.Begin(GL.LINES);
+            lineMat.SetPass(0);
+            GL.Color(lineMat.color);
+            for (var x = 0; x <= sourceData.levels[levelNum].dimensions.x; x++)
+            {
+                GL.Vertex3(x, 0, 0);
+                GL.Vertex3(x, 0, sourceData.levels[levelNum].dimensions.y);
+            }
+            for (var y = 0; y <= sourceData.levels[levelNum].dimensions.y; y++)
+            {
+                GL.Vertex3(0, 0, y);
+                GL.Vertex3(sourceData.levels[levelNum].dimensions.x, 0, y);
+            }
+            GL.End();
+        }*/
 
         public void Initialize(int index)
         {

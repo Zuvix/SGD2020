@@ -15,10 +15,6 @@ GameObject:
   - component: {fileID: 5238857632580091074}
   - component: {fileID: 60034006334002226}
   - component: {fileID: 4401248740513258166}
-  - component: {fileID: 4193429147345133679}
-  - component: {fileID: 5506426765477020365}
-  - component: {fileID: 4294327892158806242}
-  - component: {fileID: 448450285479204799}
   m_Layer: 14
   m_Name: PM3D_Cube3D_2.001
   m_TagString: LivingGround
@@ -98,7 +94,7 @@ Rigidbody:
   serializedVersion: 2
   m_Mass: 10
   m_Drag: 2
-  m_AngularDrag: 1
+  m_AngularDrag: 0.05
   m_UseGravity: 1
   m_IsKinematic: 1
   m_Interpolate: 0
@@ -115,7 +111,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.017, y: 0.0022, z: 0.017}
+  m_Size: {x: 0.019274315, y: 0.0023230934, z: 0.018950816}
   m_Center: {x: -0.020161588, y: 0.00884076, z: 0.00016417741}
 --- !u!114 &60034006334002226
 MonoBehaviour:
@@ -253,62 +249,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!136 &4193429147345133679
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 60034006334002225}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.0022000002
-  m_Height: 0.018653855
-  m_Direction: 0
-  m_Center: {x: -0.02, y: 0.007999999, z: -0.0085}
---- !u!136 &5506426765477020365
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 60034006334002225}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.0022000002
-  m_Height: 0.018653855
-  m_Direction: 0
-  m_Center: {x: -0.02, y: 0.007999999, z: 0.0085}
---- !u!136 &4294327892158806242
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 60034006334002225}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.0022000002
-  m_Height: 0.018653855
-  m_Direction: 2
-  m_Center: {x: -0.0285, y: 0.007999999, z: 0}
---- !u!136 &448450285479204799
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 60034006334002225}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.0022000002
-  m_Height: 0.018653855
-  m_Direction: 2
-  m_Center: {x: -0.0116, y: 0.007999999, z: 0}
 --- !u!1 &574136054428589539
 GameObject:
   m_ObjectHideFlags: 0
@@ -324,10 +264,6 @@ GameObject:
   - component: {fileID: 5238857632949955912}
   - component: {fileID: 574136054428589540}
   - component: {fileID: 2360057735352801002}
-  - component: {fileID: 6751930788460214417}
-  - component: {fileID: 1747970637296776020}
-  - component: {fileID: 1853474021051796292}
-  - component: {fileID: 7352089325457910169}
   m_Layer: 14
   m_Name: PM3D_Cube3D_5
   m_TagString: LivingGround
@@ -407,7 +343,7 @@ Rigidbody:
   serializedVersion: 2
   m_Mass: 10
   m_Drag: 2
-  m_AngularDrag: 1
+  m_AngularDrag: 0.05
   m_UseGravity: 1
   m_IsKinematic: 1
   m_Interpolate: 0
@@ -424,7 +360,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.017, y: 0.0022, z: 0.017}
+  m_Size: {x: 0.019978166, y: 0.0028802417, z: 0.02084618}
   m_Center: {x: 0.020441646, y: 0.008559013, z: -0.020437723}
 --- !u!114 &574136054428589540
 MonoBehaviour:
@@ -562,62 +498,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!136 &6751930788460214417
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 574136054428589539}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.0022000002
-  m_Height: 0.018653855
-  m_Direction: 0
-  m_Center: {x: 0.02, y: 0.007999999, z: -0.0285}
---- !u!136 &1747970637296776020
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 574136054428589539}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.0022000002
-  m_Height: 0.018653855
-  m_Direction: 0
-  m_Center: {x: 0.02, y: 0.007999999, z: -0.0118}
---- !u!136 &1853474021051796292
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 574136054428589539}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.0022000002
-  m_Height: 0.018653855
-  m_Direction: 2
-  m_Center: {x: 0.0118, y: 0.007999999, z: -0.02}
---- !u!136 &7352089325457910169
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 574136054428589539}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.0022000002
-  m_Height: 0.018653855
-  m_Direction: 2
-  m_Center: {x: 0.0285, y: 0.007999999, z: -0.02}
 --- !u!1 &843262012923309792
 GameObject:
   m_ObjectHideFlags: 0
@@ -633,10 +513,6 @@ GameObject:
   - component: {fileID: 5238857633867316503}
   - component: {fileID: 843262012923309793}
   - component: {fileID: 608302396287921080}
-  - component: {fileID: 2063894231171508712}
-  - component: {fileID: 4175120298511796536}
-  - component: {fileID: 2394594091333146777}
-  - component: {fileID: 4736358521035136679}
   m_Layer: 14
   m_Name: PM3D_Cube3D_2
   m_TagString: LivingGround
@@ -716,7 +592,7 @@ Rigidbody:
   serializedVersion: 2
   m_Mass: 10
   m_Drag: 2
-  m_AngularDrag: 1
+  m_AngularDrag: 0.05
   m_UseGravity: 1
   m_IsKinematic: 1
   m_Interpolate: 0
@@ -733,7 +609,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.017, y: 0.0022, z: 0.017}
+  m_Size: {x: 0.020362262, y: 0.0024024902, z: 0.019853503}
   m_Center: {x: 0.020414323, y: 0.008801063, z: -0.000083822604}
 --- !u!114 &843262012923309793
 MonoBehaviour:
@@ -871,62 +747,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!136 &2063894231171508712
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 843262012923309792}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.0022000002
-  m_Height: 0.018653855
-  m_Direction: 0
-  m_Center: {x: 0.02, y: 0.007999999, z: -0.0085}
---- !u!136 &4175120298511796536
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 843262012923309792}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.0022000002
-  m_Height: 0.019589508
-  m_Direction: 0
-  m_Center: {x: 0.019532152, y: 0.007999999, z: 0.008500001}
---- !u!136 &2394594091333146777
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 843262012923309792}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.0022000002
-  m_Height: 0.018653855
-  m_Direction: 2
-  m_Center: {x: 0.0285, y: 0.007999999, z: 0}
---- !u!136 &4736358521035136679
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 843262012923309792}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.0022000002
-  m_Height: 0.018897802
-  m_Direction: 2
-  m_Center: {x: 0.011, y: 0.007999999, z: 0.00012197613}
 --- !u!1 &1468916528268451625
 GameObject:
   m_ObjectHideFlags: 0
@@ -1286,10 +1106,6 @@ GameObject:
   - component: {fileID: 5238857633422925720}
   - component: {fileID: 5115773869121011154}
   - component: {fileID: 2513710468130836181}
-  - component: {fileID: 4700616602518010819}
-  - component: {fileID: 147833105985671346}
-  - component: {fileID: 250445618039196554}
-  - component: {fileID: 2450759903782123282}
   m_Layer: 14
   m_Name: PM3D_Cube3D_4
   m_TagString: LivingGround
@@ -1369,7 +1185,7 @@ Rigidbody:
   serializedVersion: 2
   m_Mass: 10
   m_Drag: 2
-  m_AngularDrag: 1
+  m_AngularDrag: 0.05
   m_UseGravity: 1
   m_IsKinematic: 1
   m_Interpolate: 0
@@ -1386,7 +1202,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.017, y: 0.0022, z: 0.017}
+  m_Size: {x: 0.019491894, y: 0.0025143719, z: 0.01972183}
   m_Center: {x: 0.000043024418, y: 0.00875597, z: 0.020247413}
 --- !u!114 &5115773869121011154
 MonoBehaviour:
@@ -1524,62 +1340,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!136 &4700616602518010819
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5115773869121011153}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.0022000002
-  m_Height: 0.018653855
-  m_Direction: 0
-  m_Center: {x: 0, y: 0.007999999, z: 0.0118}
---- !u!136 &147833105985671346
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5115773869121011153}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.0022000002
-  m_Height: 0.018653855
-  m_Direction: 0
-  m_Center: {x: 0, y: 0.007999999, z: 0.0285}
---- !u!136 &250445618039196554
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5115773869121011153}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.0022000002
-  m_Height: 0.018653855
-  m_Direction: 2
-  m_Center: {x: -0.0085, y: 0.007999999, z: 0.02}
---- !u!136 &2450759903782123282
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5115773869121011153}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.0022000002
-  m_Height: 0.018653855
-  m_Direction: 2
-  m_Center: {x: 0.0085, y: 0.007999999, z: 0.02}
 --- !u!1 &5984013234230632874
 GameObject:
   m_ObjectHideFlags: 0
@@ -1656,10 +1416,6 @@ GameObject:
   - component: {fileID: 5238857632550977898}
   - component: {fileID: 6682807879781075118}
   - component: {fileID: 8037300097020483039}
-  - component: {fileID: 3124380145792949498}
-  - component: {fileID: 4716383309876062853}
-  - component: {fileID: 2800278684197817748}
-  - component: {fileID: 1085327850126513294}
   m_Layer: 14
   m_Name: PM3D_Cube3D_5.003
   m_TagString: LivingGround
@@ -1739,7 +1495,7 @@ Rigidbody:
   serializedVersion: 2
   m_Mass: 10
   m_Drag: 2
-  m_AngularDrag: 1
+  m_AngularDrag: 0.05
   m_UseGravity: 1
   m_IsKinematic: 1
   m_Interpolate: 0
@@ -1756,7 +1512,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.017, y: 0.0022, z: 0.017}
+  m_Size: {x: 0.019260019, y: 0.002450075, z: 0.020342655}
   m_Center: {x: -0.02009266, y: 0.008774092, z: -0.020560523}
 --- !u!114 &6682807879781075118
 MonoBehaviour:
@@ -1894,62 +1650,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!136 &3124380145792949498
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6682807879781075117}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.0022000002
-  m_Height: 0.018653855
-  m_Direction: 0
-  m_Center: {x: -0.02, y: 0.007999999, z: -0.0285}
---- !u!136 &4716383309876062853
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6682807879781075117}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.0022000002
-  m_Height: 0.018653855
-  m_Direction: 0
-  m_Center: {x: -0.02, y: 0.007999999, z: -0.0118}
---- !u!136 &2800278684197817748
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6682807879781075117}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.0022000002
-  m_Height: 0.018653855
-  m_Direction: 2
-  m_Center: {x: -0.0118, y: 0.007999999, z: -0.02}
---- !u!136 &1085327850126513294
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6682807879781075117}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.0022000002
-  m_Height: 0.018653855
-  m_Direction: 2
-  m_Center: {x: -0.0285, y: 0.007999999, z: -0.02}
 --- !u!1 &6940225507054438462
 GameObject:
   m_ObjectHideFlags: 0
@@ -1965,10 +1665,6 @@ GameObject:
   - component: {fileID: 6940225507054438463}
   - component: {fileID: 6940225507054438432}
   - component: {fileID: 8585303446605438650}
-  - component: {fileID: 5778463870790496592}
-  - component: {fileID: 330421758368573701}
-  - component: {fileID: 2987373972640544803}
-  - component: {fileID: 2678202063707624006}
   m_Layer: 14
   m_Name: PM3D_Cube3D_5.001
   m_TagString: LivingGround
@@ -2048,7 +1744,7 @@ Rigidbody:
   serializedVersion: 2
   m_Mass: 10
   m_Drag: 2
-  m_AngularDrag: 1
+  m_AngularDrag: 0.05
   m_UseGravity: 1
   m_IsKinematic: 1
   m_Interpolate: 0
@@ -2078,7 +1774,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.017, y: 0.0022, z: 0.017}
+  m_Size: {x: 0.02016714, y: 0.0029858088, z: 0.019891692}
   m_Center: {x: 0.020380812, y: 0.00850623, z: 0.020338016}
 --- !u!82 &8585303446605438650
 AudioSource:
@@ -2203,62 +1899,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!136 &5778463870790496592
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6940225507054438462}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.0022000002
-  m_Height: 0.018653855
-  m_Direction: 0
-  m_Center: {x: 0.02, y: 0.007999999, z: 0.0285}
---- !u!136 &330421758368573701
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6940225507054438462}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.0022000002
-  m_Height: 0.018653855
-  m_Direction: 0
-  m_Center: {x: 0.02, y: 0.007999999, z: 0.0118}
---- !u!136 &2987373972640544803
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6940225507054438462}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.0022000002
-  m_Height: 0.018653855
-  m_Direction: 2
-  m_Center: {x: 0.0118, y: 0.007999999, z: 0.02}
---- !u!136 &2678202063707624006
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6940225507054438462}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.0022000002
-  m_Height: 0.018653855
-  m_Direction: 2
-  m_Center: {x: 0.0285, y: 0.007999999, z: 0.02}
 --- !u!1 &7112789806559990923
 GameObject:
   m_ObjectHideFlags: 0
@@ -2274,10 +1914,6 @@ GameObject:
   - component: {fileID: 8301380275395588189}
   - component: {fileID: 1010822652527963729}
   - component: {fileID: 7854830242105377519}
-  - component: {fileID: 47641535}
-  - component: {fileID: 47641536}
-  - component: {fileID: 47641537}
-  - component: {fileID: 47641538}
   m_Layer: 8
   m_Name: PM3D_Cube3D_1
   m_TagString: Ground
@@ -2358,7 +1994,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.017, y: 0.0022, z: 0.017}
+  m_Size: {x: 0.020049315, y: 0.002315221, z: 0.020303346}
   m_Center: {x: 0.0000042462348, y: 0.008845806, z: 0.0000037050247}
 --- !u!114 &8301380275395588189
 MonoBehaviour:
@@ -2506,68 +2142,12 @@ Rigidbody:
   serializedVersion: 2
   m_Mass: 10
   m_Drag: 2
-  m_AngularDrag: 1
-  m_UseGravity: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
   m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 10
   m_CollisionDetection: 0
---- !u!136 &47641535
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7112789806559990923}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.0022000002
-  m_Height: 0.018653855
-  m_Direction: 0
-  m_Center: {x: 0, y: 0.007999999, z: -0.008}
---- !u!136 &47641536
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7112789806559990923}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.0022000002
-  m_Height: 0.018653855
-  m_Direction: 0
-  m_Center: {x: 0, y: 0.007999999, z: 0.008}
---- !u!136 &47641537
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7112789806559990923}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.0022000002
-  m_Height: 0.018653855
-  m_Direction: 2
-  m_Center: {x: -0.008, y: 0.007999999, z: 0}
---- !u!136 &47641538
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7112789806559990923}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.0022000002
-  m_Height: 0.018653855
-  m_Direction: 2
-  m_Center: {x: 0.008, y: 0.007999999, z: 0}
 --- !u!1 &7355550894745612270
 GameObject:
   m_ObjectHideFlags: 0
@@ -2583,10 +2163,6 @@ GameObject:
   - component: {fileID: 7355550894745612271}
   - component: {fileID: 7355550894745612240}
   - component: {fileID: 6852149553997619401}
-  - component: {fileID: 4206247393218497652}
-  - component: {fileID: 583027779899607064}
-  - component: {fileID: 274661911177861135}
-  - component: {fileID: 3990543494257602683}
   m_Layer: 14
   m_Name: PM3D_Cube3D_4.001
   m_TagString: LivingGround
@@ -2666,7 +2242,7 @@ Rigidbody:
   serializedVersion: 2
   m_Mass: 10
   m_Drag: 2
-  m_AngularDrag: 1
+  m_AngularDrag: 0.05
   m_UseGravity: 1
   m_IsKinematic: 1
   m_Interpolate: 0
@@ -2696,7 +2272,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.017, y: 0.0022, z: 0.017}
+  m_Size: {x: 0.019363862, y: 0.0023918152, z: 0.01983468}
   m_Center: {x: 0.00023084103, y: 0.008817254, z: -0.020289503}
 --- !u!82 &6852149553997619401
 AudioSource:
@@ -2821,62 +2397,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!136 &4206247393218497652
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7355550894745612270}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.0022000002
-  m_Height: 0.018653855
-  m_Direction: 0
-  m_Center: {x: 0, y: 0.007999999, z: -0.0118}
---- !u!136 &583027779899607064
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7355550894745612270}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.0022000002
-  m_Height: 0.018653855
-  m_Direction: 0
-  m_Center: {x: 0, y: 0.007999999, z: -0.0285}
---- !u!136 &274661911177861135
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7355550894745612270}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.0022000002
-  m_Height: 0.018653855
-  m_Direction: 2
-  m_Center: {x: -0.0085, y: 0.007999999, z: -0.02}
---- !u!136 &3990543494257602683
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7355550894745612270}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.0022000002
-  m_Height: 0.018653855
-  m_Direction: 2
-  m_Center: {x: 0.0085, y: 0.007999999, z: -0.02}
 --- !u!1 &8035351236706479500
 GameObject:
   m_ObjectHideFlags: 0
@@ -3075,10 +2595,6 @@ GameObject:
   - component: {fileID: 5238857632934893711}
   - component: {fileID: 9177912719476679372}
   - component: {fileID: 5466850789967200963}
-  - component: {fileID: 2160661563074600992}
-  - component: {fileID: 8053925071554614045}
-  - component: {fileID: 4450849281798514243}
-  - component: {fileID: 8523441179518636165}
   m_Layer: 14
   m_Name: PM3D_Cube3D_5.002
   m_TagString: LivingGround
@@ -3158,7 +2674,7 @@ Rigidbody:
   serializedVersion: 2
   m_Mass: 10
   m_Drag: 2
-  m_AngularDrag: 1
+  m_AngularDrag: 0.05
   m_UseGravity: 1
   m_IsKinematic: 1
   m_Interpolate: 0
@@ -3175,7 +2691,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.017, y: 0.0022, z: 0.017}
+  m_Size: {x: 0.020197988, y: 0.002523067, z: 0.019377712}
   m_Center: {x: -0.020298405, y: 0.008737605, z: 0.019828048}
 --- !u!114 &9177912719476679372
 MonoBehaviour:
@@ -3313,59 +2829,3 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!136 &2160661563074600992
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9177912719476679371}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.0022000002
-  m_Height: 0.018653855
-  m_Direction: 0
-  m_Center: {x: -0.02, y: 0.007999999, z: 0.0285}
---- !u!136 &8053925071554614045
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9177912719476679371}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.0022000002
-  m_Height: 0.018653855
-  m_Direction: 0
-  m_Center: {x: -0.02, y: 0.007999999, z: 0.0118}
---- !u!136 &4450849281798514243
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9177912719476679371}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.0022000002
-  m_Height: 0.018653855
-  m_Direction: 2
-  m_Center: {x: -0.0285, y: 0.007999999, z: 0.02}
---- !u!136 &8523441179518636165
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9177912719476679371}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.0022000002
-  m_Height: 0.018653855
-  m_Direction: 2
-  m_Center: {x: -0.0118, y: 0.007999999, z: 0.02}

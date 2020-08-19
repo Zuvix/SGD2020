@@ -96,7 +96,7 @@ public class SpiderBehaviour : Enemy
                 yield return StartCoroutine(Steer(false));
                 yield return StartCoroutine(MoveAndLook());
             }
-            else
+            else if(!f && l && !r)
             {
                 yield return StartCoroutine(MoveAndLook());
             }
@@ -172,7 +172,16 @@ public class SpiderBehaviour : Enemy
             transform.Translate(Vector3.forward * speed);
             yield return new WaitForFixedUpdate();
         } 
-        StartCoroutine(MoveAndLook());
+    }
+    IEnumerator Backward()
+    {
+        anim.speed = 0.4f;
+        while (front.timeOnGround<0.1f || right.timeOnGround<0.1f || left.timeOnGround < 0.1f)
+        {
+            transform.Translate(Vector3.forward * speed*-0.4f);
+            yield return new WaitForFixedUpdate();
+        }
+        anim.speed = 1f;
     }
     IEnumerator KillPlayer()
     {

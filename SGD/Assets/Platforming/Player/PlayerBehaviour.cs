@@ -177,8 +177,9 @@ public class PlayerBehaviour : MonoBehaviour
             doubleJump = false;
             isJumping = false;
             jumpdelay = 0;
-            anim.SetBool("isJumping", true);
+            anim.SetBool("isDjumping", true);
             anim.SetBool("isLanding", false);
+            anim.SetBool("isFalling", false);
             anim.Play("jump", 0, 0);
             jump.Play();
         }
@@ -188,6 +189,7 @@ public class PlayerBehaviour : MonoBehaviour
             rb.AddForce(Vector3.down * downForce, ForceMode.Force);
             anim.SetBool("isFalling", true);
             anim.SetBool("isJumping", false);
+            anim.SetBool("isDjumping", false);
         }
 
     }

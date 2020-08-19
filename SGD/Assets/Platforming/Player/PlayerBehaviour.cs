@@ -206,7 +206,9 @@ public class PlayerBehaviour : MonoBehaviour
             {
                 if (isAttacking)
                 {
-                    other.gameObject.GetComponent<Enemy>().Die();
+                    Enemy e = other.gameObject.GetComponent<Enemy>();
+                    e.Die();
+                    e.Impact();
                 }
                 else if (rb.velocity.y < -0.05f)
                 {

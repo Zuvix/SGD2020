@@ -17,7 +17,6 @@ public class SpiderBehaviour : Enemy
     public AudioSource attackSound;
     public float steerIntensity = 0.38f;
     public float frontCheckIntensity = 0.15f;
-
     private EyeSensor front;
     private EyeSensor right;
     private EyeSensor left;

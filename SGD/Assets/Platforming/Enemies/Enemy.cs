@@ -11,9 +11,11 @@ public abstract class Enemy : MonoBehaviour
     public Collider[] colliders;
     protected DissolveEffect[] de;
     public GameObject summonerEffect;
+    [HideInInspector]
     public bool summoningComplete = false;
     protected Quaternion startRot;
     protected Vector3 startPos;
+    public GameObject impact;
     public virtual void Die()
     {
         if (colliders != null)
@@ -114,5 +116,10 @@ public abstract class Enemy : MonoBehaviour
         rb.useGravity = true;
         StartCoroutine("BrainScope");
         summoningComplete = true;
+    }
+    public void Impact()
+    {
+        if(impact!=null)
+            impact.SetActive(true);
     }
 }

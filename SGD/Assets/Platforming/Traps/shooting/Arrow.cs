@@ -5,11 +5,17 @@ using UnityEngine;
 public class Arrow : MonoBehaviour
 {
     public float speed = 0.1f;
+    TrailRenderer tr;
+    private void Awake()
+    {
+        tr = GetComponentInChildren<TrailRenderer>();
+    }
     public IEnumerator Fly()
     {
         yield return new WaitForSeconds(0.95f);
         while (true)
         {
+            tr.enabled = true;
             transform.Translate(Vector3.up * speed*-1);
             transform.Rotate(Vector3.up * speed*10);
             yield return new WaitForFixedUpdate();
@@ -24,6 +30,7 @@ public class Arrow : MonoBehaviour
     }
     private void OnEnable()
     {
+        tr.enabled = false;
         StartCoroutine("Fly");
     }
     private void OnDisable()

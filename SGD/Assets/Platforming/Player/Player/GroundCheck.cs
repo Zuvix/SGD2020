@@ -16,6 +16,7 @@ public class GroundCheck : MonoBehaviour
         {
             pb.isOnGround = true;
             pb.doubleJump = false;
+            pb.hasJumpedOnce = false;
         }
 
     }

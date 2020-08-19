@@ -32,6 +32,7 @@ public class PlayerBehaviour : MonoBehaviour
     Vector2 input;
     bool isJumping = false;
     public bool isOnGround;
+     public bool hasJumpedOnce = false;
     Animator anim;
     private LayerMask mask;
     public float maxRayDistance = 1f;
@@ -42,7 +43,7 @@ public class PlayerBehaviour : MonoBehaviour
 
     void Awake()
     {
-        mask = LayerMask.GetMask("Ground", "Enemy");
+        mask = LayerMask.GetMask("Ground", "Enemy","LivingGround");
         cameraT = Camera.main.transform;
         rb = GetComponent<Rigidbody>();
         anim = GetComponent<Animator>();
@@ -55,7 +56,6 @@ public class PlayerBehaviour : MonoBehaviour
         RaycastHit hit;
 
         Physics.Raycast(ray, out hit, maxRayDistance, mask);
-        //hit.distance;
         if (Physics.Raycast(ray, out hit, maxRayDistance, mask))
         {
             Debug.DrawRay(transform.position, Vector3.down * maxRayDistance, Color.green);
@@ -75,7 +75,7 @@ public class PlayerBehaviour : MonoBehaviour
             anim.SetBool("isFalling", false);
             anim.SetBool("isLanding", false);
         }
-        Physics.Raycast(ray, out hit, maxRayDistance * 5, mask);
+        Physics.Raycast(ray, out hit, maxRayDistance * 30, mask);
         shadow.transform.position = hit.point + Vector3.up * shadowDistanceFromGroud;
 
         // input
@@ -89,7 +89,7 @@ public class PlayerBehaviour : MonoBehaviour
             input = Vector2.zero;
         }
         //Input.GetKeyDown(KeyCode.Jump) --> Input.GetButton("Jump")
-        if (Input.GetButtonDown("Jump") && jumpdelay > 0.1f && (isOnGround || doubleJump)&&controlsEnabled)
+        if (Input.GetButtonDown("Jump") && jumpdelay > 0.1f && (leftGroundTime<0.15f || doubleJump)&&controlsEnabled)
         {
             isJumping = true;
         }
@@ -159,8 +159,9 @@ public class PlayerBehaviour : MonoBehaviour
             transform.Translate(Vector3.forward * moveSpeed);
             //rb.velocity = new Vector3(Mathf.Clamp(rb.velocity.x, -moveSpeed, moveSpeed), rb.velocity.y, Mathf.Clamp(rb.velocity.z, -moveSpeed, moveSpeed));
         }
-        if (isJumping && leftGroundTime<0.125f)
+        if (isJumping && !hasJumpedOnce)
         {
+            hasJumpedOnce = true;
             rb.AddForce(Vector3.up * jumpPower);
             isJumping = false;
             jumpdelay = 0;
@@ -181,7 +182,7 @@ public class PlayerBehaviour : MonoBehaviour
             anim.Play("jump", 0, 0);
             jump.Play();
         }
-        if (rb.velocity.y < -0.15f && !isOnGround)
+        if (rb.velocity.y < -0.15f && leftGroundTime>0.15f)
         {
             
             rb.AddForce(Vector3.down * downForce, ForceMode.Force);

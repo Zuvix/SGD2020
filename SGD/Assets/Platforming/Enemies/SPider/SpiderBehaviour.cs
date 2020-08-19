@@ -98,7 +98,7 @@ public class SpiderBehaviour : Enemy
             }
             else if(!f && l && !r)
             {
-                yield return StartCoroutine(MoveAndLook());
+                yield return StartCoroutine(Backward());
             }
             yield return new WaitForFixedUpdate();
         }

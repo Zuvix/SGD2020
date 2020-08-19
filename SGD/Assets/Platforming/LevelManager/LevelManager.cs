@@ -18,6 +18,11 @@ public class LevelManager : Singleton<LevelManager>
     public GameObject Player;
     List<Vector3> occupiedSpaces;
 
+    //Stats Section
+    public float avgTime=0f;
+    public float yourTime=0f;
+    public float bestTime = 0f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -26,6 +31,11 @@ public class LevelManager : Singleton<LevelManager>
         Player = GameObject.FindGameObjectWithTag("Player");
         StartCoroutine(RestartChecker());
         occupiedSpaces = new List<Vector3>();
+        yourTime = 0f;   
+    }
+    private void Update()
+    {
+        yourTime += Time.deltaTime;
     }
     public void GetGem()
     {
@@ -36,6 +46,14 @@ public class LevelManager : Singleton<LevelManager>
             gemText.text = "Max";
             portal.GetComponent<PortalOpener>().OpenPortal();
         }
+    }
+    public void ShowStats()
+    {
+        float finalTime = yourTime;
+        //Player prefs when final
+        float avgTime = 0;
+        string yourMark = "A";
+
     }
     public void FinishLevel()
     {

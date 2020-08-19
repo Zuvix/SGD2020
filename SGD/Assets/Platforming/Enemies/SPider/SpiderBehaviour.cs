@@ -182,7 +182,7 @@ public class SpiderBehaviour : Enemy
     IEnumerator Backward()
     {
         anim.speed = 0.4f;
-        while (front.timeOnGround<0.1f || right.timeOnGround<0.1f || left.timeOnGround < 0.1f)
+        while (front.timeOnGround<0.15f && right.timeOnGround<0.15f && left.timeOnGround < 0.15f)
         {
             transform.Translate(Vector3.forward * speed*-0.4f);
             yield return new WaitForFixedUpdate();

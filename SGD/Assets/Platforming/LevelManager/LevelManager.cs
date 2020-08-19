@@ -17,6 +17,7 @@ public class LevelManager : Singleton<LevelManager>
     [HideInInspector]
     public GameObject Player;
     List<Vector3> occupiedSpaces;
+    public AudioSource gemSound;
 
     //Stats Section
     public float avgTime=0f;
@@ -39,6 +40,7 @@ public class LevelManager : Singleton<LevelManager>
     }
     public void GetGem()
     {
+        gemSound.Play();
         gemCount++;
         gemText.text = " "+gemCount+"/" + maxGemCount;
         if (gemCount >= maxGemCount)

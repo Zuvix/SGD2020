@@ -178,7 +178,7 @@ public class FrogBehaviour2 : Enemy
             if (Crown.activeSelf)
             {
                 GameObject g = Instantiate(Gem);
-                g.transform.position = transform.position;
+                g.transform.position = transform.position + Vector3.up * 0.3f;
                 Crown.GetComponent<DissolveEffect>().StartDissolve();
             }
             deathSound.Play();

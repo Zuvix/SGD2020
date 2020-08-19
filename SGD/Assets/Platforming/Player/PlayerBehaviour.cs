@@ -22,7 +22,6 @@ public class PlayerBehaviour : MonoBehaviour
     public AudioSource walk2;
     public AudioSource jump;
     public AudioSource land;
-    public AudioSource gem;
     public AudioSource deathSound;
 
     public bool isAttacking = false;
@@ -226,12 +225,6 @@ public class PlayerBehaviour : MonoBehaviour
                     isHit = true;
                 }
             }
-        }
-        if (other.gameObject.CompareTag("Gem"))
-        {
-            gem.Play();
-            LevelManager.Instance.GetGem();
-            Destroy(other.gameObject);
         }
         if (other.gameObject.CompareTag("Spike")|| other.gameObject.CompareTag("Projectile") && !isHit)
         {

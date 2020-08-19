@@ -100,8 +100,14 @@ public class SpiderBehaviour : Enemy
             {
                 yield return StartCoroutine(Backward());
             }
+            else
+            {
+                yield return StartCoroutine(MoveAndLook());
+            }
             yield return new WaitForFixedUpdate();
+
         }
+        
     }
     IEnumerator Steer(bool toRight)
     { 

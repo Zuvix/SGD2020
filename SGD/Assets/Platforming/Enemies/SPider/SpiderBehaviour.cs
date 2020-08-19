@@ -96,7 +96,7 @@ public class SpiderBehaviour : Enemy
                 yield return StartCoroutine(Steer(false));
                 yield return StartCoroutine(MoveAndLook());
             }
-            else if(!f && l && !r)
+            else if(!f && !l && !r)
             {
                 yield return StartCoroutine(Backward());
             }

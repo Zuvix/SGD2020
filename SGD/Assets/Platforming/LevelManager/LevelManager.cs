@@ -1,5 +1,9 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using Data;
+using IngameEditor;
+using Management;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
@@ -25,9 +29,18 @@ public class LevelManager : Singleton<LevelManager>
     public float yourTime=0f;
     public float bestTime = 0f;
 
+    [Header("Generator")]
+    public LevelDataObject sourceData;
+    public Transform env;
+    public Transform spawn;
+    public CameraFollow camRef;
+    private bool _generated;
+    private Tuple<int, List<Tuple<Vector2Int, PoolBlock>>> _passedData;
+    
     // Start is called before the first frame update
     void Start()
     {
+<<<<<<< HEAD
         if (!isMenu)
         {
             maxGemCount = GameObject.FindGameObjectsWithTag("Gem").Length;
@@ -36,6 +49,14 @@ public class LevelManager : Singleton<LevelManager>
             StartCoroutine(RestartChecker());
         }
         yourTime = 0f;
+=======
+        maxGemCount = GameObject.FindGameObjectsWithTag("Gem").Length;
+        gemText.text = " 0/" + maxGemCount;
+        Player = GameObject.FindGameObjectWithTag("Player");
+        camRef.PlayerObj = Player;
+        camRef.CameraFollowObj = Player.transform.GetChild(3).gameObject;
+        StartCoroutine(RestartChecker());
+>>>>>>> f83e331... Pass data from editor to game
         occupiedSpaces = new List<Vector3>();
     }
     private void Update()
@@ -63,11 +84,25 @@ public class LevelManager : Singleton<LevelManager>
     }
     public void FinishLevel()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        if (_generated)
+        {
+            TransitionManager.instance.LoadLevel(_passedData.Item1+1);
+        }
+        else
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        }
     }
     public void RestartLevel()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        if (_generated)
+        {
+            TransitionManager.instance.PassData(_passedData.Item1, _passedData.Item2);
+        }
+        else
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
     }
     public IEnumerator SpawnMonster(string type, Vector3 position, Quaternion rotation)
     {
@@ -112,5 +147,60 @@ public class LevelManager : Singleton<LevelManager>
             yield return new WaitForFixedUpdate();
         }
 
+    }
+    
+    public void Initialize(int index, List<Tuple<Vector2Int, PoolBlock>> data)
+    {
+        if (index >= 0 && sourceData.levels.Count >= index + 1)
+        {
+            var level = sourceData.levels[index];
+            var e = Math.Max(level.dimensions.x, level.dimensions.y) / 2f * 6f + 3f;
+            env.position = new Vector3(e, 0, -e);
+            
+            // Generate 
+            for (var x = 0; x < level.dimensions.x; x++)
+            {
+                for (var y = 0; y < level.dimensions.y; y++)
+                {
+                    if (level.layout.ContainsKey(x))
+                    {
+                        if (level.layout[x].ContainsKey(y))
+                        {
+                            // Generate block primitive
+                            var block = level.layout[x][y];
+                            var obj = Instantiate(block.layoutBlockData.targetPrefab, new Vector3(3f + x*6, 0, -3 - y*6), Quaternion.Euler(0, ((int?) block.facing).Value * 90, 0), spawn);
+                            for (var i = 0; i < 9; i++)
+                            {
+                                if (block.overridePlacings[i] != null)
+                                {
+                                    var placing = Instantiate(block.overridePlacings[i].targetPrefab, obj.transform.position + Vector3.up*4,
+                                        Quaternion.identity, spawn);
+                                }
+                            }
+                        }
+                    }
+                }                    
+            }
+
+            foreach (var poolEntry in data)
+            {
+                var obj = Instantiate(poolEntry.Item2.poolBlockData.targetPrefab, new Vector3(3f + poolEntry.Item1.x*6, 0, -3f - poolEntry.Item1.y*6), Quaternion.Euler(0, 0, 0), spawn);
+                for (var i = 0; i < 9; i++)
+                {
+                    if (poolEntry.Item2.overridePlacings[i] != null)
+                    {
+                        var placing = Instantiate(poolEntry.Item2.overridePlacings[i].targetPrefab, obj.transform.position+Vector3.up*4,
+                            Quaternion.identity, spawn);
+                    }
+                }
+            }
+
+            _generated = true;
+            _passedData = new Tuple<int, List<Tuple<Vector2Int, PoolBlock>>>(index, data);
+        }
+        else
+        {
+            throw new Exception("Tried to load nonexistent level data");
+        }
     }
 }

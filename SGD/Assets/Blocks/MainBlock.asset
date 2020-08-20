@@ -15,7 +15,8 @@ MonoBehaviour:
   id: 0
   mesh: {fileID: -5495902117074765545, guid: 86df302be9802f347bee65cc0fef21f7, type: 3}
   material: {fileID: 2100000, guid: 6d88d06c5976256458608fdb05d4409d, type: 2}
-  targetPrefab: {fileID: 0}
+  targetPrefab: {fileID: 5446430343796842214, guid: d145cf8a184fdee479cb9a1665a3e953,
+    type: 3}
   defaultPlacings:
   - {fileID: 0}
   - {fileID: 0}

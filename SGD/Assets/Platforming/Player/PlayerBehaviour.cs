@@ -122,7 +122,7 @@ public class PlayerBehaviour : MonoBehaviour
         {
             currentAttackCd += Time.deltaTime;
         }
-        if (Input.GetMouseButtonDown(0) && currentAttackCd >= attackCd && controlsEnabled)
+        if (Input.GetButton("Attack") && currentAttackCd >= attackCd && controlsEnabled)
         {
             punch.Play();
             isAttacking = true;
@@ -157,6 +157,7 @@ public class PlayerBehaviour : MonoBehaviour
             //rb.velocity+=transform.forward*accel;
             transform.Translate(Vector3.forward * moveSpeed);
             //rb.velocity = new Vector3(Mathf.Clamp(rb.velocity.x, -moveSpeed, moveSpeed), rb.velocity.y, Mathf.Clamp(rb.velocity.z, -moveSpeed, moveSpeed));
+            cameraT.parent.rotation = transform.rotation;
         }
         if (isJumping && !hasJumpedOnce)
         {

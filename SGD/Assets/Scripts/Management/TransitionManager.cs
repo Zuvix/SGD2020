@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Data;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -87,6 +88,22 @@ namespace Management
                 });
 
                 StartCoroutine(GetLoadProgress(() => SceneManager.SetActiveScene(SceneManager.GetSceneByBuildIndex((int) SceneIndexes.Editor))));
+            }));
+        }
+
+        public void PassData(int num, List<Tuple<Vector2Int, PoolBlock>> data)
+        {
+            StartCoroutine(ToggleLoadingScreen(true, () =>
+            {
+                loading.Add(SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene()).ToAsync());
+                loading.Add(SceneManager.LoadSceneAsync((int) SceneIndexes.Game, LoadSceneMode.Additive).ToAsync());
+                loading[loading.Count - 1].Then(() =>
+                {
+                    Task.Delay(1000);
+                    LevelManager.Instance.Initialize(num, data);
+                });
+
+                StartCoroutine(GetLoadProgress(() => SceneManager.SetActiveScene(SceneManager.GetSceneByBuildIndex((int) SceneIndexes.Game))));
             }));
         }
         

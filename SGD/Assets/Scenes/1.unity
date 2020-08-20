@@ -1659,6 +1659,7 @@ MonoBehaviour:
     type: 3}
   wizzardPrefab: {fileID: 0}
   Player: {fileID: 0}
+<<<<<<< HEAD
   gemSound: {fileID: 1445022549}
   isMenu: 0
   avgTime: 0
@@ -1760,6 +1761,11 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+=======
+  avgTime: 0
+  yourTime: 0
+  bestTime: 0
+>>>>>>> f83e331... Pass data from editor to game
 --- !u!1001 &1686808553
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3829,6 +3835,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 172.27103
+      objectReference: {fileID: 0}
+    - target: {fileID: 3864780081710295761, guid: 6964aa8d02cd29b4ebb55538ff583f7e,
+        type: 3}
+      propertyPath: m_Color.a
+      value: 0.5176471
       objectReference: {fileID: 0}
     - target: {fileID: 3864780081742546321, guid: 6964aa8d02cd29b4ebb55538ff583f7e,
         type: 3}

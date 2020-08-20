@@ -15,6 +15,7 @@ MonoBehaviour:
   id: 2
   mesh: {fileID: 0}
   material: {fileID: 0}
-  targetPrefab: {fileID: 0}
+  targetPrefab: {fileID: 3864780081770413074, guid: 6964aa8d02cd29b4ebb55538ff583f7e,
+    type: 3}
   icon: {fileID: 21300000, guid: 684a5ef860047b847988e5de9cf3e3e0, type: 3}
   iconColor: {r: 0, g: 0.5613651, b: 1, a: 1}

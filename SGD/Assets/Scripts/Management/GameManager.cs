@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
 using Data;
@@ -192,7 +193,8 @@ namespace Management
                                     var obj = blockStash.GetChild(i);
                                     obj.gameObject.LeanMoveY(-10, blockFallTime).setDelay(i / 5f).setEase(blockFallCurve);
                                 }
-                                //TODO: Build level
+
+                                StartCoroutine(ToGame());
                                 _roundEnded = true;
                             }
                         }
@@ -301,6 +303,12 @@ namespace Management
             {
                 throw new Exception("Tried to load nonexistent level data");
             }
+        }
+
+        private IEnumerator ToGame()
+        {
+            yield return new WaitForSeconds(1.6f);
+            TransitionManager.instance.PassData(levelNum, _locations);
         }
     }
 }

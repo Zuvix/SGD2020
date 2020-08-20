@@ -18,6 +18,7 @@ public class LevelManager : Singleton<LevelManager>
     public GameObject Player;
     List<Vector3> occupiedSpaces;
     public AudioSource gemSound;
+    public bool isMenu = false;
 
     //Stats Section
     public float avgTime=0f;
@@ -27,12 +28,15 @@ public class LevelManager : Singleton<LevelManager>
     // Start is called before the first frame update
     void Start()
     {
-        maxGemCount = GameObject.FindGameObjectsWithTag("Gem").Length;
-        gemText.text = " 0/" + maxGemCount;
-        Player = GameObject.FindGameObjectWithTag("Player");
-        StartCoroutine(RestartChecker());
+        if (!isMenu)
+        {
+            maxGemCount = GameObject.FindGameObjectsWithTag("Gem").Length;
+            gemText.text = " 0/" + maxGemCount;
+            Player = GameObject.FindGameObjectWithTag("Player");
+            StartCoroutine(RestartChecker());
+        }
+        yourTime = 0f;
         occupiedSpaces = new List<Vector3>();
-        yourTime = 0f;   
     }
     private void Update()
     {

@@ -17,7 +17,7 @@ public class TrailSTarter : MonoBehaviour
     }
     public void ActivateTr()
     {
-        tr.gameObject.SetActive(true);
+        tr.enabled = true;
 
     }
    IEnumerator W8andGo()

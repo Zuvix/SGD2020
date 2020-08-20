@@ -50,7 +50,7 @@ public class FrogBehaviour2 : Enemy
         {
             if (isOnGround)
             {
-                FindPlace(12f);
+                FindPlace(20f);
                 yield return new WaitForFixedUpdate();
                 if (Target != null)
                 {
@@ -78,7 +78,7 @@ public class FrogBehaviour2 : Enemy
         {
             lm = LayerMask.GetMask("Ground");
         }
-        Collider[] colls=Physics.OverlapBox(frontColl.bounds.center, frontColl.bounds.size / 2, transform.rotation, lm);
+        Collider[] colls=Physics.OverlapBox(frontColl.bounds.center, frontColl.bounds.size/2, transform.rotation, lm);
         foreach (Collider c in colls)
         {
             Vector3 cp = new Vector3(c.transform.position.x, transform.position.y, c.transform.position.z);
@@ -88,7 +88,7 @@ public class FrogBehaviour2 : Enemy
             }
         }
 
-        colls = Physics.OverlapBox(rightColl.bounds.center, rightColl.bounds.size / 2, transform.rotation, lm);
+        colls = Physics.OverlapBox(rightColl.bounds.center, rightColl.bounds.size/2, transform.rotation, lm);
         foreach (Collider c in colls)
         {
             Vector3 cp = new Vector3(c.transform.position.x, transform.position.y, c.transform.position.z);
@@ -191,6 +191,7 @@ public class FrogBehaviour2 : Enemy
         {
             LevelManager.Instance.StartCoroutine(LevelManager.Instance.SpawnMonster("ff", startPos, startRot));
             base.Die();
+            StopAllCoroutines();
             deathSound.Play();
             isDead = true;
         }

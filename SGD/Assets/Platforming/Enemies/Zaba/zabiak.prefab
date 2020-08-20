@@ -1186,28 +1186,19 @@ TrailRenderer:
   m_Time: 0.3
   m_Parameters:
     serializedVersion: 3
-    widthMultiplier: 1
+    widthMultiplier: 0.14
     widthCurve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 0.11206988
+        value: 1
         inSlope: 0
         outSlope: 0
         tangentMode: 0
         weightedMode: 0
         inWeight: 0.33333334
         outWeight: 0.33333334
-      - serializedVersion: 3
-        time: 0.4322389
-        value: 0.05689451
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
       - serializedVersion: 3
         time: 1
         value: 0
@@ -1456,8 +1447,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.5464366, y: 0.22663487, z: 5.4403586}
-  m_Center: {x: 0.0015321837, y: -0.0077875587, z: 0.0289455}
+  m_Size: {x: 0.5464366, y: 0.22046843, z: 5.315065}
+  m_Center: {x: 0.0015321731, y: -0.0047043324, z: 0.0080949785}
 --- !u!54 &5615880540343754886
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2279,8 +2270,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.18036224, y: 0.013940785, z: 0.15940505}
-  m_Center: {x: 0.0029143824, y: 0.0043627555, z: 0.023356345}
+  m_Size: {x: 0.18036224, y: 0.021199439, z: 0.15940505}
+  m_Center: {x: 0.002914381, y: 0.008554893, z: 0.023356348}
 --- !u!82 &-777220815494281763
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2302,7 +2293,7 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 15
+  MaxDistance: 14
   Pan2D: 0
   rolloffMode: 2
   BypassEffects: 0
@@ -2425,7 +2416,7 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 5
+  MaxDistance: 10
   Pan2D: 0
   rolloffMode: 2
   BypassEffects: 0
@@ -2548,7 +2539,7 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 5
+  MaxDistance: 10
   Pan2D: 0
   rolloffMode: 2
   BypassEffects: 0
@@ -2671,7 +2662,7 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 5
+  MaxDistance: 10
   Pan2D: 0
   rolloffMode: 2
   BypassEffects: 0
@@ -2942,8 +2933,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.5464366, y: 0.31336567, z: 5.3919296}
-  m_Center: {x: 0.0015321837, y: -0.04877689, z: 0.0047302246}
+  m_Size: {x: 0.54643655, y: 0.25299358, z: 5.4659977}
+  m_Center: {x: 0.0015321732, y: -0.018590784, z: -0.0055656433}
 --- !u!54 &8509644360156042675
 Rigidbody:
   m_ObjectHideFlags: 0

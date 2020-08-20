@@ -242,7 +242,7 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 9
-  MaxDistance: 30
+  MaxDistance: 20
   Pan2D: 0
   rolloffMode: 2
   BypassEffects: 0
@@ -271,7 +271,7 @@ AudioSource:
       outWeight: 0
     - serializedVersion: 3
       time: 1
-      value: 0.07084352
+      value: 0.05392456
       inSlope: -0.30011982
       outSlope: -0.30011982
       tangentMode: 0
@@ -347,7 +347,7 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 9
-  MaxDistance: 30
+  MaxDistance: 20
   Pan2D: 0
   rolloffMode: 2
   BypassEffects: 0
@@ -376,7 +376,7 @@ AudioSource:
       outWeight: 0
     - serializedVersion: 3
       time: 1
-      value: 0.111584485
+      value: 0.05392456
       inSlope: -0.30011982
       outSlope: -0.30011982
       tangentMode: 0
@@ -452,7 +452,7 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 9
-  MaxDistance: 30
+  MaxDistance: 20
   Pan2D: 0
   rolloffMode: 2
   BypassEffects: 0
@@ -481,7 +481,7 @@ AudioSource:
       outWeight: 0
     - serializedVersion: 3
       time: 1
-      value: 0.111584485
+      value: 0.059310913
       inSlope: -0.30011982
       outSlope: -0.30011982
       tangentMode: 0
@@ -557,7 +557,7 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 9
-  MaxDistance: 30
+  MaxDistance: 20
   Pan2D: 0
   rolloffMode: 2
   BypassEffects: 0
@@ -586,7 +586,7 @@ AudioSource:
       outWeight: 0
     - serializedVersion: 3
       time: 1
-      value: 0.111584485
+      value: 0.048538208
       inSlope: -0.30011982
       outSlope: -0.30011982
       tangentMode: 0

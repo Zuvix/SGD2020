@@ -40,7 +40,6 @@ public class LevelManager : Singleton<LevelManager>
     // Start is called before the first frame update
     void Start()
     {
-<<<<<<< HEAD
         if (!isMenu)
         {
             maxGemCount = GameObject.FindGameObjectsWithTag("Gem").Length;
@@ -49,14 +48,6 @@ public class LevelManager : Singleton<LevelManager>
             StartCoroutine(RestartChecker());
         }
         yourTime = 0f;
-=======
-        maxGemCount = GameObject.FindGameObjectsWithTag("Gem").Length;
-        gemText.text = " 0/" + maxGemCount;
-        Player = GameObject.FindGameObjectWithTag("Player");
-        camRef.PlayerObj = Player;
-        camRef.CameraFollowObj = Player.transform.GetChild(3).gameObject;
-        StartCoroutine(RestartChecker());
->>>>>>> f83e331... Pass data from editor to game
         occupiedSpaces = new List<Vector3>();
     }
     private void Update()

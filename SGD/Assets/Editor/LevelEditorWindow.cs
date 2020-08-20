@@ -471,7 +471,9 @@ namespace Editor
                                     }
                                 }
 
+                                serializedObject.ApplyModifiedProperties();
                                 levelObj.layout[_selectedBlock.x][_selectedBlock.y].overridePlacings = placingData;
+                                EditorUtility.SetDirty(serializedObject.targetObject);
                                 serializedObject.Update();
                                 GUILayout.FlexibleSpace();
                                 EditorGUILayout.EndVertical();

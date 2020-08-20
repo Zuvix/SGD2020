@@ -683,6 +683,22 @@ MonoBehaviour:
     - {fileID: 0}
     - {fileID: 0}
     - {fileID: 0}
+  defaultLoadTips:
+  - 
+  - 
+  - 
+  - 
+  - 
+  screenPairs:
+  - loadCinematicScene: 0
+    targetSceneBuildIndex: 0
+    text: 
+  - loadCinematicScene: 0
+    targetSceneBuildIndex: 0
+    text: 
+  - loadCinematicScene: 0
+    targetSceneBuildIndex: 0
+    text: 
 --- !u!1 &1296897222
 GameObject:
   m_ObjectHideFlags: 0

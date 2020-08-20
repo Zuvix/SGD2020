@@ -17,6 +17,9 @@ namespace Management
         public Image shade;
         public GameObject loadingScreen;
         public static TransitionManager instance;
+        private AsyncOperation _sceneHolder;
+        private Tuple<int, int> _heldLevelIdentification;
+        private bool _loadLock;
     
         public TransitionManager()
         {
@@ -31,6 +34,27 @@ namespace Management
             //loading.AddRange(DataManager.LoadLevelObjects());
             loading.Add(SceneManager.LoadSceneAsync((int) SceneIndexes.Menu, LoadSceneMode.Additive).ToAsync());
             StartCoroutine(GetLoadProgress(() => SceneManager.SetActiveScene(SceneManager.GetSceneByBuildIndex((int) SceneIndexes.Menu))));
+        }
+
+        private void Update()
+        {
+            if (_sceneHolder != null && loading.Count == 0 && !_loadLock) 
+            {
+                if (Input.GetButton("Submit"))
+                {
+                    _loadLock = true;
+                    loading.Add(SceneManager.UnloadSceneAsync(_heldLevelIdentification.Item1).ToAsync());
+                    StartCoroutine(GetLoadProgress(() =>
+                    {
+                        SceneManager.SetActiveScene(SceneManager.GetSceneByBuildIndex(_heldLevelIdentification.Item2));
+                        _sceneHolder.allowSceneActivation = true;
+                        _sceneHolder = null;
+                        _loadLock = false;
+
+                    }));
+                    _heldLevelIdentification = null;
+                }
+            }
         }
 
         public enum SceneIndexes
@@ -90,6 +114,18 @@ namespace Management
                 StartCoroutine(GetLoadProgress(() => SceneManager.SetActiveScene(SceneManager.GetSceneByBuildIndex((int) SceneIndexes.Editor))));
             }));
         }
+        
+        public void LoadStoryLevel(int num, int loadScreen = -1)
+        {
+            StartCoroutine(ToggleLoadingScreen(true, () =>
+            {
+                loading.Add(SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene()).ToAsync());
+                loading.Add(SceneManager.LoadSceneAsync(DataManager.instance.screenPairs[loadScreen].targetSceneBuildIndex).ToAsync());
+                _sceneHolder = SceneManager.LoadSceneAsync((int) SceneIndexes.Editor, LoadSceneMode.Additive);
+                _sceneHolder.allowSceneActivation = false;
+                StartCoroutine(GetPausedLoadProgress());
+            }));
+        }
 
         public void PassData(int num, List<Tuple<Vector2Int, PoolBlock>> data)
         {
@@ -126,6 +162,25 @@ namespace Management
             }
             loading.Clear();
             StartCoroutine(ToggleLoadingScreen(false, after));
+        }
+        
+        public IEnumerator GetPausedLoadProgress() {
+            for(var i = 0; i<loading.Count; i++) {
+                while (!loading[i].IsCompleted) {
+                    totalLoadingProgress = 0;
+
+                    foreach(var operation in loading) {
+                        totalLoadingProgress += operation.Progress;
+                    }
+
+                    totalLoadingProgress /= loading.Count;
+
+                    // Update progress
+
+                    yield return null;
+                }
+            }
+            loading.Clear();
         }
     }
 }

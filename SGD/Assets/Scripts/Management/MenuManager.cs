@@ -18,15 +18,13 @@ namespace Management
     
         [Header("Levels")]
         public Transform levelContainer;
-
+        public Transform levelArcadeContainer;
+        
         private void Start()
         {
             // Buttons
             levelButton.onClick.AddListener(ToggleLevelContainer);
-            arcadeButton.onClick.AddListener(() =>
-            {
-            
-            });
+            arcadeButton.onClick.AddListener(ToggleArcadeLevelContainer);
             quitButton.onClick.AddListener(() =>
             {
                 if (Application.isEditor)
@@ -49,12 +47,29 @@ namespace Management
                     Destroy(levelContainer.GetChild(x).gameObject);
                 }
             }
+            if (levelArcadeContainer.childCount > 0)
+            {
+                for (var x = 0; x < levelArcadeContainer.childCount; x++)
+                {
+                    Destroy(levelArcadeContainer.GetChild(x).gameObject);
+                }
+            }
 
             var counter = 0;
-            foreach (var level in dataSource.levels)
+            foreach (var level in DataManager.instance.StoryLevels)
             {
                 var index = counter;
                 var a = Instantiate(buttonPrefab, levelContainer, false);
+                a.transform.localScale = Vector3.one;
+                a.GetComponentInChildren<TMP_Text>().text = counter++.ToString();
+                a.GetComponent<Button>().onClick.AddListener(() => TransitionManager.instance.LoadStoryLevel(level.Item2, level.Item1));
+            }
+
+            counter = 0;
+            foreach (var level in dataSource.levels)
+            {
+                var index = counter;
+                var a = Instantiate(buttonPrefab, levelArcadeContainer, false);
                 a.transform.localScale = Vector3.one;
                 a.GetComponentInChildren<TMP_Text>().text = counter++.ToString();
                 a.GetComponent<Button>().onClick.AddListener(() => TransitionManager.instance.LoadLevel(index));
@@ -66,6 +81,13 @@ namespace Management
             var a = levelContainer.gameObject.activeInHierarchy;
             // TODO: toggle anim
             levelContainer.gameObject.SetActive(!a);
+        }
+        
+        private void ToggleArcadeLevelContainer()
+        {
+            var a = levelArcadeContainer.gameObject.activeInHierarchy;
+            // TODO: toggle anim
+            levelArcadeContainer.gameObject.SetActive(!a);
         }
     }
 }

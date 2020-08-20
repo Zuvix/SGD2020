@@ -43,7 +43,7 @@ MonoBehaviour:
           - {fileID: 0}
           - {fileID: 0}
           - {fileID: 11400000, guid: 8c4d4d695bc255741a104fe031c7aa50, type: 2}
-          - {fileID: 0}
+          - {fileID: 11400000, guid: 89bce2641abb61041aa0877f2c7bfc58, type: 2}
           - {fileID: 11400000, guid: 8c4d4d695bc255741a104fe031c7aa50, type: 2}
           - {fileID: 0}
           - {fileID: 0}
@@ -69,9 +69,9 @@ MonoBehaviour:
           overridePlacings:
           - {fileID: 0}
           - {fileID: 0}
+          - {fileID: 11400000, guid: 49fbe5f97f945424b92fbfd343683ba9, type: 2}
           - {fileID: 0}
-          - {fileID: 0}
-          - {fileID: 0}
+          - {fileID: 11400000, guid: d2f8e3e9a1a10dc4ab289aa1665504f9, type: 2}
           - {fileID: 0}
           - {fileID: 0}
           - {fileID: 0}

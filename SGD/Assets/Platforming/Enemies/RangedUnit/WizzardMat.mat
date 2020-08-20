@@ -8,18 +8,34 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: WizzardMat
-  m_Shader: {fileID: 4800000, guid: 933532a4fcc9baf4fa0491de14d08ed7, type: 3}
+  m_Shader: {fileID: -6465566751694194690, guid: 5fdfe6c85ff88364ab9c3cc496acb5a7,
+    type: 3}
   m_ShaderKeywords: _EMISSION _METALLICSPECGLOSSMAP _NORMALMAP
   m_LightmapFlags: 2
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: 2000
-  stringTagMap:
-    RenderType: Opaque
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
   disabledShaderPasses: []
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
+    - Texture2D_4FA379CD:
+        m_Texture: {fileID: 2800000, guid: 45c9fa3e39a04fe428cb864d7dbb9310, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_5D3DFBB4:
+        m_Texture: {fileID: 2800000, guid: e5e1d256a02bbef4fad42be723edad54, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_6AFB42B5:
+        m_Texture: {fileID: 2800000, guid: c03ef38349cd7c345a145c79264bb674, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_E7A6F8B5:
+        m_Texture: {fileID: 2800000, guid: d26adf68e848542488043fbc6d055dfa, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _BaseMap:
         m_Texture: {fileID: 2800000, guid: d26adf68e848542488043fbc6d055dfa, type: 3}
         m_Scale: {x: 1, y: 1}
@@ -48,7 +64,26 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _Texture2DAsset_4F76A2FC_Out_0:
+        m_Texture: {fileID: 2800000, guid: 45c9fa3e39a04fe428cb864d7dbb9310, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Texture2DAsset_9FD79CDD_Out_0:
+        m_Texture: {fileID: 2800000, guid: d26adf68e848542488043fbc6d055dfa, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Texture2DAsset_C74AB025_Out_0:
+        m_Texture: {fileID: 2800000, guid: e5e1d256a02bbef4fad42be723edad54, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Texture2DAsset_FBD14310_Out_0:
+        m_Texture: {fileID: 2800000, guid: c03ef38349cd7c345a145c79264bb674, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     m_Floats:
+    - Dissolve: 0
+    - Vector1_1D9A2AE: 0.01
+    - Vector1_EFE64959: 30
     - _AlphaClip: 0
     - _Blend: 0
     - _BumpScale: 1
@@ -71,6 +106,7 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
+    - Color_6DF76E71: {r: 0, g: 5.145098, b: 16, a: 0}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}

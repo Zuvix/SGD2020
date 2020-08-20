@@ -6,6 +6,7 @@ public class Arrow : MonoBehaviour
 {
     public float speed = 0.1f;
     TrailRenderer tr;
+
     private void Awake()
     {
         tr = GetComponentInChildren<TrailRenderer>();

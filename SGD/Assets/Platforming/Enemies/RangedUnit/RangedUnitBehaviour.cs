@@ -18,7 +18,7 @@ public class RangedUnitBehaviour : Enemy
         Activate();
         target = GameObject.FindGameObjectWithTag("Player");
     }
-
+    //Vojto si super
 
     public override void Die()
     {

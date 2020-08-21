@@ -119,6 +119,7 @@ public abstract class Enemy : MonoBehaviour
         rb.useGravity = true;
         StartCoroutine("BrainScope");
         summoningComplete = true;
+        yield return new WaitForFixedUpdate();
     }
     public void Impact()
     {

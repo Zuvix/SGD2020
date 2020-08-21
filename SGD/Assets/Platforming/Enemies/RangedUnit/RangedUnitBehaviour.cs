@@ -9,6 +9,7 @@ public class RangedUnitBehaviour : Enemy
     public GameObject fireBall;
     public AudioSource castFrostBolt;
     public AudioSource createIce;
+    public AudioSource castFireBolt;
     GameObject bullet;
     GameObject target;
     public float rotSpeed = 0f;
@@ -44,6 +45,7 @@ public class RangedUnitBehaviour : Enemy
                 Vector3 newDirection = Vector3.RotateTowards(transform.forward, targetDirection, singleStep, 0.0f);
                 transform.rotation = Quaternion.LookRotation(newDirection);
             }
+            yield return new WaitForFixedUpdate();
             yield return new WaitForFixedUpdate();
         }
     }
@@ -84,12 +86,12 @@ public class RangedUnitBehaviour : Enemy
     {
         float timeCasted=0f;
         anim.SetBool("isSummoning", true);
+        StartCoroutine("RotateTowardsPosition");
+        yield return new WaitForSeconds(0.4f);
+        StopCoroutine("RotateTowardsPosition");
+        castFireBolt.Play();
         while (timeCasted < 5f && isAlive)
         {
-            StartCoroutine("RotateTowardsPosition");
-            yield return new WaitForSeconds(0.25f);
-            timeCasted += 0.25f;
-            StopCoroutine("RotateTowardsPosition");
             int i = 0;
             Vector3 groundTerget = Vector3.zero;
             while(i<5 && groundTerget.Equals(Vector3.zero))
@@ -103,6 +105,10 @@ public class RangedUnitBehaviour : Enemy
                 yield return new WaitForSeconds(0.75f);
                 timeCasted += 0.75f;
             }
+            StartCoroutine("RotateTowardsPosition");
+            yield return new WaitForSeconds(0.25f);
+            timeCasted += 0.25f;
+            StopCoroutine("RotateTowardsPosition");
 
         }
         anim.SetBool("isSummoning", false);

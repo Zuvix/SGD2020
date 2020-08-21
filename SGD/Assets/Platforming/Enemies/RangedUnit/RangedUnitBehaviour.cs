@@ -46,13 +46,12 @@ public class RangedUnitBehaviour : Enemy
                 transform.rotation = Quaternion.LookRotation(newDirection);
             }
             yield return new WaitForFixedUpdate();
-            yield return new WaitForFixedUpdate();
         }
     }
     IEnumerator BrainScope()
     {
         anim.speed = 1f;
-        while (target!=null)
+        while (target!=null && isAlive)
         {
             if ((transform.position - target.transform.position).magnitude < 15f)
             {
@@ -97,6 +96,7 @@ public class RangedUnitBehaviour : Enemy
             while(i<5 && groundTerget.Equals(Vector3.zero))
             {
                 groundTerget = CheckPositionForGround(target.transform.position + new Vector3(Random.Range(-1.5f, 1.5f), 0.5f, Random.Range(-1.5f, 1.5f)));
+                i++;
             }
             if (groundTerget != Vector3.zero)
             {

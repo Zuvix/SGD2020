@@ -2621,9 +2621,9 @@ Light:
   serializedVersion: 10
   m_Type: 2
   m_Shape: 0
-  m_Color: {r: 0.034709856, g: 0.41828078, b: 0.49056602, a: 1}
+  m_Color: {r: 0.20784314, g: 0.23529412, b: 0.35686275, a: 1}
   m_Intensity: 0.2
-  m_Range: 3
+  m_Range: 1
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
@@ -3330,6 +3330,7 @@ MonoBehaviour:
   castFrostBolt: {fileID: 198447588126628206}
   createIce: {fileID: 38087372}
   castFireBolt: {fileID: 347450412701236534}
+  wandLight: {fileID: 0}
   rotSpeed: 3
 --- !u!82 &198447588126628206
 AudioSource:

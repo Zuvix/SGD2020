@@ -10,12 +10,14 @@ public class RangedUnitBehaviour : Enemy
     public AudioSource castFrostBolt;
     public AudioSource createIce;
     public AudioSource castFireBolt;
+    public Light wandLight;
     GameObject bullet;
     GameObject target;
     public float rotSpeed = 0f;
 
     private void Start()
     {
+        wandLight = GetComponentInChildren<Light>();
         Activate();
         target = GameObject.FindGameObjectWithTag("Player");
     }
@@ -72,6 +74,8 @@ public class RangedUnitBehaviour : Enemy
     }
     void FrostBolt()
     {
+            wandLight.color = new Color(20, 155, 197) * 0.00390625f;
+            wandLight.intensity = 0.4f;
             createIce.Play();
             Invoke("DelayedSound", 0.925f);
             StartCoroutine("RotateTowardsPosition");
@@ -88,6 +92,8 @@ public class RangedUnitBehaviour : Enemy
         StartCoroutine("RotateTowardsPosition");
         yield return new WaitForSeconds(0.4f);
         StopCoroutine("RotateTowardsPosition");
+        wandLight.color = new Color(144, 48, 33) * 0.00390625f;
+        wandLight.intensity = 0.4f;
         castFireBolt.Play();
         while (timeCasted < 5f && isAlive)
         {
@@ -113,7 +119,8 @@ public class RangedUnitBehaviour : Enemy
 
         }
         anim.SetBool("isSummoning", false);
-
+        wandLight.color = new Color(53, 60, 91) * 0.00390625f;
+        wandLight.intensity = 0.2f;
     }
     public Vector3 CheckPositionForGround(Vector3 position)
     {
@@ -138,8 +145,12 @@ public class RangedUnitBehaviour : Enemy
     }
     public void FinishAttack()
     {
-        if(isAlive)
+        if (isAlive)
+        {
             anim.SetBool("isAttacking", false);
+            wandLight.color = new Color(53, 60, 91)*0.00390625f;
+            wandLight.intensity = 0.2f;
+        }
     }
     public void DelayedSound()
     {

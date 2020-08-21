@@ -188,6 +188,7 @@ public class Projectile : MonoBehaviour
         }
         if (other.gameObject.CompareTag("Player"))
         {
+            //Musi to ist
             PlayerBehaviour pb = other.gameObject.GetComponent<PlayerBehaviour>();
             if (!pb.isAttacking || type.Equals("fire"))
             {

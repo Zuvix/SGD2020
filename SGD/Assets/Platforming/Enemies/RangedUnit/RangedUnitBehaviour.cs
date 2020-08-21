@@ -23,6 +23,7 @@ public class RangedUnitBehaviour : Enemy
     {
         StopAllCoroutines();
         impactSound.Play();
+        LevelManager.Instance.StartCoroutine(LevelManager.Instance.SpawnMonster("w", startPos, startRot));
         if (bullet != null)
         {
             bullet.GetComponent<Projectile>().Pop();
@@ -53,7 +54,7 @@ public class RangedUnitBehaviour : Enemy
             if ((transform.position - target.transform.position).magnitude < 15f)
             {
                 FrostBolt();
-                yield return new WaitForSeconds(8);
+                yield return new WaitForSeconds(6);
             }
             yield return new WaitForFixedUpdate();
         }
@@ -64,9 +65,21 @@ public class RangedUnitBehaviour : Enemy
             Invoke("DelayedSound", 0.925f);
             StartCoroutine("RotateTowardsPosition");
             bullet = Instantiate(projectile,transform);
+            bullet.GetComponent<Projectile>().owner = this.gameObject;
             anim.SetBool("isAttacking", true);
             bullet.transform.position = ShootingPlace.transform.position;
             //bullet.transform.forward = transform.forward;     
+    }
+    public Vector3 CheckPositionForGround(Vector3 position)
+    {
+        RaycastHit hit;
+        LayerMask lm = LayerMask.GetMask("Ground", "LivingGround");
+        Ray ray = new Ray(position, Vector3.down);
+        if (Physics.Raycast(ray, out hit, 10f, lm))
+        {
+            return hit.point;
+        }
+        else return Vector3.zero;     
     }
     public void SendAttack()
     {

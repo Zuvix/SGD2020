@@ -9,6 +9,7 @@ public class Projectile : MonoBehaviour
     private Transform player;
     private Vector3 target;
     public GameObject poofEffect;
+    public GameObject owner;
     Collider c;
     Rigidbody rb;
     Vector3 baseScale;
@@ -97,6 +98,17 @@ public class Projectile : MonoBehaviour
             yield return new WaitForFixedUpdate();
         }
         yield return new WaitForFixedUpdate();
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject.CompareTag("Ground")|| other.gameObject.CompareTag("LivingGround")|| other.gameObject.CompareTag("Wall"))
+        {
+            Pop();
+        }
+        if (other.gameObject.CompareTag("Enemy") &&!other.gameObject.Equals(owner))
+        {
+            other.GetComponent<Enemy>().Die();
+        }
     }
 
     public void Pop()

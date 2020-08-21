@@ -3280,7 +3280,7 @@ MonoBehaviour:
   impactSound: {fileID: 6835737337505899732}
   ShootingPlace: {fileID: 1925969010217282113}
   castFrostBolt: {fileID: 198447588126628206}
-  createIce: {fileID: 0}
+  createIce: {fileID: 347450412701236534}
   rotSpeed: 3
 --- !u!82 &198447588126628206
 AudioSource:
@@ -3390,7 +3390,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 153a03efba8e01e4e86ab041011b7f46, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.6
   m_Pitch: 1
   Loop: 0
   Mute: 0

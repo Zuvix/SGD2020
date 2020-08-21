@@ -112,6 +112,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 0.0825
   poofEffect: {fileID: 100000, guid: 3156817f64ec68948ad6bb26569b9ef5, type: 3}
+  owner: {fileID: 0}
   upscaleSpeed: 0.25
   downscaleSpeed: 0
   PoofSound: {fileID: 2140583992}

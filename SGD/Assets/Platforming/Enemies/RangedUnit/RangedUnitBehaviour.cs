@@ -75,7 +75,7 @@ public class RangedUnitBehaviour : Enemy
     void FrostBolt()
     {
             wandLight.color = new Color(20, 155, 197) * 0.00390625f;
-            wandLight.intensity = 0.4f;
+            wandLight.intensity = 0.3f;
             createIce.Play();
             Invoke("DelayedSound", 0.925f);
             StartCoroutine("RotateTowardsPosition");

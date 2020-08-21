@@ -6,6 +6,7 @@ public class RangedUnitBehaviour : Enemy
     public GameObject projectile;
     public AudioSource impactSound;
     public GameObject ShootingPlace;
+    public GameObject fireBall;
     public AudioSource castFrostBolt;
     public AudioSource createIce;
     GameObject bullet;
@@ -53,8 +54,17 @@ public class RangedUnitBehaviour : Enemy
         {
             if ((transform.position - target.transform.position).magnitude < 15f)
             {
-                FrostBolt();
-                yield return new WaitForSeconds(6);
+                float random = Random.Range(0f, 100f);
+                if (random <= 72.5f)
+                {
+                    FrostBolt();
+                    yield return new WaitForSeconds(5);
+                }
+                else
+                {
+                    yield return MeteorShower();
+                    yield return new WaitForSeconds(2.5f);
+                }
             }
             yield return new WaitForFixedUpdate();
         }
@@ -69,6 +79,34 @@ public class RangedUnitBehaviour : Enemy
             anim.SetBool("isAttacking", true);
             bullet.transform.position = ShootingPlace.transform.position;
             //bullet.transform.forward = transform.forward;     
+    }
+    IEnumerator MeteorShower()
+    {
+        float timeCasted=0f;
+        anim.SetBool("isSummoning", true);
+        while (timeCasted < 5f && isAlive)
+        {
+            StartCoroutine("RotateTowardsPosition");
+            yield return new WaitForSeconds(0.25f);
+            timeCasted += 0.25f;
+            StopCoroutine("RotateTowardsPosition");
+            int i = 0;
+            Vector3 groundTerget = Vector3.zero;
+            while(i<5 && groundTerget.Equals(Vector3.zero))
+            {
+                groundTerget = CheckPositionForGround(target.transform.position + new Vector3(Random.Range(-1.5f, 1.5f), 0.5f, Random.Range(-1.5f, 1.5f)));
+            }
+            if (groundTerget != Vector3.zero)
+            {
+                GameObject g = Instantiate(fireBall);
+                g.transform.position = groundTerget+Vector3.up*0.05f;
+                yield return new WaitForSeconds(0.75f);
+                timeCasted += 0.75f;
+            }
+
+        }
+        anim.SetBool("isSummoning", false);
+
     }
     public Vector3 CheckPositionForGround(Vector3 position)
     {

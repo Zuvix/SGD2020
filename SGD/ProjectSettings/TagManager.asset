@@ -17,6 +17,7 @@ TagManager:
   - Wall
   - Bck
   - Iceball
+  - Fireball
   layers:
   - Default
   - TransparentFX

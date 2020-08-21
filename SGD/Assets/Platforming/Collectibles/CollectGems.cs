@@ -41,7 +41,7 @@ public class CollectGems : MonoBehaviour
     {
         c.enabled = false;
         l.enabled = false;
-        while (transform.localScale.x<baseScale.x && transform.localScale.y < baseScale.y && transform.localScale.z < baseScale.z)
+        while (transform.localScale.x<baseScale.x || transform.localScale.y < baseScale.y || transform.localScale.z < baseScale.z)
         {
             Vector3 modif = new Vector3(0,0,0);
             if (transform.localScale.x < baseScale.x)

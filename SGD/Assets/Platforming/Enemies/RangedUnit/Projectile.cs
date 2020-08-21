@@ -5,33 +5,40 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
-    public float speed;
-
+    public float speed; 
     private Transform player;
     private Vector3 target;
+    public GameObject poofEffect;
     Collider c;
+    Rigidbody rb;
     Vector3 baseScale;
+    Renderer m;
     public float upscaleSpeed = 0.001f;
     public float downscaleSpeed = 0.0005f;
+    public AudioSource PoofSound;
+    Vector3 launchDirection;
+    bool popped = false;
     private void Awake()
     {
+        m = GetComponent<Renderer>();
         c = GetComponent<Collider>();
         baseScale = transform.localScale;
         transform.localScale = Vector3.zero;
+        rb = GetComponent<Rigidbody>();
     }
 
     // Start is called before the first frame update
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
-        target = new Vector3(player.position.x, player.position.y + 0.1f, player.position.z);
+        target = new Vector3(player.position.x, player.position.y + 0.24f, player.position.z);
         StartCoroutine(SpawnPojectile());
     }
 
     public IEnumerator SpawnPojectile()
     {
         c.enabled = false;
-        while (transform.localScale.x < baseScale.x && transform.localScale.y < baseScale.y && transform.localScale.z < baseScale.z)
+        while (transform.localScale.x < baseScale.x || transform.localScale.y < baseScale.y || transform.localScale.z < baseScale.z)
         {
             Vector3 modif = new Vector3(0, 0, 0);
             if (transform.localScale.x < baseScale.x)
@@ -50,36 +57,41 @@ public class Projectile : MonoBehaviour
             yield return new WaitForFixedUpdate();
         }
         //yield return new WaitForSeconds(0.65f);
+        launchDirection = new Vector3(player.position.x, player.position.y + 0.24f, player.position.z)*10000;
         c.enabled = true;
-        StartCoroutine(FlyTowardsPlayer());
     }
-    IEnumerator FlyTowardsPlayer()
+    public IEnumerator FlyTowardsPlayer()
     {
-        StartCoroutine("DownScale");
-        while(player!=null && transform.localScale.magnitude > 0f)
+        StartCoroutine(DownScale());
+        float timeFlying = 0f;
+        while(player!=null && timeFlying<4.5f&&!popped)
         {
-            target = new Vector3(player.position.x, player.position.y + 0.25f, player.position.z);
-            transform.position=Vector3.MoveTowards(transform.position, target, speed);
+            transform.Rotate(Vector3.right *4f );
+            target = new Vector3(player.position.x, player.position.y + 0.45f, player.position.z);
+
+            transform.position = Vector3.MoveTowards(transform.position, target,speed);
             yield return new WaitForFixedUpdate();
+            timeFlying += Time.deltaTime;
         }
+        Pop();
 
     }
-    IEnumerable DownScale()
+    IEnumerator DownScale()
     {
-        while (transform.localScale.x < baseScale.x && transform.localScale.y < baseScale.y && transform.localScale.z < baseScale.z)
+        while (transform.localScale.x > 0 || transform.localScale.y >0 || transform.localScale.z >0)
         {
             Vector3 modif = new Vector3(0, 0, 0);
-            if (transform.localScale.x < baseScale.x)
+            if (transform.localScale.x > 0)
             {
-                modif.x += upscaleSpeed;
+                modif.x -= downscaleSpeed;
             }
-            if (transform.localScale.y < baseScale.y)
+            if (transform.localScale.y > 0)
             {
-                modif.y += upscaleSpeed;
+                modif.y -= downscaleSpeed;
             }
-            if (transform.localScale.z < baseScale.z)
+            if (transform.localScale.z > 0)
             {
-                modif.z += upscaleSpeed;
+                modif.z -= downscaleSpeed;
             }
             transform.localScale += modif;
             yield return new WaitForFixedUpdate();
@@ -87,16 +99,18 @@ public class Projectile : MonoBehaviour
         yield return new WaitForFixedUpdate();
     }
 
-    private void OnTriggerEnter(Collider other)
+    public void Pop()
     {
-        if (other.CompareTag("Player"))
+        if (!popped)
         {
-            print("Umrel si.");
+            StopAllCoroutines();
+            c.enabled = false;
+            m.enabled = false;
+            PoofSound.Play();
+            GameObject g = Instantiate(poofEffect);
+            g.transform.position = transform.position;
+            Destroy(this.gameObject, 0.4f);
+            popped = true;
         }
-        DestroyProjectile();
-    }
-    void DestroyProjectile()
-    {
-        Destroy(gameObject);
     }
 }

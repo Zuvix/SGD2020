@@ -16,6 +16,7 @@ public abstract class Enemy : MonoBehaviour
     protected Quaternion startRot;
     protected Vector3 startPos;
     public GameObject impact;
+    protected bool isAlive = true;
     public virtual void Die()
     {
         if (colliders != null)
@@ -32,6 +33,8 @@ public abstract class Enemy : MonoBehaviour
             if(d.gameObject.activeSelf)
                 d.StartDissolve();
         }
+        isAlive = false;
+        anim.speed = 0f;
     }
     //Aktivovanie nepriatela, aby sa zacal spravat ako je definovane v GDD
     public virtual void Activate()

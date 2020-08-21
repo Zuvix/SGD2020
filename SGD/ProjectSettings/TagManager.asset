@@ -16,6 +16,7 @@ TagManager:
   - Portal
   - Wall
   - Bck
+  - Iceball
   layers:
   - Default
   - TransparentFX

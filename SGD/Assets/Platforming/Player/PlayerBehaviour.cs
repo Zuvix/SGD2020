@@ -237,6 +237,15 @@ public class PlayerBehaviour : MonoBehaviour
             LevelManager.Instance.FinishLevel();
             isHit = true;
         }
+        if (other.gameObject.CompareTag("Iceball"))
+        {
+            if (!isAttacking)
+            {
+                Die();
+                isHit = true;
+            }
+            other.gameObject.GetComponent<Projectile>().Pop();
+        }
     }
     public void Walk1()
     {

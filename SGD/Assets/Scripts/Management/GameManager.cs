@@ -118,7 +118,7 @@ namespace Management
                     {
                         if (!_blocks[(int)selector.position.x, (int) -selector.position.z])
                         {
-                            selector.GetComponent<MeshRenderer>().material.color = Color.green;
+                            selector.GetComponent<SpriteRenderer>().material.color = Color.green;
                             if (Input.GetMouseButtonDown(0))
                             {
                                 Debug.Log("Place block");
@@ -129,7 +129,7 @@ namespace Management
                         }
                         else
                         {
-                            selector.GetComponent<MeshRenderer>().material.color = Color.red;
+                            selector.GetComponent<SpriteRenderer>().material.color = Color.red;
                         }
                     }
 

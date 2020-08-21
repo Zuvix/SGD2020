@@ -17,4 +17,16 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/ModeArcade/Game.unity
     guid: 1fc05a6052cbfe14a9ed1fb8b9616e94
+  - enabled: 1
+    path: Assets/Scenes/1.unity
+    guid: 77e6b05a6249b594fad92b4fa0cbc6ac
+  - enabled: 1
+    path: Assets/Scenes/2.unity
+    guid: 6f5743fb7369d9c45a4add8ef6f41939
+  - enabled: 1
+    path: Assets/Scenes/3.unity
+    guid: 8f7e16fa896fbae4fa86edd53a88de9f
+  - enabled: 1
+    path: Assets/Scenes/Cinematic1.unity
+    guid: 6149a3e3918c8c8428f361f4ce09acd1
   m_configObjects: {}

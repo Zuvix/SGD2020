@@ -29,12 +29,13 @@ namespace Management
         public Placeables placeables = new Placeables();
         public List<string> defaultLoadTips = new List<string>();
         public List<LoadScreenState> screenPairs = new List<LoadScreenState>();
+        
         // loadingPairIndex -=- buildIndex
         public List<Tuple<int, int>> StoryLevels = new List<Tuple<int, int>>()
         {
-            new Tuple<int, int>(0, 0),
-            new Tuple<int, int>(1, 1),
-            new Tuple<int, int>(2, 2)
+            new Tuple<int, int>(0, 4),
+            new Tuple<int, int>(1, 5),
+            new Tuple<int, int>(2, 6)
         };
         
         private void Awake()

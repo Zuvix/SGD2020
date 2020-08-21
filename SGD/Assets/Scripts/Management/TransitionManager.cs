@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Data;
+using TMPro;
+using UnityEditor.Rendering.Universal.ShaderGUI;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -16,6 +18,7 @@ namespace Management
     {
         public Image shade;
         public GameObject loadingScreen;
+        public TMP_Text loadText;
         public static TransitionManager instance;
         private AsyncOperation _sceneHolder;
         private Tuple<int, int> _heldLevelIdentification;
@@ -38,22 +41,34 @@ namespace Management
 
         private void Update()
         {
+            if (Input.GetButton("Submit"))
+            {
+                Skip();
+            }
+        }
+
+        public void Skip()
+        {
             if (_sceneHolder != null && loading.Count == 0 && !_loadLock) 
             {
-                if (Input.GetButton("Submit"))
+                _loadLock = true;
+                var sr = loadingScreen.GetComponent<Image>();
+                loadingScreen.LeanValue(value =>
                 {
-                    _loadLock = true;
-                    loading.Add(SceneManager.UnloadSceneAsync(_heldLevelIdentification.Item1).ToAsync());
-                    StartCoroutine(GetLoadProgress(() =>
-                    {
-                        SceneManager.SetActiveScene(SceneManager.GetSceneByBuildIndex(_heldLevelIdentification.Item2));
-                        _sceneHolder.allowSceneActivation = true;
-                        _sceneHolder = null;
-                        _loadLock = false;
-
-                    }));
+                    sr.color = value;
+                }, new Color(0, 0, 0, 0), new Color(0, 0, 0, 1), 1f).setIgnoreTimeScale(true).setOnComplete(() =>
+                {
+                    _sceneHolder.allowSceneActivation = true;
+                });
+                loading.Add(SceneManager.UnloadSceneAsync(DataManager.instance.screenPairs[_heldLevelIdentification.Item1].targetSceneBuildIndex).ToAsync());
+                StartCoroutine(GetLoadProgress(() =>
+                {
+                    Debug.Log(_heldLevelIdentification.Item2);
+                    SceneManager.SetActiveScene(SceneManager.GetSceneByBuildIndex(_heldLevelIdentification.Item2));
+                    _sceneHolder = null;
                     _heldLevelIdentification = null;
-                }
+                }));
+                _loadLock = false;
             }
         }
 
@@ -75,6 +90,7 @@ namespace Management
             }, new Color(0, 0, 0, 0), new Color(0, 0, 0, 1), 0.5f).setIgnoreTimeScale(true).setOnComplete(() =>
             {
                 loadingScreen.SetActive(toggle);
+                loadingScreen.GetComponent<Image>().color = Color.black;
                 // if (toggle)
                 //     // Create tween for loading spinner
                 //     loadingSinner.LeanRotateAroundLocal(Vector3.forward, -360, 4f).setLoopClamp();
@@ -115,15 +131,27 @@ namespace Management
             }));
         }
         
-        public void LoadStoryLevel(int num, int loadScreen = -1)
+        public void LoadStoryLevel(int num)
         {
+            var loadScreen = DataManager.instance.StoryLevels[num].Item1;
+            loadText.text = DataManager.instance.screenPairs[loadScreen].text;
+            loading.Clear();
             StartCoroutine(ToggleLoadingScreen(true, () =>
             {
                 loading.Add(SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene()).ToAsync());
-                loading.Add(SceneManager.LoadSceneAsync(DataManager.instance.screenPairs[loadScreen].targetSceneBuildIndex).ToAsync());
-                _sceneHolder = SceneManager.LoadSceneAsync((int) SceneIndexes.Editor, LoadSceneMode.Additive);
+                if (DataManager.instance.screenPairs[loadScreen].loadCinematicScene)
+                    loading.Add(SceneManager.LoadSceneAsync(DataManager.instance.screenPairs[loadScreen].targetSceneBuildIndex, LoadSceneMode.Additive).ToAsync());
+                _sceneHolder = SceneManager.LoadSceneAsync(DataManager.instance.StoryLevels[num].Item2, LoadSceneMode.Additive);
                 _sceneHolder.allowSceneActivation = false;
-                StartCoroutine(GetPausedLoadProgress());
+                _heldLevelIdentification = DataManager.instance.StoryLevels[num];
+                StartCoroutine(GetPausedLoadProgress(() =>
+                {
+                    var sr = loadingScreen.GetComponent<Image>();
+                    loadingScreen.LeanValue(value =>
+                    {
+                        sr.color = value;
+                    }, new Color(0, 0, 0, 1), new Color(0, 0, 0, 0), 1f).setIgnoreTimeScale(true);
+                }));
             }));
         }
 
@@ -164,7 +192,7 @@ namespace Management
             StartCoroutine(ToggleLoadingScreen(false, after));
         }
         
-        public IEnumerator GetPausedLoadProgress() {
+        public IEnumerator GetPausedLoadProgress(Action after) {
             for(var i = 0; i<loading.Count; i++) {
                 while (!loading[i].IsCompleted) {
                     totalLoadingProgress = 0;
@@ -181,6 +209,7 @@ namespace Management
                 }
             }
             loading.Clear();
+            after();
         }
     }
 }

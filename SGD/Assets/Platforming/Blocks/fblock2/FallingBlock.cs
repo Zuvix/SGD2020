@@ -14,9 +14,9 @@ public class FallingBlock : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         m = GetComponent<Renderer>().material;
     }
-    IEnumerator StartFalling()
+    IEnumerator StartFalling(float time)
     {
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(time);
         rb.isKinematic = false;
     }
     IEnumerator MoveLower()
@@ -37,7 +37,18 @@ public class FallingBlock : MonoBehaviour
             StartCoroutine("MoveLower");
             SetEmmision(false);
             fallingSound.Play();
-            StartCoroutine(StartFalling());
+            StartCoroutine(StartFalling(2));
+            Invoke("Destruction", 12f);
+        }
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Fireball") && activated == false)
+        {
+            activated = true;
+            SetEmmision(false);
+            fallingSound.Play();
+            StartCoroutine(StartFalling(0));
             Invoke("Destruction", 12f);
         }
     }

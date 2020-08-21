@@ -14,7 +14,7 @@ public class LevelManager : Singleton<LevelManager>
     float gemCount=0;
     float maxGemCount = 3;
     public GameObject portal;
-    public float respawnTime=5f;
+    public float respawnTime=8f;
     public GameObject spiderPrefab;
     public GameObject frogPrefab;
     public GameObject wizzardPrefab;
@@ -113,7 +113,7 @@ public class LevelManager : Singleton<LevelManager>
             {
                 case "s": Instantiate(spiderPrefab, position, rotation); break;
                 case "f": Instantiate(frogPrefab, position, rotation); break;
-                case "w": Instantiate(wizzardPrefab, position, rotation); break;
+                case "w": yield return new WaitForSeconds(respawnTime/2); Instantiate(wizzardPrefab, position, rotation); break;
 
                 case "ff":
 

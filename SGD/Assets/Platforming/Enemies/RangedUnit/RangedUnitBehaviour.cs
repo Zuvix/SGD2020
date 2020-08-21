@@ -97,6 +97,7 @@ public class RangedUnitBehaviour : Enemy
             {
                 groundTerget = CheckPositionForGround(target.transform.position + new Vector3(Random.Range(-1.5f, 1.5f), 0.5f, Random.Range(-1.5f, 1.5f)));
                 i++;
+                yield return new WaitForFixedUpdate();
             }
             if (groundTerget != Vector3.zero)
             {

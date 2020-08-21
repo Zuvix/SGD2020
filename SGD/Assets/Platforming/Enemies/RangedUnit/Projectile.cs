@@ -185,6 +185,7 @@ public class Projectile : MonoBehaviour
         if (other.gameObject.CompareTag("Enemy") &&!other.gameObject.Equals(owner))
         {
             other.GetComponent<Enemy>().Die();
+            Pop();
         }
         if (other.gameObject.CompareTag("Player"))
         {

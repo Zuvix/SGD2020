@@ -1635,6 +1635,10 @@ MonoBehaviour:
   avgTime: 0
   yourTime: 0
   bestTime: 0
+  sourceData: {fileID: 0}
+  env: {fileID: 0}
+  spawn: {fileID: 0}
+  camRef: {fileID: 0}
 --- !u!82 &1445022549
 AudioSource:
   m_ObjectHideFlags: 0
@@ -3070,6 +3074,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -4.8860337e-15
       objectReference: {fileID: 0}
+    - target: {fileID: 198447588126628206, guid: ff22e332990e7cf4c80152ed8a6b96c3,
+        type: 3}
+      propertyPath: MaxDistance
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 198447588126628206, guid: ff22e332990e7cf4c80152ed8a6b96c3,
+        type: 3}
+      propertyPath: rolloffMode
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 238844143810873879, guid: ff22e332990e7cf4c80152ed8a6b96c3,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -3079,6 +3093,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 3.802034
+      objectReference: {fileID: 0}
+    - target: {fileID: 347450412701236534, guid: ff22e332990e7cf4c80152ed8a6b96c3,
+        type: 3}
+      propertyPath: rolloffMode
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 385697108481441302, guid: ff22e332990e7cf4c80152ed8a6b96c3,
         type: 3}

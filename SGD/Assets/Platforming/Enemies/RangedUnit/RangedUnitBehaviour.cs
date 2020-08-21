@@ -85,7 +85,8 @@ public class RangedUnitBehaviour : Enemy
     {
         if (isAlive&&bullet!=null)
         {
-            StartCoroutine(bullet.GetComponent<Projectile>().FlyTowardsPlayer());
+            // StartCoroutine(bullet.GetComponent<Projectile>().FlyTowardsPlayer());
+            StartCoroutine(bullet.GetComponent<Projectile>().FlyTowardsPoint(transform.position));
             bullet.transform.parent = null;
             StopCoroutine("RotateTowardsPosition");
         }

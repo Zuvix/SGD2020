@@ -67,7 +67,7 @@ public class Projectile : MonoBehaviour
         float timeFlying = 0f;
         while(player!=null && timeFlying<4.5f&&!popped)
         {
-            transform.Rotate(Vector3.right *4f );
+            transform.Rotate(Vector3.forward *1f );
             target = new Vector3(player.position.x, player.position.y + 0.45f, player.position.z);
 
             transform.position = Vector3.MoveTowards(transform.position, target,speed);
@@ -76,6 +76,38 @@ public class Projectile : MonoBehaviour
         }
         Pop();
 
+    }
+    public IEnumerator FlyTowardsPoint(Vector3 point)
+    {
+        target = transform.position - point;
+        float timeFlying = 0f;
+        string type = "up";
+        switch (Random.Range(0, 2))
+        {
+            case 0: type = "up"; break;
+            case 1: type = "right"; break;
+                
+
+        }
+        transform.parent = null;
+        while (player != null && !popped && timeFlying < 4.5f)
+        {
+            timeFlying += Time.deltaTime;
+            if (type.Equals("up"))
+            {
+                transform.Rotate(Vector3.up * 4f);
+                transform.position = Vector3.MoveTowards(transform.position, player.position + new Vector3(0f, 0.45f, 0f), speed * 1.25f);
+                transform.Translate(target * speed * 0.35f);
+            }
+            if (type.Equals("right"))
+            {
+                transform.Rotate(Vector3.right * 1f);
+                transform.position = Vector3.MoveTowards(transform.position, player.position + new Vector3(0f, 0.55f, 0f), speed * 1f);
+                transform.Translate(target * speed * 0.85f);
+            }
+            yield return new WaitForFixedUpdate();
+        }
+        Pop();
     }
     IEnumerator DownScale()
     {

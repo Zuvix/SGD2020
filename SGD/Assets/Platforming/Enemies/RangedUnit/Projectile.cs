@@ -95,13 +95,13 @@ public class Projectile : MonoBehaviour
             timeFlying += Time.deltaTime;
             if (type.Equals("up"))
             {
-                transform.Rotate(Vector3.up * 4f);
+                transform.Rotate(Vector3.up * 5f);
                 transform.position = Vector3.MoveTowards(transform.position, player.position + new Vector3(0f, 0.45f, 0f), speed * 1.25f);
-                transform.Translate(target * speed * 0.35f);
+                transform.Translate(target * speed * 0.45f);
             }
             if (type.Equals("right"))
             {
-                transform.Rotate(Vector3.right * 1f);
+                transform.Rotate(Vector3.right * 1.05f);
                 transform.position = Vector3.MoveTowards(transform.position, player.position + new Vector3(0f, 0.55f, 0f), speed * 1f);
                 transform.Translate(target * speed * 0.85f);
             }

@@ -18,7 +18,7 @@ EditorBuildSettings:
     path: Assets/Scenes/ModeArcade/Game.unity
     guid: 1fc05a6052cbfe14a9ed1fb8b9616e94
   - enabled: 1
-    path: Assets/Scenes/1.unity
+    path: Assets/Scenes/Level1.unity
     guid: 77e6b05a6249b594fad92b4fa0cbc6ac
   - enabled: 1
     path: Assets/Scenes/2.unity
@@ -29,7 +29,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Platforming/Stories/1/Story_1.unity
     guid: e69b11c7a2a069a44b360f5e930ba7ec
-  - enabled: 0
-    path: Assets/Scenes/4.unity
-    guid: e9652981f3faa9d4987e0706acc71948
+  - enabled: 1
+    path: Assets/Platforming/Stories/2/Story_2.unity
+    guid: e8006c5234c2ced4ca89cbc7c2217170
+  - enabled: 1
+    path: Assets/Platforming/Stories/3/Story_3.unity
+    guid: c4a5e0368232c9546b39446883efa4db
+  - enabled: 1
+    path: Assets/Platforming/Stories/4/Story_4.unity
+    guid: 00f0685ae3779bb4da42b11cd74f5ee6
   m_configObjects: {}

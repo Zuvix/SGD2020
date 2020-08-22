@@ -7,11 +7,12 @@ using IngameEditor;
 using Management;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 using UnityEngine.SceneManagement;
 
 public class LevelManager : Singleton<LevelManager>
 {
-    public Text gemText;
+    public TMP_Text gemText;
     float gemCount=0;
     float maxGemCount = 3;
     public GameObject portal;
@@ -46,7 +47,7 @@ public class LevelManager : Singleton<LevelManager>
         if (!isMenu)
         {
             maxGemCount = GameObject.FindGameObjectsWithTag("Gem").Length;
-            gemText.text = " 0/" + maxGemCount;
+            gemText.text = "0/" + maxGemCount;
             Player = GameObject.FindGameObjectWithTag("Player");
             StartCoroutine(RestartChecker());
         }
@@ -61,7 +62,7 @@ public class LevelManager : Singleton<LevelManager>
     {
         gemSound.Play();
         gemCount++;
-        gemText.text = " "+gemCount+"/" + maxGemCount;
+        gemText.text = gemCount+"/" + maxGemCount;
         if (gemCount >= maxGemCount)
         {
             gemText.text = "Max";

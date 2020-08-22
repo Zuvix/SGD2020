@@ -73,8 +73,15 @@ public class PlayerBehaviour : MonoBehaviour
             anim.SetBool("isFalling", false);
             anim.SetBool("isLanding", false);
         }
-        Physics.Raycast(ray, out hit, maxRayDistance * 30, mask);
-        shadow.transform.position = hit.point + Vector3.up * shadowDistanceFromGroud;
+        if(Physics.Raycast(ray, out hit, maxRayDistance * 30, mask))
+        {
+            shadow.transform.position = hit.point + Vector3.up * shadowDistanceFromGroud;
+        }
+        else
+        {
+            shadow.transform.position = new Vector3(500f, 500f, 500f);
+        }
+        
 
         // input
         if (controlsEnabled)
@@ -226,7 +233,7 @@ public class PlayerBehaviour : MonoBehaviour
                 }
             }
         }
-        if (other.gameObject.CompareTag("Spike")|| other.gameObject.CompareTag("Projectile") && !isHit)
+        if ((other.gameObject.CompareTag("Spike")|| other.gameObject.CompareTag("Projectile") || other.gameObject.CompareTag("Bck")) && !isHit)
         {
             Die();
             isHit = true;

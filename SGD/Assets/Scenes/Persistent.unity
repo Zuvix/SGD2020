@@ -926,10 +926,10 @@ MonoBehaviour:
     targetSceneBuildIndex: 7
     text: LOL
   - loadCinematicScene: 1
-    targetSceneBuildIndex: 7
+    targetSceneBuildIndex: 8
     text: Iny text
   - loadCinematicScene: 1
-    targetSceneBuildIndex: 7
+    targetSceneBuildIndex: 9
     text: Co ja viem nieco
 --- !u!1 &1296897222
 GameObject:

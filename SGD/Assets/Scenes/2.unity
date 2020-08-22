@@ -3084,7 +3084,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _persistent: 0
-  gemText: {fileID: 1442626091004752657}
+  gemText: {fileID: 0}
   portal: {fileID: 1223511398}
   respawnTime: 8
   spiderPrefab: {fileID: 9019351860944489709, guid: cd99972bd97419345b4a7a1e0dbe1ee5,
@@ -3101,7 +3101,7 @@ MonoBehaviour:
   sourceData: {fileID: 0}
   env: {fileID: 0}
   spawn: {fileID: 0}
-  camRef: {fileID: 0}
+  camRef: {fileID: 1699394401}
 --- !u!82 &1445022549
 AudioSource:
   m_ObjectHideFlags: 0
@@ -5031,6 +5031,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 3.9864872
       objectReference: {fileID: 0}
+    - target: {fileID: 3864780081770413072, guid: 6964aa8d02cd29b4ebb55538ff583f7e,
+        type: 3}
+      propertyPath: cameraT
+      value: 
+      objectReference: {fileID: 819967290}
     - target: {fileID: 3864780081770413073, guid: 6964aa8d02cd29b4ebb55538ff583f7e,
         type: 3}
       propertyPath: m_Enabled

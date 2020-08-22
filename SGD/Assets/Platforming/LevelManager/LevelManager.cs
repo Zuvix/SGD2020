@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using Data;
 using System.Linq;
+using Data;
 using IngameEditor;
 using Management;
 using UnityEngine;
@@ -37,6 +37,8 @@ public class LevelManager : Singleton<LevelManager>
     public CameraFollow camRef;
     private bool _generated;
     private Tuple<int, List<Tuple<Vector2Int, PoolBlock>>> _passedData;
+
+    private bool _transitionOperation;
     
     // Start is called before the first frame update
     void Start()
@@ -66,10 +68,6 @@ public class LevelManager : Singleton<LevelManager>
             portal.GetComponent<PortalOpener>().OpenPortal();
         }
     }
-    public void ActivatePortal()
-    {
-        camRef.GetComponentInChildren<DrunkEffect>().StartDrunkEffect();
-    }
     public void ShowStats()
     {
         float finalTime = yourTime;
@@ -80,25 +78,42 @@ public class LevelManager : Singleton<LevelManager>
     }
     public void FinishLevel()
     {
-        if (_generated)
+        if (!_transitionOperation)
         {
-            //TransitionManager.instance.LoadLevel(_passedData.Item1+1);
-        }
-        else
-        {
-            TransitionManager.instance.LoadStoryLevel(DataManager.instance.StoryLevels.IndexOf(DataManager.instance.StoryLevels.FirstOrDefault(x => x.Item2 == SceneManager.GetActiveScene().buildIndex))+1);
+            if (_generated)
+            {
+                //TransitionManager.instance.LoadLevel(_passedData.Item1+1);
+            }
+            else
+            {
+                var currIndex = DataManager.instance.StoryLevels.IndexOf(
+                    DataManager.instance.StoryLevels.FirstOrDefault(
+                        x => x.Item2 == SceneManager.GetActiveScene().buildIndex));
+                if (DataManager.instance.StoryLevels.Count - 1 > currIndex)
+                    TransitionManager.instance.LoadStoryLevel(currIndex + 1, true);
+                else
+                    TransitionManager.instance.LoadScene(TransitionManager.SceneIndexes.Menu);
+            }
+            _transitionOperation = true;
         }
     }
     public void RestartLevel()
     {
-        if (_generated)
+        if (!_transitionOperation)
         {
-            //TransitionManager.instance.PassData(_passedData.Item1, _passedData.Item2);
-        }
-        else
-        {
-            //TransitionManager.instance.LoadStoryLevel(DataManager.instance.StoryLevels.IndexOf(DataManager.instance.StoryLevels.FirstOrDefault(x => x.Item2 == SceneManager.GetActiveScene().buildIndex)));
-            //TransitionManager.instance.LoadLevel(DataManager.instance.StoryLevels.IndexOf(DataManager.instance.StoryLevels.FirstOrDefault(x => x.Item2 == SceneManager.GetActiveScene().buildIndex)));
+            if (_generated)
+            {
+                //TransitionManager.instance.PassData(_passedData.Item1, _passedData.Item2);
+            }
+            else
+            {
+                var currIndex = DataManager.instance.StoryLevels.IndexOf(
+                    DataManager.instance.StoryLevels.FirstOrDefault(
+                        x => x.Item2 == SceneManager.GetActiveScene().buildIndex));
+                TransitionManager.instance.LoadStoryLevel(currIndex, false);
+            }
+
+            _transitionOperation = true;
         }
     }
     public IEnumerator SpawnMonster(string type, Vector3 position, Quaternion rotation)
@@ -178,7 +193,7 @@ public class LevelManager : Singleton<LevelManager>
                                 {
                                     var placing = Instantiate(block.overridePlacings[i].targetPrefab, obj.transform);
                                     // -1.5 0 1.5
-                                    placing.transform.localPosition = (new Vector3(i % , 3, 0) + new Vector3()) / 300;
+                                    placing.transform.localPosition = (new Vector3(0, 3, 0) + new Vector3()) / 300;
                                     placing.transform.localScale = placing.transform.localScale / 300;
                                     
                                     // Spawn
@@ -186,6 +201,7 @@ public class LevelManager : Singleton<LevelManager>
                                     {
                                         camRef.PlayerObj = placing;
                                         camRef.CameraFollowObj = placing.transform.GetChild(3).gameObject;
+                                        placing.GetComponent<PlayerBehaviour>().cameraT = camRef.transform.GetChild(0);
                                         generatedStart = true;
                                     }
                                     // Portal

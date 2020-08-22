@@ -26,7 +26,7 @@ public class PlayerBehaviour : MonoBehaviour
 
     public bool isAttacking = false;
     float turnSmoothVelocity;
-    Transform cameraT;
+    public Transform cameraT;
     Rigidbody rb;
     Vector2 input;
     bool isJumping = false;
@@ -43,7 +43,6 @@ public class PlayerBehaviour : MonoBehaviour
     void Awake()
     {
         mask = LayerMask.GetMask("Ground", "Enemy","LivingGround");
-        cameraT = Camera.main.transform;
         rb = GetComponent<Rigidbody>();
         anim = GetComponent<Animator>();
     }

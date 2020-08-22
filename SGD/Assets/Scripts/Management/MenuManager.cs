@@ -62,7 +62,7 @@ namespace Management
                 var a = Instantiate(buttonPrefab, levelContainer, false);
                 a.transform.localScale = Vector3.one;
                 a.GetComponentInChildren<TMP_Text>().text = counter++.ToString();
-                a.GetComponent<Button>().onClick.AddListener(() => TransitionManager.instance.LoadStoryLevel(index));
+                a.GetComponent<Button>().onClick.AddListener(() => TransitionManager.instance.LoadStoryLevel(index, true));
             }
 
             counter = 0;

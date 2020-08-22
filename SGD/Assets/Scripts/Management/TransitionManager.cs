@@ -102,12 +102,24 @@ namespace Management
             yield return new WaitForSeconds(1.5f);
             after();
         }
-    
+
         public void LoadScene(SceneIndexes current, SceneIndexes target)
         {
             StartCoroutine(ToggleLoadingScreen(true, () =>
             {
                 loading.Add(SceneManager.UnloadSceneAsync((int) current).ToAsync());
+                loading.Add(SceneManager.LoadSceneAsync((int) target, LoadSceneMode.Additive).ToAsync());
+
+                StartCoroutine(GetLoadProgress(() =>
+                    SceneManager.SetActiveScene(SceneManager.GetSceneByBuildIndex((int) target))));
+            }));
+        }
+        
+        public void LoadScene(SceneIndexes target)
+        {
+            StartCoroutine(ToggleLoadingScreen(true, () =>
+            {
+                loading.Add(SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene().buildIndex).ToAsync());
                 loading.Add(SceneManager.LoadSceneAsync((int) target, LoadSceneMode.Additive).ToAsync());
 
                 StartCoroutine(GetLoadProgress(() => SceneManager.SetActiveScene(SceneManager.GetSceneByBuildIndex((int) target))));
@@ -130,28 +142,42 @@ namespace Management
             }));
         }
         
-        public void LoadStoryLevel(int num)
+        public void LoadStoryLevel(int num, bool cinematic)
         {
-            var loadScreen = DataManager.instance.StoryLevels[num].Item1;
-            loadText.text = DataManager.instance.screenPairs[loadScreen].text;
-            loading.Clear();
-            StartCoroutine(ToggleLoadingScreen(true, () =>
+            if (cinematic)
             {
-                loading.Add(SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene()).ToAsync());
-                if (DataManager.instance.screenPairs[loadScreen].loadCinematicScene)
-                    loading.Add(SceneManager.LoadSceneAsync(DataManager.instance.screenPairs[loadScreen].targetSceneBuildIndex, LoadSceneMode.Additive).ToAsync());
-                _sceneHolder = SceneManager.LoadSceneAsync(DataManager.instance.StoryLevels[num].Item2, LoadSceneMode.Additive);
-                _sceneHolder.allowSceneActivation = false;
-                _heldLevelIdentification = DataManager.instance.StoryLevels[num];
-                StartCoroutine(GetPausedLoadProgress(() =>
+                var loadScreen = DataManager.instance.StoryLevels[num].Item1;
+                loadText.text = DataManager.instance.screenPairs[loadScreen].text;
+                loading.Clear();
+                StartCoroutine(ToggleLoadingScreen(true, () =>
                 {
-                    var sr = loadingScreen.GetComponent<Image>();
-                    loadingScreen.LeanValue(value =>
+                    loading.Add(SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene()).ToAsync());
+                    if (DataManager.instance.screenPairs[loadScreen].loadCinematicScene)
+                        loading.Add(SceneManager
+                            .LoadSceneAsync(DataManager.instance.screenPairs[loadScreen].targetSceneBuildIndex,
+                                LoadSceneMode.Additive).ToAsync());
+                    _sceneHolder = SceneManager.LoadSceneAsync(DataManager.instance.StoryLevels[num].Item2,
+                        LoadSceneMode.Additive);
+                    _sceneHolder.allowSceneActivation = false;
+                    _heldLevelIdentification = DataManager.instance.StoryLevels[num];
+                    StartCoroutine(GetPausedLoadProgress(() =>
                     {
-                        sr.color = value;
-                    }, new Color(0, 0, 0, 1), new Color(0, 0, 0, 0), 1f).setIgnoreTimeScale(true);
+                        var sr = loadingScreen.GetComponent<Image>();
+                        loadingScreen
+                            .LeanValue(value => { sr.color = value; }, new Color(0, 0, 0, 1), new Color(0, 0, 0, 0), 1f)
+                            .setIgnoreTimeScale(true);
+                    }));
                 }));
-            }));
+            }
+            else
+            {
+                StartCoroutine(ToggleLoadingScreen(true, () =>
+                {
+                    loading.Add(SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene()).ToAsync());
+                    loading.Add(SceneManager.LoadSceneAsync(DataManager.instance.StoryLevels[num].Item2, LoadSceneMode.Additive).ToAsync());
+                    StartCoroutine(GetLoadProgress(() => SceneManager.SetActiveScene(SceneManager.GetSceneByBuildIndex(DataManager.instance.StoryLevels[num].Item2))));
+                }));
+            }
         }
 
         public void PassData(int num, List<Tuple<Vector2Int, PoolBlock>> data)

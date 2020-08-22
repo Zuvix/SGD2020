@@ -360,10 +360,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.1423769
+  m_Radius: 0.1492888
   m_Height: 0.49660265
   m_Direction: 0
-  m_Center: {x: 0.014996529, y: 0.0872438, z: 0.025985837}
+  m_Center: {x: 0.014996529, y: 0.09415571, z: 0.025985837}
 --- !u!114 &3864780081770413072
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -390,7 +390,6 @@ MonoBehaviour:
   walk2: {fileID: 3864780081770413081}
   jump: {fileID: 3864780081770413080}
   land: {fileID: 3864780081770413286}
-  gem: {fileID: 0}
   deathSound: {fileID: 3864780081770413284}
   isAttacking: 0
   isOnGround: 0

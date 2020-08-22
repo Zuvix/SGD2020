@@ -176,8 +176,10 @@ public class LevelManager : Singleton<LevelManager>
                             {
                                 if (block.overridePlacings[i] != null)
                                 {
-                                    var placing = Instantiate(block.overridePlacings[i].targetPrefab, obj.transform.position + Vector3.up*4,
-                                        Quaternion.identity, spawn);
+                                    var placing = Instantiate(block.overridePlacings[i].targetPrefab, obj.transform);
+                                    // -1.5 0 1.5
+                                    placing.transform.localPosition = (new Vector3(i % , 3, 0) + new Vector3()) / 300;
+                                    placing.transform.localScale = placing.transform.localScale / 300;
                                     
                                     // Spawn
                                     if (block.overridePlacings[i].id == 2)
@@ -199,7 +201,7 @@ public class LevelManager : Singleton<LevelManager>
                             if (level.startPos == new Vector2Int(x, y) && !generatedStart)
                             {
                                 var placing = Instantiate(DataManager.instance.placeables[2].targetPrefab, obj.transform.position + Vector3.up*4,
-                                    Quaternion.identity, spawn);
+                                    Quaternion.identity, obj.transform);
                                 camRef.PlayerObj = placing;
                                 camRef.CameraFollowObj = placing.transform.GetChild(3).gameObject;
                                 generatedStart = true;
@@ -208,7 +210,7 @@ public class LevelManager : Singleton<LevelManager>
                             if (level.endPos == new Vector2Int(x, y) && !generatedFinish)
                             {
                                 var placing = Instantiate(DataManager.instance.placeables[1].targetPrefab, obj.transform.position + Vector3.up*4,
-                                    Quaternion.identity, spawn);
+                                    Quaternion.identity, obj.transform);
                                 portal = placing;
                                 generatedFinish = true;
                             }

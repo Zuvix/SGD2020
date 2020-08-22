@@ -59,8 +59,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02831000a0aefcc4aad8cf23e8b5a9da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Portal: {fileID: 0}
-  shimmmer: {fileID: 0}
+  Portal: {fileID: 1353778294899918390}
+  shimmmer: {fileID: 4404709602065520375}
 --- !u!82 &4404709602065520375
 AudioSource:
   m_ObjectHideFlags: 0

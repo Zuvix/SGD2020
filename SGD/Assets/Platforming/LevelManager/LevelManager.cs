@@ -82,7 +82,7 @@ public class LevelManager : Singleton<LevelManager>
     {
         if (_generated)
         {
-            TransitionManager.instance.LoadLevel(_passedData.Item1+1);
+            //TransitionManager.instance.LoadLevel(_passedData.Item1+1);
         }
         else
         {
@@ -93,7 +93,7 @@ public class LevelManager : Singleton<LevelManager>
     {
         if (_generated)
         {
-            TransitionManager.instance.PassData(_passedData.Item1, _passedData.Item2);
+            //TransitionManager.instance.PassData(_passedData.Item1, _passedData.Item2);
         }
         else
         {
@@ -148,11 +148,17 @@ public class LevelManager : Singleton<LevelManager>
     
     public void Initialize(int index, List<Tuple<Vector2Int, PoolBlock>> data)
     {
+        _generated = true;
+        _passedData = new Tuple<int, List<Tuple<Vector2Int, PoolBlock>>>(index, data);
+        
         if (index >= 0 && sourceData.levels.Count >= index + 1)
         {
             var level = sourceData.levels[index];
             var e = Math.Max(level.dimensions.x, level.dimensions.y) / 2f * 6f + 3f;
             env.position = new Vector3(e, 0, -e);
+
+            var generatedStart = false;
+            var generatedFinish = false;
             
             // Generate 
             for (var x = 0; x < level.dimensions.x; x++)
@@ -172,7 +178,39 @@ public class LevelManager : Singleton<LevelManager>
                                 {
                                     var placing = Instantiate(block.overridePlacings[i].targetPrefab, obj.transform.position + Vector3.up*4,
                                         Quaternion.identity, spawn);
+                                    
+                                    // Spawn
+                                    if (block.overridePlacings[i].id == 2)
+                                    {
+                                        camRef.PlayerObj = placing;
+                                        camRef.CameraFollowObj = placing.transform.GetChild(3).gameObject;
+                                        generatedStart = true;
+                                    }
+                                    // Portal
+                                    if (block.overridePlacings[i].id == 1)
+                                    {
+                                        portal = placing;
+                                        generatedFinish = true;
+                                    }
                                 }
+                            }
+                            
+                            // If start not specified
+                            if (level.startPos == new Vector2Int(x, y) && !generatedStart)
+                            {
+                                var placing = Instantiate(DataManager.instance.placeables[2].targetPrefab, obj.transform.position + Vector3.up*4,
+                                    Quaternion.identity, spawn);
+                                camRef.PlayerObj = placing;
+                                camRef.CameraFollowObj = placing.transform.GetChild(3).gameObject;
+                                generatedStart = true;
+                            }
+                            // If finish not specified
+                            if (level.endPos == new Vector2Int(x, y) && !generatedFinish)
+                            {
+                                var placing = Instantiate(DataManager.instance.placeables[1].targetPrefab, obj.transform.position + Vector3.up*4,
+                                    Quaternion.identity, spawn);
+                                portal = placing;
+                                generatedFinish = true;
                             }
                         }
                     }
@@ -181,19 +219,19 @@ public class LevelManager : Singleton<LevelManager>
 
             foreach (var poolEntry in data)
             {
-                var obj = Instantiate(poolEntry.Item2.poolBlockData.targetPrefab, new Vector3(3f + poolEntry.Item1.x*6, 0, -3f - poolEntry.Item1.y*6), Quaternion.Euler(0, 0, 0), spawn);
+                var obj = Instantiate(poolEntry.Item2.poolBlockData.targetPrefab,
+                    new Vector3(3f + poolEntry.Item1.x * 6, 0, -3f - poolEntry.Item1.y * 6), Quaternion.Euler(0, 0, 0),
+                    spawn);
                 for (var i = 0; i < 9; i++)
                 {
                     if (poolEntry.Item2.overridePlacings[i] != null)
                     {
-                        var placing = Instantiate(poolEntry.Item2.overridePlacings[i].targetPrefab, obj.transform.position+Vector3.up*4,
+                        var placing = Instantiate(poolEntry.Item2.overridePlacings[i].targetPrefab,
+                            obj.transform.position + Vector3.up * 4,
                             Quaternion.identity, spawn);
                     }
                 }
             }
-
-            _generated = true;
-            _passedData = new Tuple<int, List<Tuple<Vector2Int, PoolBlock>>>(index, data);
         }
         else
         {

@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Data;
+using System.Linq;
 using IngameEditor;
 using Management;
 using UnityEngine;
@@ -65,6 +66,10 @@ public class LevelManager : Singleton<LevelManager>
             portal.GetComponent<PortalOpener>().OpenPortal();
         }
     }
+    public void ActivatePortal()
+    {
+        camRef.GetComponentInChildren<DrunkEffect>().StartDrunkEffect();
+    }
     public void ShowStats()
     {
         float finalTime = yourTime;
@@ -81,7 +86,7 @@ public class LevelManager : Singleton<LevelManager>
         }
         else
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            TransitionManager.instance.LoadStoryLevel(DataManager.instance.StoryLevels.IndexOf(DataManager.instance.StoryLevels.FirstOrDefault(x => x.Item2 == SceneManager.GetActiveScene().buildIndex))+1);
         }
     }
     public void RestartLevel()
@@ -92,7 +97,8 @@ public class LevelManager : Singleton<LevelManager>
         }
         else
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            //TransitionManager.instance.LoadStoryLevel(DataManager.instance.StoryLevels.IndexOf(DataManager.instance.StoryLevels.FirstOrDefault(x => x.Item2 == SceneManager.GetActiveScene().buildIndex)));
+            //TransitionManager.instance.LoadLevel(DataManager.instance.StoryLevels.IndexOf(DataManager.instance.StoryLevels.FirstOrDefault(x => x.Item2 == SceneManager.GetActiveScene().buildIndex)));
         }
     }
     public IEnumerator SpawnMonster(string type, Vector3 position, Quaternion rotation)

@@ -171,6 +171,7 @@ namespace Management
             }
             else
             {
+                loadText.text = "";
                 StartCoroutine(ToggleLoadingScreen(true, () =>
                 {
                     loading.Add(SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene()).ToAsync());

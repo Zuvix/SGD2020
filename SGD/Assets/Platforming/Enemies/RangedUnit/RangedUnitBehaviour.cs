@@ -36,19 +36,23 @@ public class RangedUnitBehaviour : Enemy
     }
     IEnumerator RotateTowardsPosition()
     {
-        Vector3 tarPos = new Vector3(target.transform.position.x, transform.position.y, target.transform.position.z);
-        Vector3 targetDirection = tarPos - transform.position;
-        while (true)
+        if (target != null)
         {
-            Quaternion targetRotaion = Quaternion.LookRotation(tarPos - transform.position);
-            if (Quaternion.Angle(transform.rotation, targetRotaion) > 1f)
+            Vector3 tarPos = new Vector3(target.transform.position.x, transform.position.y, target.transform.position.z);
+            Vector3 targetDirection = tarPos - transform.position;
+            while (true)
             {
-                float singleStep = rotSpeed * Time.deltaTime;
-                Vector3 newDirection = Vector3.RotateTowards(transform.forward, targetDirection, singleStep, 0.0f);
-                transform.rotation = Quaternion.LookRotation(newDirection);
+                Quaternion targetRotaion = Quaternion.LookRotation(tarPos - transform.position);
+                if (Quaternion.Angle(transform.rotation, targetRotaion) > 1f)
+                {
+                    float singleStep = rotSpeed * Time.deltaTime;
+                    Vector3 newDirection = Vector3.RotateTowards(transform.forward, targetDirection, singleStep, 0.0f);
+                    transform.rotation = Quaternion.LookRotation(newDirection);
+                }
+                yield return new WaitForFixedUpdate();
             }
-            yield return new WaitForFixedUpdate();
         }
+        yield return new WaitForFixedUpdate();
     }
     IEnumerator BrainScope()
     {

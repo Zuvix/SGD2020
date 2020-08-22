@@ -162,23 +162,32 @@ public class Projectile : MonoBehaviour
     IEnumerator Homerun()
     {
         owner = player.gameObject;
-        Vector3 direction = player.transform.forward;
-        transform.rotation = Quaternion.LookRotation(transform.position-player.forward);
+        transform.rotation = player.rotation;
         ponged = true;
         baseballHit.Play();
         while (!popped)
         {
-            transform.Translate(direction*speed*2.4f);
+            transform.Translate(Vector3.forward*speed*2.4f);
             yield return new WaitForFixedUpdate();
         }
+    }
+    IEnumerator RotateFire()
+    {
+        while (!popped)
+        {
+            transform.Rotate(Vector3.up * 5f);
+            yield return new WaitForFixedUpdate();
+        }
+        yield return new WaitForFixedUpdate();
     }
     public void FallDown()
     {
         rb.isKinematic = false;
+        StartCoroutine(RotateFire());
     }
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.CompareTag("Ground")|| other.gameObject.CompareTag("LivingGround")|| other.gameObject.CompareTag("Wall"))
+        if(other.gameObject.CompareTag("Ground")|| other.gameObject.CompareTag("LivingGround")|| other.gameObject.CompareTag("Wall") || other.gameObject.CompareTag("Void"))
         {
             Pop();
         }

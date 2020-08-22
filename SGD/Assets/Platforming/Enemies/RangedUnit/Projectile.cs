@@ -175,7 +175,7 @@ public class Projectile : MonoBehaviour
     {
         while (!popped)
         {
-            transform.Rotate(Vector3.up * 5f);
+            transform.Rotate(Vector3.right * 8f);
             yield return new WaitForFixedUpdate();
         }
         yield return new WaitForFixedUpdate();

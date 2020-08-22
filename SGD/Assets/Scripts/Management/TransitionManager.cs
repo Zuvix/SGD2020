@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Data;
 using TMPro;
-using UnityEditor.Rendering.Universal.ShaderGUI;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;

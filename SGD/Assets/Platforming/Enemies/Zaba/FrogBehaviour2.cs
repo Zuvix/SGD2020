@@ -72,7 +72,7 @@ public class FrogBehaviour2 : Enemy
         List<GameObject> grounds = new List<GameObject>();
         if (!Crown.activeSelf)
         {
-            lm = LayerMask.GetMask("Gem", "Ground", "Player");
+            lm = LayerMask.GetMask( "Gem","Ground", "Player");
         }
         else
         {
@@ -213,9 +213,7 @@ public class FrogBehaviour2 : Enemy
         }
         if (other.gameObject.CompareTag("Gem") && !Crown.activeSelf && !hasCollide)
         {
-            afkTime = buffedAfk;
-            gravity = buffedGravity;
-            rotSpeed = buffedRotSpeed;
+            Invoke("Upgrade", 0.66f);
             Crown.SetActive(true);
             nomNomSound.Play();
             Destroy(other.gameObject);
@@ -233,5 +231,11 @@ public class FrogBehaviour2 : Enemy
             }
             hasCollide = true;
         }
+    }
+    public void Upgrade()
+    {
+        gravity = buffedGravity;
+        afkTime = buffedAfk;
+        rotSpeed = buffedRotSpeed;
     }
 }

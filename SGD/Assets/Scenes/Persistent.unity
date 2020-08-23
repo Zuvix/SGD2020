@@ -467,8 +467,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 15.75, y: -172.5}
-  m_SizeDelta: {x: -478.37848, y: -397.29727}
+  m_AnchoredPosition: {x: -2, y: -155.50002}
+  m_SizeDelta: {x: -105.232056, y: -354.0633}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &454805621
 MonoBehaviour:
@@ -924,13 +924,15 @@ MonoBehaviour:
   screenPairs:
   - loadCinematicScene: 1
     targetSceneBuildIndex: 9
-    text: LOL
+    text: "Tutorial 1 - Ovl\xE1danie postavy"
   - loadCinematicScene: 1
     targetSceneBuildIndex: 9
-    text: Iny text
+    text: Tutorial 2 - Nepriatelia a ich schopnosti
   - loadCinematicScene: 1
     targetSceneBuildIndex: 9
-    text: Co ja viem nieco
+    text: "Who and where am I? No matter how hard I try, the memories won\u2019t
+      come back. The only certain thing is that whenever I fall I always end up at
+      the same place. I wish to end this cycle and remember my past."
   - loadCinematicScene: 1
     targetSceneBuildIndex: 10
     text: Co ja viem nieco

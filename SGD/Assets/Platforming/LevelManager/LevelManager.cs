@@ -3,10 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Data;
-using IngameEditor;
 using Management;
 using UnityEngine;
-using UnityEngine.UI;
 using TMPro;
 using UnityEngine.SceneManagement;
 
@@ -83,7 +81,7 @@ public class LevelManager : Singleton<LevelManager>
         {
             if (_generated)
             {
-                //TransitionManager.instance.LoadLevel(_passedData.Item1+1);
+                TransitionManager.instance.LoadLevel(_passedData.Item1+1);
             }
             else
             {

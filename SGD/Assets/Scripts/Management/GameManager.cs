@@ -76,6 +76,8 @@ namespace Management
 
         private void Start()
         {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
             _timeSnapshot = Time.time;
             mainCountdown.text = "";
             blockCountdown.text = "";

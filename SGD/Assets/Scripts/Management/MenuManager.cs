@@ -22,6 +22,8 @@ namespace Management
         
         private void Start()
         {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
             // Buttons
             levelButton.onClick.AddListener(ToggleLevelContainer);
             arcadeButton.onClick.AddListener(ToggleArcadeLevelContainer);

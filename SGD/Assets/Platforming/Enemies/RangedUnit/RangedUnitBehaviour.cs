@@ -20,6 +20,14 @@ public class RangedUnitBehaviour : Enemy
         wandLight = GetComponentInChildren<Light>();
         Activate();
         target = GameObject.FindGameObjectWithTag("Player");
+        Ray ray = new Ray(transform.position, Vector3.down);
+        RaycastHit hit;
+        LayerMask mask = LayerMask.GetMask("Ground", "LivingGround");
+        //Physics.Raycast(ray, out hit, maxRayDistance, mask);
+        if (Physics.Raycast(ray, out hit, 5f, mask))
+        {
+            transform.parent = hit.transform;
+        }
     }
     //Vojto si super
 

@@ -187,7 +187,7 @@ public class Projectile : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.CompareTag("Ground")|| other.gameObject.CompareTag("LivingGround")|| other.gameObject.CompareTag("Wall") || other.gameObject.CompareTag("Void"))
+        if(other.gameObject.CompareTag("Ground")|| other.gameObject.CompareTag("LivingGround")|| other.gameObject.CompareTag("Wall") || other.gameObject.CompareTag("Void") || other.gameObject.CompareTag("Spike"))
         {
             Pop();
         }

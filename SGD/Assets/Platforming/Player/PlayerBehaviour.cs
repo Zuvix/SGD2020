@@ -53,7 +53,7 @@ public class PlayerBehaviour : MonoBehaviour
         Ray ray = new Ray(transform.position, Vector3.down);
         RaycastHit hit;
 
-        Physics.Raycast(ray, out hit, maxRayDistance, mask);
+        //Physics.Raycast(ray, out hit, maxRayDistance, mask);
         if (Physics.Raycast(ray, out hit, maxRayDistance, mask))
         {
             Debug.DrawRay(transform.position, Vector3.down * maxRayDistance, Color.green);

@@ -496,7 +496,7 @@ GameObject:
   - component: {fileID: 223496750}
   m_Layer: 0
   m_Name: Bone.003_end
-  m_TagString: Void
+  m_TagString: Spike
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

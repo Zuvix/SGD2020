@@ -346,10 +346,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 0.3454741
-  m_Height: 1.1548355
+  m_Radius: 0.21760903
+  m_Height: 1.1711878
   m_Direction: 1
-  m_Center: {x: 0, y: 1.1095896, z: 0.032546893}
+  m_Center: {x: 0.0069506653, y: 1.055441, z: 0.037744492}
 --- !u!136 &3864780081770413073
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -392,6 +392,7 @@ MonoBehaviour:
   land: {fileID: 3864780081770413286}
   deathSound: {fileID: 3864780081770413284}
   isAttacking: 0
+  cameraT: {fileID: 0}
   isOnGround: 0
   hasJumpedOnce: 0
   maxRayDistance: 1.25

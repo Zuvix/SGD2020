@@ -134,8 +134,8 @@ public class LevelManager : Singleton<LevelManager>
             switch (type)
             {
                 case "s": Instantiate(spiderPrefab, position, rotation); break;
-                case "f": Instantiate(frogPrefab, position, rotation); break;
-                case "w": yield return new WaitForSeconds(respawnTime); Instantiate(wizzardPrefab, position, rotation); break;
+                case "f": yield return new WaitForSeconds(respawnTime/2f); Instantiate(frogPrefab, position, rotation); break;
+                case "w": yield return new WaitForSeconds(respawnTime+2f); Instantiate(wizzardPrefab, position, rotation); break;
 
                 case "ff":
 

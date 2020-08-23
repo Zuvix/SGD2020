@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -624,7 +624,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -2.001, y: -201.4}
+  m_AnchoredPosition: {x: -2.001, y: -214}
   m_SizeDelta: {x: 694.76587, y: 18.497597}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &642543039
@@ -658,7 +658,7 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
+    rgba: 16777215
   m_fontColor: {r: 1, g: 1, b: 1, a: 0}
   m_enableVertexGradient: 0
   m_colorMode: 3
@@ -1036,6 +1036,7 @@ MonoBehaviour:
   loadingScreen: {fileID: 1525980399}
   loadText: {fileID: 454805621}
   skipText: {fileID: 642543039}
+  flashSpeed: 2
   totalLoadingProgress: 0
 --- !u!114 &1292197971
 MonoBehaviour:

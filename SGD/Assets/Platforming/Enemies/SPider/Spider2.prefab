@@ -94,8 +94,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 25.983883, y: 4.045545, z: 28.550472}
-  m_Center: {x: 0.14025271, y: -1.0365089, z: 3.5310283}
+  m_Size: {x: 28.624321, y: 4.045545, z: 41.981472}
+  m_Center: {x: -0.0618726, y: -1.0365089, z: 1.6088367}
 --- !u!1 &9019351860437257288
 GameObject:
   m_ObjectHideFlags: 0
@@ -693,6 +693,7 @@ MonoBehaviour:
   steerIntensity: 0.3
   frontCheckIntensity: 0.14
   target: {fileID: 0}
+  effect: {fileID: 0}
 --- !u!136 &7518221707359591841
 CapsuleCollider:
   m_ObjectHideFlags: 0

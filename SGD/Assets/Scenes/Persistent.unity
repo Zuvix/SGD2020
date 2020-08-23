@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -931,14 +931,19 @@ MonoBehaviour:
   - loadCinematicScene: 1
     targetSceneBuildIndex: 9
     text: "Who and where am I? No matter how hard I try, the memories won\u2019t
-      come back. The only certain thing is that whenever I fall I always end up at
-      the same place. I wish to end this cycle and remember my past."
+      come back. The only certain thing is that whenever I fall, I always end up
+      at the same place. My only wish is to end this cycle and remember my past."
   - loadCinematicScene: 1
     targetSceneBuildIndex: 10
-    text: Co ja viem nieco
+    text: "Finally I\u2019m moving forward! That\u2019s what I thought, when I entered
+      the portal. Now I can't stop thinking that this place is even more unknown
+      and hostile. I feel like I want to give up, but the Hand won't let me. The
+      power within is too strong for me to stop."
   - loadCinematicScene: 1
     targetSceneBuildIndex: 11
-    text: Co ja viem nieco
+    text: "The conflict grows stronger. No matter how many I kill, they just keep
+      coming. They don\u2019t fear my power and death means nothing for them. I feel
+      like they are having fun stepping in my way and making me suffer."
 --- !u!1 &1296897222
 GameObject:
   m_ObjectHideFlags: 0

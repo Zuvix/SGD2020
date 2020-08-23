@@ -495,6 +495,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Spider2 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 9019351860944489710, guid: cd99972bd97419345b4a7a1e0dbe1ee5,
+        type: 3}
+      propertyPath: effect
+      value: 
+      objectReference: {fileID: 100006, guid: bcaff8fc36e95584bb27cc3cf7c6cb14, type: 3}
     - target: {fileID: 9019351861614275968, guid: cd99972bd97419345b4a7a1e0dbe1ee5,
         type: 3}
       propertyPath: m_LocalPosition.z
@@ -1126,6 +1131,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Spider2 (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 9019351860944489710, guid: cd99972bd97419345b4a7a1e0dbe1ee5,
+        type: 3}
+      propertyPath: effect
+      value: 
+      objectReference: {fileID: 100006, guid: bcaff8fc36e95584bb27cc3cf7c6cb14, type: 3}
     - target: {fileID: 9019351861614275968, guid: cd99972bd97419345b4a7a1e0dbe1ee5,
         type: 3}
       propertyPath: m_LocalPosition.z
@@ -1469,7 +1479,7 @@ PrefabInstance:
     - target: {fileID: 4138731044832588023, guid: 191c31c59dcd2ce4e8e6fd0c45390f09,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.8
+      value: 2.75
       objectReference: {fileID: 0}
     - target: {fileID: 4138731044832588023, guid: 191c31c59dcd2ce4e8e6fd0c45390f09,
         type: 3}
@@ -5697,6 +5707,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: LevelManager
       objectReference: {fileID: 0}
+    - target: {fileID: 5062370053590849114, guid: ac107f336f9714f468ce597048d7438c,
+        type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 02db1a43e0e9f5c438f1df5f234b9fd5, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ac107f336f9714f468ce597048d7438c, type: 3}
 --- !u!1001 &7075622140269497367

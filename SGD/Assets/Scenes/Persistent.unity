@@ -923,13 +923,19 @@ MonoBehaviour:
   - 
   screenPairs:
   - loadCinematicScene: 1
-    targetSceneBuildIndex: 7
+    targetSceneBuildIndex: 9
     text: LOL
   - loadCinematicScene: 1
-    targetSceneBuildIndex: 8
+    targetSceneBuildIndex: 9
     text: Iny text
   - loadCinematicScene: 1
     targetSceneBuildIndex: 9
+    text: Co ja viem nieco
+  - loadCinematicScene: 1
+    targetSceneBuildIndex: 10
+    text: Co ja viem nieco
+  - loadCinematicScene: 1
+    targetSceneBuildIndex: 11
     text: Co ja viem nieco
 --- !u!1 &1296897222
 GameObject:

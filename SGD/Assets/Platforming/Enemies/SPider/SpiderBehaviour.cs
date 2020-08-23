@@ -21,6 +21,8 @@ public class SpiderBehaviour : Enemy
     private EyeSensor right;
     private EyeSensor left;
     public Transform target=null;
+    public GameObject effect;
+    private bool effectUnused=true;
     //public GameObject dissolve;
     public override void Awake()
     {
@@ -66,6 +68,15 @@ public class SpiderBehaviour : Enemy
                 Debug.Log("TRAP, WATCHOUT SPIDER");
                 StopCoroutine("MovementLogic");
                 anim.speed = 0f;
+                if (effect != null)
+                {
+                    if (effectUnused)
+                    {
+                        Debug.Log("effect");
+                        Instantiate(effect, transform.position+Vector3.up*0.3f, effect.transform.rotation);
+                        effectUnused = false;
+                    }
+                }
                 yield return new WaitUntil(() => front.isEnemyAhead == false);
                 yield return new WaitForSeconds(0.2f);
                 anim.speed = 1f;

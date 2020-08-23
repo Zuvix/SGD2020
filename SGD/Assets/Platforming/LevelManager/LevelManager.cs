@@ -104,7 +104,7 @@ public class LevelManager : Singleton<LevelManager>
         {
             if (_generated)
             {
-                //TransitionManager.instance.PassData(_passedData.Item1, _passedData.Item2);
+                TransitionManager.instance.PassData(_passedData.Item1, _passedData.Item2);
             }
             else
             {
@@ -166,6 +166,7 @@ public class LevelManager : Singleton<LevelManager>
     {
         _generated = true;
         _passedData = new Tuple<int, List<Tuple<Vector2Int, PoolBlock>>>(index, data);
+        GameObject playerTemp = null;
         
         if (index >= 0 && sourceData.levels.Count >= index + 1)
         {
@@ -193,8 +194,8 @@ public class LevelManager : Singleton<LevelManager>
                                 if (block.overridePlacings[i] != null)
                                 {
                                     var placing = Instantiate(block.overridePlacings[i].targetPrefab, obj.transform);
-                                    // -1.5 0 1.5
-                                    placing.transform.localPosition = (new Vector3(0, 3, 0) + new Vector3()) / 300;
+                                    var a = new List<float>() {-1.8f, 0f, 1.8f};
+                                    placing.transform.localPosition = new Vector3(a[i%3], 3, a[i/3]) / 300;
                                     placing.transform.localScale = placing.transform.localScale / 300;
                                     
                                     // Spawn
@@ -204,12 +205,26 @@ public class LevelManager : Singleton<LevelManager>
                                         camRef.CameraFollowObj = placing.transform.GetChild(3).gameObject;
                                         placing.GetComponent<PlayerBehaviour>().cameraT = camRef.transform.GetChild(0);
                                         generatedStart = true;
+                                        playerTemp = placing;
+                                        playerTemp.SetActive(false);
                                     }
                                     // Portal
                                     if (block.overridePlacings[i].id == 1)
                                     {
                                         portal = placing;
                                         generatedFinish = true;
+                                    }
+
+                                    if (block.overridePlacings[i].id == 0)
+                                    {
+                                        placing.transform.localScale = placing.transform.localScale / 300;
+                                    }
+                                    
+                                    if (block.overridePlacings[i].id == 4)
+                                    {
+                                        var localPosition = placing.transform.localPosition;
+                                        localPosition = new Vector3(localPosition.x, 2f/300,localPosition.z);
+                                        placing.transform.localPosition = localPosition;
                                     }
                                 }
                             }
@@ -222,6 +237,8 @@ public class LevelManager : Singleton<LevelManager>
                                 camRef.PlayerObj = placing;
                                 camRef.CameraFollowObj = placing.transform.GetChild(3).gameObject;
                                 generatedStart = true;
+                                playerTemp = placing;
+                                playerTemp.SetActive(false);
                             }
                             // If finish not specified
                             if (level.endPos == new Vector2Int(x, y) && !generatedFinish)
@@ -245,12 +262,23 @@ public class LevelManager : Singleton<LevelManager>
                 {
                     if (poolEntry.Item2.overridePlacings[i] != null)
                     {
-                        var placing = Instantiate(poolEntry.Item2.overridePlacings[i].targetPrefab,
-                            obj.transform.position + Vector3.up * 4,
-                            Quaternion.identity, spawn);
+                        var placing = Instantiate(poolEntry.Item2.overridePlacings[i].targetPrefab, obj.transform);
+                        var a = new List<float>() {-1.8f, 0f, 1.8f};
+                        placing.transform.localPosition = new Vector3(a[i%3], 3, a[i/3]) / 300;
+                        placing.transform.localScale = placing.transform.localScale / 300;
+                        
+                        if (poolEntry.Item2.overridePlacings[i].id == 4)
+                        {
+                            var localPosition = placing.transform.localPosition;
+                            localPosition = new Vector3(localPosition.x, 2f/300,localPosition.z);
+                            placing.transform.localPosition = localPosition;
+                        }
+                        
                     }
                 }
             }
+            
+            if (playerTemp != null) playerTemp.SetActive(true);
         }
         else
         {

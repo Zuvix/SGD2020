@@ -6,6 +6,7 @@ using Data;
 using IngameEditor;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
 namespace Management
@@ -31,6 +32,7 @@ namespace Management
         public Transform selector;
         public Transform camera;
         public GameObject panel;
+        public Transform shown;
         public TMP_Text mainCountdown;
         public TMP_Text blockCountdown;
         public TMP_Text blockCount;
@@ -168,6 +170,10 @@ namespace Management
                                 sr.sprite = _placing.overridePlacings[i].icon;
                                 sr.color = _placing.overridePlacings[i].iconColor;
                                 icon.GetComponent<Icon>().cam = camera;
+
+                                var uiSr = shown.GetChild(i).GetComponent<Image>();
+                                uiSr.sprite = _placing.overridePlacings[i].icon;
+                                uiSr.color = _placing.overridePlacings[i].iconColor;
                             }
                         }
                         selectedGameObject.SetActive(true);

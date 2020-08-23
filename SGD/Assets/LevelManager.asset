@@ -145,15 +145,15 @@ MonoBehaviour:
       count: 1
       chance: 1
       overridePlacings:
-      - {fileID: 0}
-      - {fileID: 0}
-      - {fileID: 0}
-      - {fileID: 0}
-      - {fileID: 0}
-      - {fileID: 0}
-      - {fileID: 0}
-      - {fileID: 0}
-      - {fileID: 0}
+      - {fileID: 11400000, guid: 49fbe5f97f945424b92fbfd343683ba9, type: 2}
+      - {fileID: 11400000, guid: 49fbe5f97f945424b92fbfd343683ba9, type: 2}
+      - {fileID: 11400000, guid: 49fbe5f97f945424b92fbfd343683ba9, type: 2}
+      - {fileID: 11400000, guid: 49fbe5f97f945424b92fbfd343683ba9, type: 2}
+      - {fileID: 11400000, guid: 49fbe5f97f945424b92fbfd343683ba9, type: 2}
+      - {fileID: 11400000, guid: 49fbe5f97f945424b92fbfd343683ba9, type: 2}
+      - {fileID: 11400000, guid: 49fbe5f97f945424b92fbfd343683ba9, type: 2}
+      - {fileID: 11400000, guid: 49fbe5f97f945424b92fbfd343683ba9, type: 2}
+      - {fileID: 11400000, guid: 49fbe5f97f945424b92fbfd343683ba9, type: 2}
   - dimensions: {x: 10, y: 10}
     startPos: {x: 9, y: 3}
     endPos: {x: 1, y: 5}

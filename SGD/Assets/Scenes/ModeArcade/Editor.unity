@@ -2588,6 +2588,7 @@ MonoBehaviour:
   selector: {fileID: 442191947}
   camera: {fileID: 963194228}
   panel: {fileID: 317640371}
+  shown: {fileID: 2088264114}
   mainCountdown: {fileID: 156812165}
   blockCountdown: {fileID: 1220923787}
   blockCount: {fileID: 1823907698}

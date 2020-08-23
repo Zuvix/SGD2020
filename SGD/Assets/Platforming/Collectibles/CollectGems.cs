@@ -10,7 +10,7 @@ public class CollectGems : MonoBehaviour
     private bool hit;
     Renderer m;
     Collider c;
-    Vector3 baseScale;
+    [HideInInspector] public Vector3 baseScale;
     public float upscaleSpeed = 0.002f;
     private void Awake()
     {

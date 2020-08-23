@@ -38,6 +38,8 @@ public class LevelManager : Singleton<LevelManager>
     private Tuple<int, List<Tuple<Vector2Int, PoolBlock>>> _passedData;
 
     private bool _transitionOperation;
+    private bool _hold;
+    private float _snapshot;
     
     // Start is called before the first frame update
     void Start()
@@ -61,6 +63,26 @@ public class LevelManager : Singleton<LevelManager>
             {
                 FinishLevel();
             }
+        yourTime += Time.deltaTime;
+        if (!_transitionOperation)
+        {
+            if (Input.GetKey(KeyCode.P))
+            {
+                if (_hold)
+                {
+                    if (Time.time > _snapshot + 1.5f)
+                    {
+                        TransitionManager.instance.LoadScene(TransitionManager.SceneIndexes.Menu);
+                        _transitionOperation = true;
+                    }
+                }
+                else
+                {
+                    _snapshot = Time.time;
+                }
+            }
+
+            _hold = Input.GetKey(KeyCode.P);
         }
     }
     public void GetGem()
@@ -181,7 +203,7 @@ public class LevelManager : Singleton<LevelManager>
             var generatedStart = false;
             var generatedFinish = false;
             
-            // Generate 
+            // Generate
             for (var x = 0; x < level.dimensions.x; x++)
             {
                 for (var y = 0; y < level.dimensions.y; y++)
@@ -199,9 +221,10 @@ public class LevelManager : Singleton<LevelManager>
                                 {
                                     var placing = Instantiate(block.overridePlacings[i].targetPrefab, obj.transform);
                                     var a = new List<float>() {-1.8f, 0f, 1.8f};
+                                    placing.transform.position = Vector3.zero;
                                     placing.transform.localPosition = new Vector3(a[i%3], 3, a[i/3]) / 300;
                                     placing.transform.localScale = placing.transform.localScale / 300;
-                                    
+
                                     // Spawn
                                     if (block.overridePlacings[i].id == 2)
                                     {
@@ -218,10 +241,12 @@ public class LevelManager : Singleton<LevelManager>
                                         portal = placing;
                                         generatedFinish = true;
                                     }
-
+                                    
                                     if (block.overridePlacings[i].id == 0)
                                     {
-                                        placing.transform.localScale = placing.transform.localScale / 300;
+                                        placing.transform.localPosition += Vector3.up / 300;
+                                        placing.transform.localScale = Vector3.one * 0.0005f;
+                                        placing.GetComponent<CollectGems>().baseScale = placing.transform.localScale;
                                     }
                                     
                                     if (block.overridePlacings[i].id == 4)
@@ -254,7 +279,7 @@ public class LevelManager : Singleton<LevelManager>
                             }
                         }
                     }
-                }                    
+                }
             }
 
             foreach (var poolEntry in data)

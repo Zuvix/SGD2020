@@ -96,7 +96,7 @@ namespace Management
                 {
                     if (!_panelRevealed)
                     {
-                        panel.LeanMoveX(60, 0.5f);
+                        panel.LeanMoveX(80, 0.5f);
                         _panelRevealed = true;
                     }
                     
@@ -177,6 +177,11 @@ namespace Management
                                 uiSr.sprite = _placing.overridePlacings[i].icon;
                                 uiSr.color = _placing.overridePlacings[i].iconColor;
                             }
+                            else
+                            {
+                                var uiSr = shown.GetChild(i).GetComponent<Image>();
+                                uiSr.color = Color.clear;
+                            }
                         }
                         selectedGameObject.SetActive(true);
                         selectedGameObject.LeanMoveY(selector.GetChild(0).position.y, blockArriveTime).setEase(blockArriveCurve);
@@ -188,7 +193,7 @@ namespace Management
                         selector.gameObject.SetActive(false);
                         if (_panelRevealed)
                         {
-                            panel.LeanMoveX(-60, 0.5f);
+                            panel.LeanMoveX(-80, 0.5f);
                             _panelRevealed = false;
                         }
 

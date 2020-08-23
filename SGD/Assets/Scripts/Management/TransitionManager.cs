@@ -26,7 +26,7 @@ namespace Management
         private AsyncOperation _sceneHolder;
         private Tuple<int, int> _heldLevelIdentification;
         private bool _loadLock;
-    
+
         public TransitionManager()
         {
             if (instance == null || instance.Equals(null))
@@ -121,6 +121,7 @@ namespace Management
         
         public void LoadScene(SceneIndexes target)
         {
+            loadText.text = "Loading ...";
             StartCoroutine(ToggleLoadingScreen(true, () =>
             {
                 loading.Add(SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene().buildIndex).ToAsync());

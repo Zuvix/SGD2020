@@ -76,7 +76,8 @@ public class Projectile : MonoBehaviour
             yield return new WaitForFixedUpdate();
         }
         //yield return new WaitForSeconds(0.65f);
-        launchDirection = new Vector3(player.position.x, player.position.y + 0.24f, player.position.z)*10000;
+        if(player!=null)
+            launchDirection = new Vector3(player.position.x, player.position.y + 0.24f, player.position.z)*10000;
         c.enabled = true;
         if (type.Equals("fire"))
         {

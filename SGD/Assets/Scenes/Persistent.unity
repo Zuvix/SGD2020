@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -159,7 +159,7 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 36691534}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 24300002, guid: db7b4987b3ff7f44e9314499e4a2bc47,
     type: 2}
@@ -787,7 +787,7 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 733867304}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 24300002, guid: db7b4987b3ff7f44e9314499e4a2bc47,
     type: 2}
@@ -1084,11 +1084,11 @@ MonoBehaviour:
   - 
   screenPairs:
   - loadCinematicScene: 1
-    targetSceneBuildIndex: 9
-    text: "Tutorial 1 - Ovl\xE1danie postavy"
+    targetSceneBuildIndex: 13
+    text: Tutorial 1 - Player control
   - loadCinematicScene: 1
-    targetSceneBuildIndex: 9
-    text: Tutorial 2 - Nepriatelia a ich schopnosti
+    targetSceneBuildIndex: 14
+    text: Tutorial 2 - Enemies awaiting
   - loadCinematicScene: 1
     targetSceneBuildIndex: 9
     text: "Who and where am I? No matter how hard I try, the memories won\u2019t
@@ -1105,6 +1105,15 @@ MonoBehaviour:
     text: "The conflict grows stronger. No matter how many I kill, they just keep
       coming. They don\u2019t fear my power and death means nothing for them. I feel
       like they are having fun stepping in my way and making me suffer."
+  - loadCinematicScene: 1
+    targetSceneBuildIndex: 12
+    text: "Here comes another portal. They all look the same, but lead to different
+      places. Will there ever be one, that takes me back home, or will this journey
+      never end? I rather evade that question and focus on the road ahead of me.
+      Step by step I\u2019ll open them all and reach the end!"
+  - loadCinematicScene: 1
+    targetSceneBuildIndex: 14
+    text: Up for a bonus huh? Well good luck to you friend.
 --- !u!1 &1296897222
 GameObject:
   m_ObjectHideFlags: 0

@@ -26,6 +26,7 @@ public class FrogBehaviour2 : Enemy
     public GameObject Gem;
     Collider frontColl;
     Collider rightColl;
+    float spawnY;
     bool isDead = false;
     private bool hasCollide = false;
     public override void Awake()
@@ -34,6 +35,7 @@ public class FrogBehaviour2 : Enemy
         frontColl = frontGO.GetComponent<Collider>();
         rightColl = rightGO.GetComponent<Collider>();
         myTransform = transform;
+        spawnY = transform.position.y;
     }
     private void LateUpdate()
     {
@@ -81,7 +83,7 @@ public class FrogBehaviour2 : Enemy
         Collider[] colls=Physics.OverlapBox(frontColl.bounds.center, frontColl.bounds.size/2, transform.rotation, lm);
         foreach (Collider c in colls)
         {
-            Vector3 cp = new Vector3(c.transform.position.x, transform.position.y, c.transform.position.z);
+            Vector3 cp = new Vector3(c.transform.position.x, spawnY, c.transform.position.z);
             if (Vector3.Distance(transform.position, cp) > 1.5f && Vector3.Distance(transform.position, cp) < MaxDist)
             {
                 grounds.Add(c.gameObject);
@@ -91,7 +93,7 @@ public class FrogBehaviour2 : Enemy
         colls = Physics.OverlapBox(rightColl.bounds.center, rightColl.bounds.size/2, transform.rotation, lm);
         foreach (Collider c in colls)
         {
-            Vector3 cp = new Vector3(c.transform.position.x, transform.position.y, c.transform.position.z);
+            Vector3 cp = new Vector3(c.transform.position.x, spawnY, c.transform.position.z);
             if (Vector3.Distance(transform.position, cp) > 1.5f && Vector3.Distance(transform.position, cp)<MaxDist)
             {
                 grounds.Add(c.gameObject);

@@ -54,7 +54,14 @@ public class LevelManager : Singleton<LevelManager>
     }
     private void Update()
     {
-        yourTime += Time.deltaTime;
+        if (Input.GetKey(KeyCode.I))
+        {
+            yourTime += Time.deltaTime;
+            if (yourTime > 1f)
+            {
+                FinishLevel();
+            }
+        }
     }
     public void GetGem()
     {
@@ -159,7 +166,6 @@ public class LevelManager : Singleton<LevelManager>
         }
 
     }
-    
     public void Initialize(int index, List<Tuple<Vector2Int, PoolBlock>> data)
     {
         _generated = true;

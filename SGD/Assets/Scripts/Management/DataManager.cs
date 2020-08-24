@@ -38,6 +38,8 @@ namespace Management
             new Tuple<int, int>(2, 6),
             new Tuple<int, int>(3, 7),
             new Tuple<int, int>(4, 8),
+            new Tuple<int, int>(5, 1),
+            new Tuple<int, int>(6, 15),
         };
         
         private void Awake()

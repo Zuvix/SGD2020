@@ -2507,7 +2507,7 @@ MonoBehaviour:
   sourceData: {fileID: 11400000, guid: 24b775777e9f5f5428f839356958044f, type: 2}
   manualRotation: 0
   initialWaitTime: 5
-  placeTime: 5
+  placeTime: 3
   rotateTime: 1
   rotateLeft: 120
   rotateRight: 99

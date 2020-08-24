@@ -110,7 +110,10 @@ public class LevelManager : Singleton<LevelManager>
         {
             if (_generated)
             {
-                TransitionManager.instance.LoadLevel(_passedData.Item1+1);
+                if (sourceData.levels.Count > _passedData.Item1-1)
+                    TransitionManager.instance.LoadLevel(_passedData.Item1+1);
+                else
+                    TransitionManager.instance.LoadScene(TransitionManager.SceneIndexes.Menu);
             }
             else
             {
@@ -285,7 +288,7 @@ public class LevelManager : Singleton<LevelManager>
             foreach (var poolEntry in data)
             {
                 var obj = Instantiate(poolEntry.Item2.poolBlockData.targetPrefab,
-                    new Vector3(3f + poolEntry.Item1.x * 6, 0, -3f - poolEntry.Item1.y * 6), Quaternion.Euler(0, 0, 0),
+                    new Vector3(3f + poolEntry.Item1.x * 6f, 0, 3f + poolEntry.Item1.y * 6f), Quaternion.Euler(0, 0, 0),
                     spawn);
                 for (var i = 0; i < 9; i++)
                 {
@@ -295,6 +298,13 @@ public class LevelManager : Singleton<LevelManager>
                         var a = new List<float>() {-1.8f, 0f, 1.8f};
                         placing.transform.localPosition = new Vector3(a[i%3], 3, a[i/3]) / 300;
                         placing.transform.localScale = placing.transform.localScale / 300;
+                        
+                        if (poolEntry.Item2.overridePlacings[i].id == 0)
+                        {
+                            placing.transform.localPosition += Vector3.up / 300;
+                            placing.transform.localScale = Vector3.one * 0.0005f;
+                            placing.GetComponent<CollectGems>().baseScale = placing.transform.localScale;
+                        }
                         
                         if (poolEntry.Item2.overridePlacings[i].id == 4)
                         {

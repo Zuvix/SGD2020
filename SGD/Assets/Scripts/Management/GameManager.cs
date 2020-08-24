@@ -113,14 +113,14 @@ namespace Management
                                 0,
                                 Random.Range(0, sourceData.levels[levelNum].dimensions.y-1));
                             
-                        } while (_blocks[pos.x, pos.y]);
-                        Place(new Vector3(pos.x+0.5f, 0, pos.y-0.5f));
+                        } while (_blocks[pos.x, pos.z]);
+                        Place(new Vector3(pos.x, 0, pos.z));
                     }
 
                     // controls
                     if (selector.gameObject.activeSelf)
                     {
-                        if (!_blocks[(int)selector.position.x, (int) -selector.position.z])
+                        if (!_blocks[(int)(selector.position.x-0.5f), (int) (-selector.position.z-0.5f)])
                         {
                             selector.GetComponent<SpriteRenderer>().material.color = Color.green;
                             if (Input.GetMouseButtonDown(0))
@@ -128,7 +128,7 @@ namespace Management
                                 Debug.Log("Place block");
                                 
                                 var position = selector.position;
-                                Place(new Vector3(position.x, 0, position.z));
+                                Place(new Vector3(position.x-0.5f, 0, -position.z-0.5f));
                             }
                         }
                         else
@@ -226,9 +226,9 @@ namespace Management
 
         public void Place(Vector3 position)
         {
-            selectedGameObject.LeanMove(new Vector3(position.x, 0, position.z), blockPlaceTime).setEase(blockPlaceCurve);
-            _blocks[(int) position.x, (int) -position.z] = true;
-            _locations.Add(new Tuple<Vector2Int, PoolBlock>(new Vector2Int((int) position.x, (int) -position.z), _placing));
+            selectedGameObject.LeanMove(new Vector3(position.x+0.5f, 0, -(position.z+0.5f)), blockPlaceTime).setEase(blockPlaceCurve);
+            _blocks[(int) position.x, (int) position.z] = true;
+            _locations.Add(new Tuple<Vector2Int, PoolBlock>(new Vector2Int((int) (position.x+0.5f), (int) -(position.z+0.5f)), _placing));
             
             // place on grid 
             _poolIndex++;

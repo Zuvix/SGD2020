@@ -154,6 +154,110 @@ MonoBehaviour:
       - {fileID: 11400000, guid: 49fbe5f97f945424b92fbfd343683ba9, type: 2}
       - {fileID: 11400000, guid: 49fbe5f97f945424b92fbfd343683ba9, type: 2}
       - {fileID: 11400000, guid: 49fbe5f97f945424b92fbfd343683ba9, type: 2}
+    - poolBlockData: {fileID: 11400000, guid: c5248ea1bff31354c8130387a9d71c8e, type: 2}
+      count: 1
+      chance: 1
+      overridePlacings:
+      - {fileID: 0}
+      - {fileID: 0}
+      - {fileID: 0}
+      - {fileID: 0}
+      - {fileID: 0}
+      - {fileID: 0}
+      - {fileID: 0}
+      - {fileID: 0}
+      - {fileID: 0}
+    - poolBlockData: {fileID: 11400000, guid: c5248ea1bff31354c8130387a9d71c8e, type: 2}
+      count: 1
+      chance: 1
+      overridePlacings:
+      - {fileID: 0}
+      - {fileID: 0}
+      - {fileID: 0}
+      - {fileID: 0}
+      - {fileID: 0}
+      - {fileID: 0}
+      - {fileID: 0}
+      - {fileID: 0}
+      - {fileID: 0}
+    - poolBlockData: {fileID: 11400000, guid: c5248ea1bff31354c8130387a9d71c8e, type: 2}
+      count: 1
+      chance: 1
+      overridePlacings:
+      - {fileID: 0}
+      - {fileID: 0}
+      - {fileID: 0}
+      - {fileID: 0}
+      - {fileID: 0}
+      - {fileID: 0}
+      - {fileID: 0}
+      - {fileID: 0}
+      - {fileID: 0}
+    - poolBlockData: {fileID: 11400000, guid: c5248ea1bff31354c8130387a9d71c8e, type: 2}
+      count: 1
+      chance: 1
+      overridePlacings:
+      - {fileID: 0}
+      - {fileID: 0}
+      - {fileID: 0}
+      - {fileID: 0}
+      - {fileID: 0}
+      - {fileID: 0}
+      - {fileID: 0}
+      - {fileID: 0}
+      - {fileID: 0}
+    - poolBlockData: {fileID: 11400000, guid: c5248ea1bff31354c8130387a9d71c8e, type: 2}
+      count: 1
+      chance: 1
+      overridePlacings:
+      - {fileID: 0}
+      - {fileID: 0}
+      - {fileID: 0}
+      - {fileID: 0}
+      - {fileID: 0}
+      - {fileID: 0}
+      - {fileID: 0}
+      - {fileID: 0}
+      - {fileID: 0}
+    - poolBlockData: {fileID: 11400000, guid: c5248ea1bff31354c8130387a9d71c8e, type: 2}
+      count: 1
+      chance: 1
+      overridePlacings:
+      - {fileID: 0}
+      - {fileID: 0}
+      - {fileID: 0}
+      - {fileID: 0}
+      - {fileID: 0}
+      - {fileID: 0}
+      - {fileID: 0}
+      - {fileID: 0}
+      - {fileID: 0}
+    - poolBlockData: {fileID: 11400000, guid: c5248ea1bff31354c8130387a9d71c8e, type: 2}
+      count: 1
+      chance: 1
+      overridePlacings:
+      - {fileID: 0}
+      - {fileID: 0}
+      - {fileID: 0}
+      - {fileID: 0}
+      - {fileID: 0}
+      - {fileID: 0}
+      - {fileID: 0}
+      - {fileID: 0}
+      - {fileID: 0}
+    - poolBlockData: {fileID: 11400000, guid: c5248ea1bff31354c8130387a9d71c8e, type: 2}
+      count: 1
+      chance: 1
+      overridePlacings:
+      - {fileID: 0}
+      - {fileID: 0}
+      - {fileID: 0}
+      - {fileID: 0}
+      - {fileID: 0}
+      - {fileID: 0}
+      - {fileID: 0}
+      - {fileID: 0}
+      - {fileID: 0}
   - dimensions: {x: 10, y: 10}
     startPos: {x: 9, y: 3}
     endPos: {x: 1, y: 5}
@@ -263,7 +367,7 @@ MonoBehaviour:
           - {fileID: 0}
           - {fileID: 0}
           - {fileID: 0}
-          - {fileID: 0}
+          - {fileID: 11400000, guid: 89bce2641abb61041aa0877f2c7bfc58, type: 2}
           - {fileID: 0}
           - {fileID: 0}
           - {fileID: 0}
@@ -288,7 +392,7 @@ MonoBehaviour:
           - {fileID: 0}
           - {fileID: 0}
           - {fileID: 0}
-          - {fileID: 0}
+          - {fileID: 11400000, guid: d2f8e3e9a1a10dc4ab289aa1665504f9, type: 2}
           - {fileID: 0}
           - {fileID: 0}
           - {fileID: 0}

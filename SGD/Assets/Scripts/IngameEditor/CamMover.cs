@@ -13,6 +13,7 @@ namespace IngameEditor
         public float initialZoomTime = 2f;
         public float defaultZoom = 10;
         public float initialZoomRange = 20;
+        public float aaa;
         
         private float _rotationYAxis = 0.0f;
         private float _rotationXAxis = 0.0f;
@@ -33,6 +34,7 @@ namespace IngameEditor
         {
             if (target)
             {
+                aaa = Input.GetAxis("Mouse ScrollWheel");
                 target.transform.LookAt(transform, Vector3.up); 
                 target.transform.localRotation = Quaternion.identity;
                 // drag
@@ -44,7 +46,7 @@ namespace IngameEditor
                 // zoom
                 if (Math.Abs(Input.GetAxis("Mouse ScrollWheel")) > 0.01f)
                 {
-                    _velocityZoom -= Input.GetAxis("Mouse ScrollWheel") * ((xSpeed + ySpeed) / 20);
+                    _velocityZoom -= Input.GetAxis("Mouse ScrollWheel") * ((Math.Abs(xSpeed) + Math.Abs(ySpeed)) / 20);
                 }
                 _rotationYAxis += _velocityX;
                 _rotationXAxis -= _velocityY;

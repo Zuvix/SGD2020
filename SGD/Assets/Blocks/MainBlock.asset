@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: MainBlock
   m_EditorClassIdentifier: 
   id: 0
-  mesh: {fileID: 8711580653161268234, guid: e532adc429866014ca9fef0f35bb9581, type: 3}
-  material: {fileID: 2100000, guid: 2b315a0f0b74d904690bfd2881d46628, type: 2}
+  mesh: {fileID: -3854421220842416643, guid: fd5e432830a85fc47988a94de9062370, type: 3}
+  material: {fileID: 2100000, guid: 9754dfc019000644b836f41f6eff6104, type: 2}
   targetPrefab: {fileID: 5446430343796842214, guid: d145cf8a184fdee479cb9a1665a3e953,
     type: 3}
   defaultPlacings:

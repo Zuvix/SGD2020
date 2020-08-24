@@ -94,7 +94,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75d3e2866249a504188a0033005fbdc0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 0}
+  cam: {fileID: 0}
 --- !u!1 &1495994175750111932
 GameObject:
   m_ObjectHideFlags: 0
@@ -189,7 +189,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75d3e2866249a504188a0033005fbdc0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 0}
+  cam: {fileID: 0}
 --- !u!1 &2924216412187488158
 GameObject:
   m_ObjectHideFlags: 0
@@ -284,7 +284,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75d3e2866249a504188a0033005fbdc0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 0}
+  cam: {fileID: 0}
 --- !u!1 &3456987914140063507
 GameObject:
   m_ObjectHideFlags: 0
@@ -379,7 +379,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75d3e2866249a504188a0033005fbdc0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 0}
+  cam: {fileID: 0}
 --- !u!1 &3812025929674981273
 GameObject:
   m_ObjectHideFlags: 0
@@ -428,7 +428,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3812025929674981273}
-  m_Mesh: {fileID: -5495902117074765545, guid: 8af24372ab754ff46af0488c54c8307b, type: 3}
+  m_Mesh: {fileID: 8711580653161268234, guid: 88947b650bf616e48a5ff11261a94fe8, type: 3}
 --- !u!23 &6087646655527061228
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -447,7 +447,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 0}
+  - {fileID: 2100000, guid: 6d88d06c5976256458608fdb05d4409d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -562,7 +562,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75d3e2866249a504188a0033005fbdc0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 0}
+  cam: {fileID: 0}
 --- !u!1 &5442508084421658598
 GameObject:
   m_ObjectHideFlags: 0
@@ -657,7 +657,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75d3e2866249a504188a0033005fbdc0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 0}
+  cam: {fileID: 0}
 --- !u!1 &6038451575714362985
 GameObject:
   m_ObjectHideFlags: 0
@@ -752,7 +752,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75d3e2866249a504188a0033005fbdc0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 0}
+  cam: {fileID: 0}
 --- !u!1 &6848732943475225182
 GameObject:
   m_ObjectHideFlags: 0
@@ -847,7 +847,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75d3e2866249a504188a0033005fbdc0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 0}
+  cam: {fileID: 0}
 --- !u!1 &8634089326039991976
 GameObject:
   m_ObjectHideFlags: 0
@@ -942,4 +942,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75d3e2866249a504188a0033005fbdc0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 0}
+  cam: {fileID: 0}

@@ -1663,6 +1663,7 @@ MonoBehaviour:
   initialZoomTime: 2
   defaultZoom: 10
   initialZoomRange: 20
+  aaa: 0
 --- !u!1 &1351550236
 GameObject:
   m_ObjectHideFlags: 0
@@ -2505,9 +2506,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levelNum: 0
   sourceData: {fileID: 11400000, guid: 24b775777e9f5f5428f839356958044f, type: 2}
-  manualRotation: 0
+  manualRotation: 1
   initialWaitTime: 5
-  placeTime: 3
+  placeTime: 5
   rotateTime: 1
   rotateLeft: 120
   rotateRight: 99

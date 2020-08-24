@@ -288,7 +288,7 @@ public class LevelManager : Singleton<LevelManager>
             foreach (var poolEntry in data)
             {
                 var obj = Instantiate(poolEntry.Item2.poolBlockData.targetPrefab,
-                    new Vector3(3f + poolEntry.Item1.x * 6f, 0, 3f + poolEntry.Item1.y * 6f), Quaternion.Euler(0, 0, 0),
+                    new Vector3(3f + poolEntry.Item1.x * 6f, 0, -3f + poolEntry.Item1.y * 6f), Quaternion.Euler(0, 0, 0),
                     spawn);
                 for (var i = 0; i < 9; i++)
                 {

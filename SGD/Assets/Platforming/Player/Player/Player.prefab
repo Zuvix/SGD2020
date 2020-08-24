@@ -1103,7 +1103,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3864780081866438639}
   - component: {fileID: 3864780081866438636}
-  - component: {fileID: 3864780081866438637}
   - component: {fileID: 3864780081866438634}
   m_Layer: 13
   m_Name: character
@@ -1236,14 +1235,6 @@ SkinnedMeshRenderer:
     m_Center: {x: -0.10773048, y: 0.01787895, z: -0.012654856}
     m_Extent: {x: 0.5297612, y: 0.8746763, z: 0.4517203}
   m_DirtyAABB: 0
---- !u!81 &3864780081866438637
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3864780081866438638}
-  m_Enabled: 1
 --- !u!114 &3864780081866438634
 MonoBehaviour:
   m_ObjectHideFlags: 0

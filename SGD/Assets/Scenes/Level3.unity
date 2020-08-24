@@ -3459,6 +3459,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1699394400}
   - component: {fileID: 1699394401}
+  - component: {fileID: 1699394402}
   m_Layer: 0
   m_Name: CameraBase
   m_TagString: Untagged
@@ -3508,6 +3509,14 @@ MonoBehaviour:
   finalInputZ: 0
   smoothX: 0
   smoothY: 0
+--- !u!81 &1699394402
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1699394399}
+  m_Enabled: 1
 --- !u!108 &1726778431 stripped
 Light:
   m_CorrespondingSourceObject: {fileID: 3375306420795378071, guid: dd21b46c4192adf49a9b42eced9f08b0,

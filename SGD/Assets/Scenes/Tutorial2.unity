@@ -2416,6 +2416,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1699394400}
   - component: {fileID: 1699394401}
+  - component: {fileID: 1699394402}
   m_Layer: 0
   m_Name: CameraBase
   m_TagString: Untagged
@@ -2465,6 +2466,14 @@ MonoBehaviour:
   finalInputZ: 0
   smoothX: 0
   smoothY: 0
+--- !u!81 &1699394402
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1699394399}
+  m_Enabled: 1
 --- !u!1001 &1717444043
 PrefabInstance:
   m_ObjectHideFlags: 0

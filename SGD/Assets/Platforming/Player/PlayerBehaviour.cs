@@ -24,6 +24,7 @@ public class PlayerBehaviour : MonoBehaviour
     public AudioSource land;
     public AudioSource deathSound;
 
+    bool isDead = false;
     public bool isAttacking = false;
     float turnSmoothVelocity;
     public Transform cameraT;
@@ -151,8 +152,12 @@ public class PlayerBehaviour : MonoBehaviour
         if(!deathSound.isPlaying)
             deathSound.Play();
         controlsEnabled = false;
-        gameObject.GetComponentInChildren<DissolveEffect>().StartDissolve();
+        if (!isDead)
+        {
+            gameObject.GetComponentInChildren<DissolveEffect>().StartDissolve();
+        }
     }
+
     // Update is called once per frame
     void FixedUpdate()
     {
